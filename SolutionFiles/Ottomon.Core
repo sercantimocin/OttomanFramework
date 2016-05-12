@@ -1,0 +1,9 @@
+﻿extensions: designer.cs generated.cs
+extensions: .cs 
+//----------------------------------------------------------------------------------------------------------------------
+// <copyright file="%FileName%" owner="Sercan Timoçin" namespace="%Project%">
+// Copyright (c) %CurrentYear% All Rights Reserved
+// </copyright>
+// <author>%UserName%</author>
+// <date>%CreationYear%-%CreationMonth%-%CreationDay% %CreationTime%</date>
+//---------------------------------------------------------------------------------------------------------------------- 
