@@ -1,9 +1,22 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApplication1", "ConsoleApplication1\ConsoleApplication1.csproj", "{46022385-B006-4915-8873-66B7C5C3E7CB}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{E1C704E0-9EE1-4DD6-9966-275160CF9BEB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ottomon.Core", "Core\Ottomon.Core\Ottomon.Core.csproj", "{D7C53018-239D-4A84-B19C-B4FE4A5BEED8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ottoman.SimpleInjector", "Core\Ottoman.SimpleInjector\Ottoman.SimpleInjector.csproj", "{95D6C419-0DED-4326-98E6-CBEE8303F38E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionFiles", "SolutionFiles", "{8C04933E-FF10-482E-A72F-716B0C302EEF}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\..\..\Projects\WeLink\WeLink-DEV\WeLink\Ottoman.licenseheader = ..\..\..\..\..\Projects\WeLink\WeLink-DEV\WeLink\Ottoman.licenseheader
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTest", "UnitTest", "{EA041AE4-4750-4817-945E-7B3F20BEDC4A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ottoman.CoreTest", "Ottoman.CoreTest\Ottoman.CoreTest.csproj", "{6B516AB1-3DA9-46AE-A136-284EF3EBA142}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,12 +24,25 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{46022385-B006-4915-8873-66B7C5C3E7CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{46022385-B006-4915-8873-66B7C5C3E7CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{46022385-B006-4915-8873-66B7C5C3E7CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{46022385-B006-4915-8873-66B7C5C3E7CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7C53018-239D-4A84-B19C-B4FE4A5BEED8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7C53018-239D-4A84-B19C-B4FE4A5BEED8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7C53018-239D-4A84-B19C-B4FE4A5BEED8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7C53018-239D-4A84-B19C-B4FE4A5BEED8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95D6C419-0DED-4326-98E6-CBEE8303F38E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95D6C419-0DED-4326-98E6-CBEE8303F38E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95D6C419-0DED-4326-98E6-CBEE8303F38E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95D6C419-0DED-4326-98E6-CBEE8303F38E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B516AB1-3DA9-46AE-A136-284EF3EBA142}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B516AB1-3DA9-46AE-A136-284EF3EBA142}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B516AB1-3DA9-46AE-A136-284EF3EBA142}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B516AB1-3DA9-46AE-A136-284EF3EBA142}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D7C53018-239D-4A84-B19C-B4FE4A5BEED8} = {E1C704E0-9EE1-4DD6-9966-275160CF9BEB}
+		{95D6C419-0DED-4326-98E6-CBEE8303F38E} = {E1C704E0-9EE1-4DD6-9966-275160CF9BEB}
+		{6B516AB1-3DA9-46AE-A136-284EF3EBA142} = {EA041AE4-4750-4817-945E-7B3F20BEDC4A}
 	EndGlobalSection
 EndGlobal
