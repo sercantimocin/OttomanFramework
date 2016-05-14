@@ -58,11 +58,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Api\Ottoman.WebApi\Ottoman.WebApi.csproj">
+    <ProjectReference Include="..\..\..\Api\Ottoman.WebApi\Ottoman.WebApi.csproj">
       <Project>{f6f7826c-3cf2-4b09-ae34-3b007cab78d5}</Project>
       <Name>Ottoman.WebApi</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Core\Ottoman.SimpleInjector\Ottoman.SimpleInjector.csproj">
+    <ProjectReference Include="..\..\..\Core\Ottoman.SimpleInjector\Ottoman.SimpleInjector.csproj">
       <Project>{95D6C419-0DED-4326-98E6-CBEE8303F38E}</Project>
       <Name>Ottoman.SimpleInjector</Name>
     </ProjectReference>
