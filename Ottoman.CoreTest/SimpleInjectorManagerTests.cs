@@ -26,11 +26,11 @@ namespace Ottoman.CoreTest
         /// any Exception
         /// </exception>
         [Test]
-        public void IsCreateSimpleInjectorManager()
+        public void CanCreateSimpleInjectorManager()
         {
             new SimpleInjectorManager();
 
-            Assert.DoesNotThrow(delegate { throw new Exception(); });
+            Assert.IsNotNull(SimpleInjectorManager.Container);
         }
     }
 }

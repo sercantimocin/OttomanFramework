@@ -35,6 +35,10 @@
       <HintPath>..\packages\NUnit.3.2.1\lib\net45\nunit.framework.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="SimpleInjector, Version=3.1.4.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleInjector.3.1.4\lib\net45\SimpleInjector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -49,10 +53,15 @@
     <Compile Include="SimpleInjectorManagerTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="Ottoman.CoreTest.licenseheader" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Api\Ottoman.WebApi\Ottoman.WebApi.csproj">
+      <Project>{f6f7826c-3cf2-4b09-ae34-3b007cab78d5}</Project>
+      <Name>Ottoman.WebApi</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Core\Ottoman.SimpleInjector\Ottoman.SimpleInjector.csproj">
       <Project>{95D6C419-0DED-4326-98E6-CBEE8303F38E}</Project>
       <Name>Ottoman.SimpleInjector</Name>

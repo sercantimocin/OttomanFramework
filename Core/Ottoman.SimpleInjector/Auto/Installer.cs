@@ -8,24 +8,19 @@
 
 namespace Ottoman.SimpleInjector.Auto
 {
-    using System.Reflection;
-
     using global::SimpleInjector;
 
     /// <summary>
-    /// The nstaller interface.
+    /// The Installer interface.
     /// </summary>
-    public interface Installer
+    public interface IInstaller
     {
         /// <summary>
         /// The register.
         /// </summary>
-        /// <param name="assembly">
-        /// The assembly.
-        /// </param>
         /// <param name="container">
         /// The container.
         /// </param>
-        void Register(Assembly[] assembly, Container container);
+        void Register(Container container);
     }
 }

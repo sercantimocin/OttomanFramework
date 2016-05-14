@@ -16,9 +16,9 @@ namespace Ottomon.Core
     public static class ApplicationEngine
     {
         /// <summary>
-        /// Initializes static members of the <see cref="ApplicationEngine"/> class.
+        /// The ınitialize.
         /// </summary>
-        static ApplicationEngine()
+        public static void Initialize()
         {
             new SimpleInjectorManager();
         }

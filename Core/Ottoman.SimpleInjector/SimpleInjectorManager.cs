@@ -11,6 +11,7 @@ namespace Ottoman.SimpleInjector
     using System;
     using System.Linq;
     using System.Reflection;
+    using System.Web.Mvc;
 
     using Ottoman.SimpleInjector.Auto;
 
@@ -24,20 +25,20 @@ namespace Ottoman.SimpleInjector
         /// <summary>
         /// The _container.
         /// </summary>
-        private static Si.Container _container;
+        public static readonly Si.Container Container = new Si.Container();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SimpleInjectorManager"/> class.
         /// </summary>
         public SimpleInjectorManager()
         {
-            _container = new Si.Container();
-
-            _container.Verify();
-
-            //DependencyResolver.SetResolver(Si.SimpleInjectorDependencyResolver(container));
+            Container.Options.DefaultScopedLifestyle = new Si.Integration.WebApi.WebApiRequestLifestyle();
 
             this.RegisterAll();
+
+            Container.Verify();
+
+            //DependencyResolver.SetResolver(Si.SimpleInjectorDependencyResolver(container));
         }
 
         /// <summary>
@@ -45,18 +46,13 @@ namespace Ottoman.SimpleInjector
         /// </summary>
         private void RegisterAll()
         {
-            var applicationAssembly = AppDomain.CurrentDomain.GetAssemblies();
-
-            var autoInstallerClases = Assembly.GetCallingAssembly().GetExportedTypes().Where(x => typeof(Installer).IsAssignableFrom(x) && x.IsClass);
+            var autoInstallerClases = Assembly.GetCallingAssembly().GetExportedTypes().Where(x => typeof(IInstaller).IsAssignableFrom(x) && x.IsClass);
 
             foreach (var autoInstallerClass in autoInstallerClases)
             {
-                var installer = Activator.CreateInstance(autoInstallerClass) as Installer;
+                var installer = Activator.CreateInstance(autoInstallerClass) as IInstaller;
 
-                if (installer != null)
-                {
-                    installer.Register(applicationAssembly, _container);
-                }
+                installer.Register(Container);
             }
         }
     }
