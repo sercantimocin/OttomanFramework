@@ -8,7 +8,7 @@ using Repository.Pattern.Infrastructure;
 
 namespace Repository.Pattern.Ef6
 {
-    using Repository.Pattern.Ef6.Infrastructure;
+    using Infrastructure;
 
     public interface IFakeDbContext : IDataContextAsync
     {
