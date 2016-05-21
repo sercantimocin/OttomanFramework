@@ -30,7 +30,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -40,7 +45,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Category.cs" />
+    <Compile Include="Context\TemplateDbContext.cs" />
+    <Compile Include="Customer.cs" />
+    <Compile Include="Employee.cs" />
+    <Compile Include="Mappings\CategoryMap.cs" />
+    <Compile Include="Mappings\CustomerMap.cs" />
+    <Compile Include="Mappings\EmployeeMap.cs" />
+    <Compile Include="Mappings\OrderDetailMap.cs" />
+    <Compile Include="Mappings\OrderMap.cs" />
+    <Compile Include="Mappings\ProductMap.cs" />
+    <Compile Include="Mappings\RegionMap.cs" />
+    <Compile Include="Mappings\ShipperMap.cs" />
+    <Compile Include="Mappings\SupplierMap.cs" />
+    <Compile Include="Mappings\TerritoryMap.cs" />
+    <Compile Include="Order.cs" />
+    <Compile Include="OrderDetail.cs" />
+    <Compile Include="Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Region.cs" />
+    <Compile Include="Shipper.cs" />
+    <Compile Include="Supplier.cs" />
+    <Compile Include="Territory.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Core\Repository.Pattern.Ef6\Repository.Pattern.Ef6.csproj">
