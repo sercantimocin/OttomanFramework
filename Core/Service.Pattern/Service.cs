@@ -9,14 +9,14 @@ using Repository.Pattern.Repositories;
 
 namespace Service.Pattern
 {
-    public abstract class Service<TEntity> : IService<TEntity> where TEntity : class, IObjectState
+    public class Service<TEntity> : IService<TEntity> where TEntity : class, IObjectState
     {
         #region Private Fields
         private readonly IRepositoryAsync<TEntity> _repository;
         #endregion Private Fields
 
         #region Constructor
-        protected Service(IRepositoryAsync<TEntity> repository) { _repository = repository; }
+        public Service(IRepositoryAsync<TEntity> repository) { _repository = repository; }
         #endregion Constructor
 
         public virtual TEntity Find(params object[] keyValues) { return _repository.Find(keyValues); }

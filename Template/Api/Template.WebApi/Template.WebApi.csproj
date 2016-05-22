@@ -205,6 +205,8 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -288,6 +290,26 @@
     <ProjectReference Include="..\..\..\Core\Ottomon.Core\Ottomon.Core.csproj">
       <Project>{d7c53018-239d-4a84-b19c-b4fe4a5beed8}</Project>
       <Name>Ottomon.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Core\Repository.Pattern.Ef6\Repository.Pattern.Ef6.csproj">
+      <Project>{F68A1D19-93FB-47C1-A22B-42BEA3E4FD8C}</Project>
+      <Name>Repository.Pattern.Ef6</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Core\Repository.Pattern\Repository.Pattern.csproj">
+      <Project>{6E682A14-C872-4813-B620-76E108DEA683}</Project>
+      <Name>Repository.Pattern</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Core\Service.Pattern\Service.Pattern.csproj">
+      <Project>{773B60EE-8D35-4800-ACD5-2F673F94170C}</Project>
+      <Name>Service.Pattern</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Business\Template.Business\Template.Business.csproj">
+      <Project>{967d0097-f098-47fa-a636-e9ab4d6fb969}</Project>
+      <Name>Template.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Data\Template.Entities\Template.Entities.csproj">
+      <Project>{DD175BB5-9684-49FF-BC84-DB259E8EA62B}</Project>
+      <Name>Template.Entities</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

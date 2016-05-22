@@ -36,7 +36,7 @@ namespace Ottoman.Injector.Policies.Controller
         {
             container.RegisterWebApiControllers(httpConfiguration);
 
-            string webApiProjectName = ConfigurationManager.AppSettings[WebApiProjectName];
+            //string webApiProjectName = ConfigurationManager.AppSettings[WebApiProjectName];
 
             //var apiAssembly = Assembly.Load(webApiProjectName);
 

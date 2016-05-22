@@ -55,7 +55,7 @@
 
             installer.Register(this._container, this._httpConfiguration);
 
-            this.SuppressRepositoryInstallerWarnings(this._container);
+            //this.SuppressRepositoryInstallerWarnings(this._container);
 
             this._container.Verify();
 
@@ -64,25 +64,25 @@
             Assert.IsNotNull(dataContextRegistration);
         }
 
-        private void SuppressRepositoryInstallerWarnings(Container container)
-        {
-            this.SuppressWarning(typeof(IDataContext), DiagnosticType.DisposableTransientComponent, container);
-            this.SuppressWarning(typeof(IDataContextAsync), DiagnosticType.DisposableTransientComponent, container);
-            this.SuppressWarning(typeof(IUnitOfWork), DiagnosticType.DisposableTransientComponent, container);
-            this.SuppressWarning(typeof(IUnitOfWorkAsync), DiagnosticType.DisposableTransientComponent, container);
-            //this.SuppressWarning(typeof(IRepository<>), DiagnosticType.DisposableTransientComponent, container);
-            //this.SuppressWarning(typeof(IRepositoryAsync<>), DiagnosticType.DisposableTransientComponent, container);
-        }
+        //private void SuppressRepositoryInstallerWarnings(Container container)
+        //{
+        //    this.SuppressWarning(typeof(IDataContext), DiagnosticType.DisposableTransientComponent, container);
+        //    this.SuppressWarning(typeof(IDataContextAsync), DiagnosticType.DisposableTransientComponent, container);
+        //    this.SuppressWarning(typeof(IUnitOfWork), DiagnosticType.DisposableTransientComponent, container);
+        //    this.SuppressWarning(typeof(IUnitOfWorkAsync), DiagnosticType.DisposableTransientComponent, container);
+        //    //this.SuppressWarning(typeof(IRepository<>), DiagnosticType.DisposableTransientComponent, container);
+        //    //this.SuppressWarning(typeof(IRepositoryAsync<>), DiagnosticType.DisposableTransientComponent, container);
+        //}
 
-        private void SuppressWarning(Type type, DiagnosticType supressType,Container container)
-        {
-            var instanceProducer = container.GetRegistration(type);
+        //private void SuppressWarning(Type type, DiagnosticType supressType,Container container)
+        //{
+        //    var instanceProducer = container.GetRegistration(type);
 
-            if (instanceProducer != null)
-            {
-                var registration = instanceProducer.Registration;
-                registration.SuppressDiagnosticWarning(supressType, supressType.ToString());
-            }
-        }
+        //    if (instanceProducer != null)
+        //    {
+        //        var registration = instanceProducer.Registration;
+        //        registration.SuppressDiagnosticWarning(supressType, supressType.ToString());
+        //    }
+        //}
     }
 }

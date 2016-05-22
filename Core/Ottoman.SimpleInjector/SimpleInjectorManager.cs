@@ -16,10 +16,10 @@ namespace Ottoman.Injector
     using Policies;
 
     using Repository.Pattern.DataContext;
-    using Repository.Pattern.Repositories;
     using Repository.Pattern.UnitOfWork;
 
     using SimpleInjector;
+    using SimpleInjector.Advanced;
     using SimpleInjector.Diagnostics;
     using SimpleInjector.Integration.WebApi;
 
@@ -42,37 +42,39 @@ namespace Ottoman.Injector
         {
             this._httpConfiguration = httpConfiguration;
 
-            this.Container.Options.DefaultScopedLifestyle = new WebApiRequestLifestyle();
+            this.Container.Options.DefaultScopedLifestyle = new WebApiRequestLifestyle(true);
+
+            this.Container.Options.LifestyleSelectionBehavior = new WebApiLifestyle();
 
             this.RegisterAll();
 
-            this.SuppressRepositoryInstallerWarnings();
+            //this.SuppressRepositoryInstallerWarnings();
 
             this.Container.Verify();
 
             httpConfiguration.DependencyResolver = new SimpleInjectorWebApiDependencyResolver(Container);
         }
 
-        private void SuppressRepositoryInstallerWarnings()
-        {
-            this.SuppressWarning(typeof(IDataContext),DiagnosticType.DisposableTransientComponent);
-            this.SuppressWarning(typeof(IDataContextAsync),DiagnosticType.DisposableTransientComponent);
-            this.SuppressWarning(typeof(IUnitOfWork),DiagnosticType.DisposableTransientComponent);
-            this.SuppressWarning(typeof(IUnitOfWorkAsync),DiagnosticType.DisposableTransientComponent);
-            //this.SuppressWarning(typeof(IRepository<>),DiagnosticType.DisposableTransientComponent);
-            //this.SuppressWarning(typeof(IRepositoryAsync<>),DiagnosticType.DisposableTransientComponent);
-        }
+        //private void SuppressRepositoryInstallerWarnings()
+        //{
+        //    this.SuppressWarning(typeof(IDataContext),DiagnosticType.DisposableTransientComponent);
+        //    this.SuppressWarning(typeof(IDataContextAsync),DiagnosticType.DisposableTransientComponent);
+        //    this.SuppressWarning(typeof(IUnitOfWork),DiagnosticType.DisposableTransientComponent);
+        //    this.SuppressWarning(typeof(IUnitOfWorkAsync),DiagnosticType.DisposableTransientComponent);
+        //    //this.SuppressWarning(typeof(IRepository<>), DiagnosticType.DisposableTransientComponent);
+        //    //this.SuppressWarning(typeof(IRepositoryAsync<>), DiagnosticType.DisposableTransientComponent);
+        //}
 
-        private void SuppressWarning(Type type, DiagnosticType supressType)
-        {
-            var instanceProducer = Container.GetRegistration(type);
+        //private void SuppressWarning(Type type, DiagnosticType supressType)
+        //{
+        //    var instanceProducer = Container.GetRegistration(type);
 
-            if (instanceProducer != null)
-            {
-                var registration = instanceProducer.Registration;
-                registration.SuppressDiagnosticWarning(supressType, supressType.ToString());
-            }
-        }
+        //    if (instanceProducer != null)
+        //    {
+        //        var registration = instanceProducer.Registration;
+        //        registration.SuppressDiagnosticWarning(supressType, supressType.ToString());
+        //    }
+        //}
 
         /// <summary>
         /// The register all.
@@ -87,6 +89,14 @@ namespace Ottoman.Injector
 
                 installer.Register(this.Container, this._httpConfiguration);
             }
+        }
+    }
+
+    public class WebApiLifestyle : ILifestyleSelectionBehavior
+    {
+        public Lifestyle SelectLifestyle(Type serviceType, Type implementationType)
+        {
+            return WebApiRequestLifestyle.Scoped;
         }
     }
 }
