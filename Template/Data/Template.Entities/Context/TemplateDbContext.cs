@@ -1,8 +1,9 @@
-﻿namespace Ottoman.Entities.Context
+﻿namespace Template.Entities.Context
 {
     using System.Data.Entity;
 
-    using Mappings;
+    using Ottoman.Entities;
+    using Ottoman.Entities.Mappings;
 
     using Repository.Pattern.Ef6;
 
@@ -13,7 +14,7 @@
             Database.SetInitializer<TemplateDbContext>(null);
         }
 
-        public TemplateDbContext(string nameOrConnectionString= "Name=conStr") : base(nameOrConnectionString)
+        public TemplateDbContext() : base("Name=conStr")
         {
         }
 
@@ -58,6 +59,5 @@
             modelBuilder.Configurations.Add(new TerritoryMap(schema));
             return modelBuilder;
         }
-
     }
 }

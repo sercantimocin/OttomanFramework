@@ -6,16 +6,22 @@
 // <date>2016-5-12 20:38</date>
 //---------------------------------------------------------------------------------------------------------------------- 
 
-namespace Ottoman.SimpleInjector
+namespace Ottoman.Injector
 {
     using System;
     using System.Linq;
     using System.Reflection;
-    using System.Web.Mvc;
+    using System.Web.Http;
 
-    using Ottoman.SimpleInjector.Auto;
+    using Policies;
 
-    using Si = global::SimpleInjector;
+    using Repository.Pattern.DataContext;
+    using Repository.Pattern.Repositories;
+    using Repository.Pattern.UnitOfWork;
+
+    using SimpleInjector;
+    using SimpleInjector.Diagnostics;
+    using SimpleInjector.Integration.WebApi;
 
     /// <summary>
     /// The simple ınjector manager.
@@ -25,20 +31,47 @@ namespace Ottoman.SimpleInjector
         /// <summary>
         /// The _container.
         /// </summary>
-        public static readonly Si.Container Container = new Si.Container();
+        public readonly Container Container = new Container();
+
+        private readonly HttpConfiguration _httpConfiguration = null;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SimpleInjectorManager"/> class.
         /// </summary>
-        public SimpleInjectorManager()
+        public SimpleInjectorManager(HttpConfiguration httpConfiguration)
         {
-            Container.Options.DefaultScopedLifestyle = new Si.Integration.WebApi.WebApiRequestLifestyle();
+            this._httpConfiguration = httpConfiguration;
+
+            this.Container.Options.DefaultScopedLifestyle = new WebApiRequestLifestyle();
 
             this.RegisterAll();
 
-            Container.Verify();
+            this.SuppressRepositoryInstallerWarnings();
 
-            //DependencyResolver.SetResolver(Si.SimpleInjectorDependencyResolver(container));
+            this.Container.Verify();
+
+            httpConfiguration.DependencyResolver = new SimpleInjectorWebApiDependencyResolver(Container);
+        }
+
+        private void SuppressRepositoryInstallerWarnings()
+        {
+            this.SuppressWarning(typeof(IDataContext),DiagnosticType.DisposableTransientComponent);
+            this.SuppressWarning(typeof(IDataContextAsync),DiagnosticType.DisposableTransientComponent);
+            this.SuppressWarning(typeof(IUnitOfWork),DiagnosticType.DisposableTransientComponent);
+            this.SuppressWarning(typeof(IUnitOfWorkAsync),DiagnosticType.DisposableTransientComponent);
+            //this.SuppressWarning(typeof(IRepository<>),DiagnosticType.DisposableTransientComponent);
+            //this.SuppressWarning(typeof(IRepositoryAsync<>),DiagnosticType.DisposableTransientComponent);
+        }
+
+        private void SuppressWarning(Type type, DiagnosticType supressType)
+        {
+            var instanceProducer = Container.GetRegistration(type);
+
+            if (instanceProducer != null)
+            {
+                var registration = instanceProducer.Registration;
+                registration.SuppressDiagnosticWarning(supressType, supressType.ToString());
+            }
         }
 
         /// <summary>
@@ -52,7 +85,7 @@ namespace Ottoman.SimpleInjector
             {
                 var installer = Activator.CreateInstance(autoInstallerClass) as IInstaller;
 
-                installer.Register(Container);
+                installer.Register(this.Container, this._httpConfiguration);
             }
         }
     }

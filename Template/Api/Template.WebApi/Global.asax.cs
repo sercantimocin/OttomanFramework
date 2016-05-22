@@ -18,7 +18,7 @@
         /// </summary>
         protected void Application_Start()
         {
-            ApplicationEngine.Initialize();
+            ApplicationEngine.Initialize(GlobalConfiguration.Configuration);
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

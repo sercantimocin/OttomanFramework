@@ -8,19 +8,46 @@
 
 namespace Ottomon.Core
 {
-    using Ottoman.SimpleInjector;
+    using System.Web.Http;
+
+    using Ottoman.Injector;
+
+    using SimpleInjector;
 
     /// <summary>
     /// The application engine.
     /// </summary>
     public static class ApplicationEngine
     {
+        private static SimpleInjectorManager _injectorManager = null;
+
+        private static HttpConfiguration _httpConfiguration;
+
         /// <summary>
         /// The ınitialize.
         /// </summary>
-        public static void Initialize()
+        /// <param name="configuration"></param>
+        public static void Initialize(HttpConfiguration configuration)
         {
-            new SimpleInjectorManager();
+            _httpConfiguration = configuration;
+            _injectorManager = new SimpleInjectorManager(configuration);
+
+            //Container = _injectorManager.Container;
+        }
+
+        public static Container Container
+        {
+            get
+            {
+                if (_injectorManager != null && _injectorManager.Container != null)
+                {
+                    return _injectorManager.Container;
+                }
+                else
+                {
+                    return null;
+                }
+            }
         }
     }
 }

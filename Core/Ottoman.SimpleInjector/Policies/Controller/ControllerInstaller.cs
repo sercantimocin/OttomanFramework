@@ -6,16 +6,14 @@
 // <date>2016-5-12 22:10</date>
 //---------------------------------------------------------------------------------------------------------------------- 
 
-namespace Ottoman.SimpleInjector.Auto.Controller
+namespace Ottoman.Injector.Policies.Controller
 {
-    using System;
-    using System.Collections.Generic;
     using System.Configuration;
-    using System.Linq;
-    using System.Reflection;
     using System.Web.Http;
 
     using global::SimpleInjector;
+
+    using Policies;
 
     /// <summary>
     /// The controller ınstaller.
@@ -31,24 +29,27 @@ namespace Ottoman.SimpleInjector.Auto.Controller
         /// The register.
         /// </summary>
         /// <param name="container">
-        /// The container.
+        ///     The container.
         /// </param>
-        public void Register(Container container)
+        /// <param name="httpConfiguration"></param>
+        public void Register(Container container, HttpConfiguration httpConfiguration)
         {
+            container.RegisterWebApiControllers(httpConfiguration);
+
             string webApiProjectName = ConfigurationManager.AppSettings[WebApiProjectName];
 
-            var apiAssembly = Assembly.Load(webApiProjectName);
+            //var apiAssembly = Assembly.Load(webApiProjectName);
 
-            if (apiAssembly != null)
-            {
-                IEnumerable<Type> apiClasesTypes = apiAssembly.ExportedTypes.Where(x => typeof(ApiController).IsAssignableFrom(x) && x.IsClass);
+            //if (apiAssembly != null)
+            //{
+            //    IEnumerable<Type> apiClasesTypes = apiAssembly.ExportedTypes.Where(x => typeof(ApiController).IsAssignableFrom(x) && x.IsClass);
 
-                foreach (var apiClasesType in apiClasesTypes)
-                {
-                    container.Register(typeof(ApiController), apiClasesType, Lifestyle.Scoped);
-                    //TODO Research RegisterWebApiControllers 
-                }
-            }
+            //    foreach (var apiClasesType in apiClasesTypes)
+            //    {
+            //        container.Register(typeof(ApiController), apiClasesType, Lifestyle.Scoped);
+            //        //TODO Research RegisterWebApiControllers 
+            //    }
+            //}
         }
     }
 }

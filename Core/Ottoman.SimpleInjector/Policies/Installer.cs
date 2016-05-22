@@ -6,8 +6,10 @@
 // <date>2016-5-12 22:11</date>
 //---------------------------------------------------------------------------------------------------------------------- 
 
-namespace Ottoman.SimpleInjector.Auto
+namespace Ottoman.Injector.Policies
 {
+    using System.Web.Http;
+
     using global::SimpleInjector;
 
     /// <summary>
@@ -15,12 +17,6 @@ namespace Ottoman.SimpleInjector.Auto
     /// </summary>
     public interface IInstaller
     {
-        /// <summary>
-        /// The register.
-        /// </summary>
-        /// <param name="container">
-        /// The container.
-        /// </param>
-        void Register(Container container);
+        void Register(Container container, HttpConfiguration httpConfiguration);
     }
 }
