@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AutoMapperManager.cs" />
+    <Compile Include="Extensions\MapperExtensions.cs" />
     <Compile Include="IHaveCustomMappings.cs" />
     <Compile Include="IMapFrom.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

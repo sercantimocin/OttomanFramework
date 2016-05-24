@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+﻿using System.Collections.Generic;
 using System.Web.Http;
 
 namespace Template.WebApi.Controllers
 {
     using Ottoman.Entities;
+    using Ottoman.Mapper.Extensions;
 
     using Service.Pattern;
+
+    using Models;
 
     public class CustomerController : ApiController
     {
@@ -27,9 +26,9 @@ namespace Template.WebApi.Controllers
         }
 
         // GET: api/Default/5
-        public Customer Get(int id)
+        public CustomerDTO Get(int id)
         {
-            return _customerService.Find(id);
+            return this._customerService.Find(id).To<CustomerDTO>();
         }
 
         // POST: api/Default
