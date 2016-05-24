@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{E1C704E0-9EE1-4DD6-9966-275160CF9BEB}"
 EndProject
@@ -45,6 +45,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Business", "Business", "{A93A8396-837C-4ED5-B600-11CD651FDDF8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Template.Business", "Template\Business\Template.Business\Template.Business.csproj", "{967D0097-F098-47FA-A636-E9AB4D6FB969}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ottoman.Mapper", "Core\Ottoman.Mapper\Ottoman.Mapper.csproj", "{1EE39338-8E6C-4E93-8D73-E6C1F4D7A4DB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -134,6 +136,14 @@ Global
 		{967D0097-F098-47FA-A636-E9AB4D6FB969}.Release|Any CPU.Build.0 = Release|Any CPU
 		{967D0097-F098-47FA-A636-E9AB4D6FB969}.Release|x86.ActiveCfg = Release|Any CPU
 		{967D0097-F098-47FA-A636-E9AB4D6FB969}.Release|x86.Build.0 = Release|Any CPU
+		{1EE39338-8E6C-4E93-8D73-E6C1F4D7A4DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1EE39338-8E6C-4E93-8D73-E6C1F4D7A4DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1EE39338-8E6C-4E93-8D73-E6C1F4D7A4DB}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1EE39338-8E6C-4E93-8D73-E6C1F4D7A4DB}.Debug|x86.Build.0 = Debug|Any CPU
+		{1EE39338-8E6C-4E93-8D73-E6C1F4D7A4DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1EE39338-8E6C-4E93-8D73-E6C1F4D7A4DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1EE39338-8E6C-4E93-8D73-E6C1F4D7A4DB}.Release|x86.ActiveCfg = Release|Any CPU
+		{1EE39338-8E6C-4E93-8D73-E6C1F4D7A4DB}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -155,5 +165,6 @@ Global
 		{AB1E1C75-73DC-4900-8A26-27CA5BCDD400} = {4E85166D-5CDB-42D8-ADD5-0733632A753D}
 		{A93A8396-837C-4ED5-B600-11CD651FDDF8} = {20092B17-D666-4E09-A0A0-C2393BF99C60}
 		{967D0097-F098-47FA-A636-E9AB4D6FB969} = {A93A8396-837C-4ED5-B600-11CD651FDDF8}
+		{1EE39338-8E6C-4E93-8D73-E6C1F4D7A4DB} = {E1C704E0-9EE1-4DD6-9966-275160CF9BEB}
 	EndGlobalSection
 EndGlobal

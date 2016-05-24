@@ -7,16 +7,23 @@
 
     using Ottomon.Core;
 
-    [TestFixture()]
+    /// <summary>
+    /// The application engine tests.
+    /// </summary>
+    [TestFixture(Category = "Core")]
     public class ApplicationEngineTests
     {
-        [Test()]
-        public void InitializeTest()
+        /// <summary>
+        /// The ınitialize test.
+        /// </summary>
+        [TestCase("Template.WebApi")]
+        [TestCase(null)]
+        public void InitializeTest(string projectName)
         {
             GlobalConfiguration.Configuration.Services.Replace(typeof(IAssembliesResolver), new TestAssembliesResolver());
             var httpConfiguration = GlobalConfiguration.Configuration;
 
-            ApplicationEngine.Initialize(httpConfiguration);
+            ApplicationEngine.Initialize(httpConfiguration, projectName);
 
             var container = ApplicationEngine.Container;
 

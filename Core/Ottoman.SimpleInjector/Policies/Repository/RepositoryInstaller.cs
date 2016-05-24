@@ -8,19 +8,32 @@
 
     using global::Repository.Pattern.DataContext;
     using global::Repository.Pattern.Ef6;
-    using global::Repository.Pattern.Ef6.Infrastructure;
     using global::Repository.Pattern.Repositories;
     using global::Repository.Pattern.UnitOfWork;
 
     using Service.Pattern;
 
     using SimpleInjector;
-    using SimpleInjector.Integration.WebApi;
 
+    /// <summary>
+    /// The repository ınstaller.
+    /// </summary>
     public class RepositoryInstaller : IInstaller
     {
+        /// <summary>
+        /// The entities project name.
+        /// </summary>
         private const string EntitiesProjectName = "EntitiesProjectName";
 
+        /// <summary>
+        /// The register.
+        /// </summary>
+        /// <param name="container">
+        /// The container.
+        /// </param>
+        /// <param name="httpConfiguration">
+        /// The http configuration.
+        /// </param>
         public void Register(Container container, HttpConfiguration httpConfiguration)
         {
             string entitiesProjectName = ConfigurationManager.AppSettings[EntitiesProjectName];

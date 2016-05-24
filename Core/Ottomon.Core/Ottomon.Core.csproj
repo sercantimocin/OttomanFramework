@@ -65,6 +65,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Ottoman.Mapper\Ottoman.Mapper.csproj">
+      <Project>{1EE39338-8E6C-4E93-8D73-E6C1F4D7A4DB}</Project>
+      <Name>Ottoman.Mapper</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Ottoman.SimpleInjector\Ottoman.Injector.csproj">
       <Project>{95d6c419-0ded-4326-98e6-cbee8303f38e}</Project>
       <Name>Ottoman.Injector</Name>

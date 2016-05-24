@@ -15,85 +15,80 @@ namespace Ottoman.Injector
 
     using Policies;
 
-    using Repository.Pattern.DataContext;
-    using Repository.Pattern.UnitOfWork;
-
     using SimpleInjector;
     using SimpleInjector.Advanced;
-    using SimpleInjector.Diagnostics;
     using SimpleInjector.Integration.WebApi;
 
     /// <summary>
     /// The simple ınjector manager.
     /// </summary>
-    public class SimpleInjectorManager
+    public static class SimpleInjectorManager
     {
         /// <summary>
-        /// The _container.
+        /// The is call ınitiliaze.
         /// </summary>
-        public readonly Container Container = new Container();
-
-        private readonly HttpConfiguration _httpConfiguration = null;
+        private static bool isCallInitiliaze = false;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SimpleInjectorManager"/> class.
+        /// The ınitialize.
         /// </summary>
-        public SimpleInjectorManager(HttpConfiguration httpConfiguration)
+        /// <param name="container">
+        /// The container.
+        /// </param>
+        /// <param name="httpConfiguration">
+        /// The http configuration.
+        /// </param>
+        public static void Initialize(Container container, HttpConfiguration httpConfiguration)
         {
-            this._httpConfiguration = httpConfiguration;
+            if (!isCallInitiliaze)
+            {
+                container.Options.DefaultScopedLifestyle = new WebApiRequestLifestyle(true);
 
-            this.Container.Options.DefaultScopedLifestyle = new WebApiRequestLifestyle(true);
+                container.Options.LifestyleSelectionBehavior = new WebApiLifestyle();
 
-            this.Container.Options.LifestyleSelectionBehavior = new WebApiLifestyle();
+                RegisterAll(container, httpConfiguration);
 
-            this.RegisterAll();
+                container.Verify();
 
-            //this.SuppressRepositoryInstallerWarnings();
+                httpConfiguration.DependencyResolver = new SimpleInjectorWebApiDependencyResolver(container);
 
-            this.Container.Verify();
-
-            httpConfiguration.DependencyResolver = new SimpleInjectorWebApiDependencyResolver(Container);
+                isCallInitiliaze = true;
+            }
         }
-
-        //private void SuppressRepositoryInstallerWarnings()
-        //{
-        //    this.SuppressWarning(typeof(IDataContext),DiagnosticType.DisposableTransientComponent);
-        //    this.SuppressWarning(typeof(IDataContextAsync),DiagnosticType.DisposableTransientComponent);
-        //    this.SuppressWarning(typeof(IUnitOfWork),DiagnosticType.DisposableTransientComponent);
-        //    this.SuppressWarning(typeof(IUnitOfWorkAsync),DiagnosticType.DisposableTransientComponent);
-        //    //this.SuppressWarning(typeof(IRepository<>), DiagnosticType.DisposableTransientComponent);
-        //    //this.SuppressWarning(typeof(IRepositoryAsync<>), DiagnosticType.DisposableTransientComponent);
-        //}
-
-        //private void SuppressWarning(Type type, DiagnosticType supressType)
-        //{
-        //    var instanceProducer = Container.GetRegistration(type);
-
-        //    if (instanceProducer != null)
-        //    {
-        //        var registration = instanceProducer.Registration;
-        //        registration.SuppressDiagnosticWarning(supressType, supressType.ToString());
-        //    }
-        //}
 
         /// <summary>
         /// The register all.
         /// </summary>
-        private void RegisterAll()
+        private static void RegisterAll(Container container, HttpConfiguration httpConfiguration)
         {
             var autoInstallerClases = Assembly.GetCallingAssembly().GetExportedTypes().Where(x => typeof(IInstaller).IsAssignableFrom(x) && x.IsClass);
 
             foreach (var autoInstallerClass in autoInstallerClases)
             {
-                var installer = Activator.CreateInstance(autoInstallerClass) as IInstaller;
+                IInstaller installer = Activator.CreateInstance(autoInstallerClass) as IInstaller;
 
-                installer.Register(this.Container, this._httpConfiguration);
+                installer.Register(container, httpConfiguration);
             }
         }
     }
 
-    public class WebApiLifestyle : ILifestyleSelectionBehavior
+    /// <summary>
+    /// The web api lifestyle.
+    /// </summary>
+    internal class WebApiLifestyle : ILifestyleSelectionBehavior
     {
+        /// <summary>
+        /// The select lifestyle.
+        /// </summary>
+        /// <param name="serviceType">
+        /// The service type.
+        /// </param>
+        /// <param name="implementationType">
+        /// The implementation type.
+        /// </param>
+        /// <returns>
+        /// The <see cref="Lifestyle"/>.
+        /// </returns>
         public Lifestyle SelectLifestyle(Type serviceType, Type implementationType)
         {
             return WebApiRequestLifestyle.Scoped;

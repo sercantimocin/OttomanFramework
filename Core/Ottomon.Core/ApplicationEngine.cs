@@ -11,6 +11,7 @@ namespace Ottomon.Core
     using System.Web.Http;
 
     using Ottoman.Injector;
+    using Ottoman.Mapper;
 
     using SimpleInjector;
 
@@ -19,9 +20,15 @@ namespace Ottomon.Core
     /// </summary>
     public static class ApplicationEngine
     {
-        private static SimpleInjectorManager _injectorManager = null;
-
+        /// <summary>
+        /// The _http configuration.
+        /// </summary>
         private static HttpConfiguration _httpConfiguration;
+
+        /// <summary>
+        /// The Injector Container.
+        /// </summary>
+        private static Container _container;
 
         /// <summary>
         /// The ınitialize.
@@ -30,23 +37,40 @@ namespace Ottomon.Core
         public static void Initialize(HttpConfiguration configuration)
         {
             _httpConfiguration = configuration;
-            _injectorManager = new SimpleInjectorManager(configuration);
 
-            //Container = _injectorManager.Container;
+            SimpleInjectorManager.Initialize(Container, configuration);
         }
 
+        /// <summary>
+        /// The ınitialize.
+        /// </summary>
+        /// <param name="configuration">
+        /// Need global httpConfiguration 
+        /// The configuration.
+        /// </param>
+        /// <param name="projectName">
+        /// The project name has models which will map
+        /// </param>
+        public static void Initialize(HttpConfiguration configuration, string projectName)
+        {
+            Initialize(configuration);
+
+            AutoMapperManager.RegisterClassesBulk(projectName);
+        }
+
+        /// <summary>
+        /// Gets the container.
+        /// </summary>
         public static Container Container
         {
             get
             {
-                if (_injectorManager != null && _injectorManager.Container != null)
+                if (_container == null)
                 {
-                    return _injectorManager.Container;
+                    _container = new Container();
                 }
-                else
-                {
-                    return null;
-                }
+
+                return _container;
             }
         }
     }

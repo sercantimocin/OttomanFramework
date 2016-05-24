@@ -66,6 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationEngineTests.cs" />
+    <Compile Include="Mapper\AutoMapperManagerTests.cs" />
     <Compile Include="Injection\PoliciesTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestAssembliesResolver.cs" />
@@ -76,6 +77,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Core\Ottoman.Mapper\Ottoman.Mapper.csproj">
+      <Project>{1EE39338-8E6C-4E93-8D73-E6C1F4D7A4DB}</Project>
+      <Name>Ottoman.Mapper</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Core\Ottoman.SimpleInjector\Ottoman.Injector.csproj">
       <Project>{95D6C419-0DED-4326-98E6-CBEE8303F38E}</Project>
       <Name>Ottoman.Injector</Name>
@@ -100,6 +105,7 @@
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
