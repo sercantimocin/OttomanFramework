@@ -7,8 +7,8 @@
     <ProjectGuid>{D7C53018-239D-4A84-B19C-B4FE4A5BEED8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Ottomon.Core</RootNamespace>
-    <AssemblyName>Ottomon.Core</AssemblyName>
+    <RootNamespace>Ottoman.Core</RootNamespace>
+    <AssemblyName>Ottoman.Core</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />

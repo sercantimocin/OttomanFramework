@@ -6,7 +6,7 @@
     using System.Web.Optimization;
     using System.Web.Routing;
 
-    using Ottomon.Core;
+    using Ottoman.Core;
 
     /// <summary>
     /// The web api application.

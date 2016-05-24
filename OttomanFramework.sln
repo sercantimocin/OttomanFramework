@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{E1C704E0-9EE1-4DD6-9966-275160CF9BEB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ottomon.Core", "Core\Ottomon.Core\Ottomon.Core.csproj", "{D7C53018-239D-4A84-B19C-B4FE4A5BEED8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ottoman.Core", "Core\Ottoman.Core\Ottoman.Core.csproj", "{D7C53018-239D-4A84-B19C-B4FE4A5BEED8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ottoman.Injector", "Core\Ottoman.SimpleInjector\Ottoman.Injector.csproj", "{95D6C419-0DED-4326-98E6-CBEE8303F38E}"
 EndProject

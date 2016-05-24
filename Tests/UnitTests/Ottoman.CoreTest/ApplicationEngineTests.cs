@@ -5,7 +5,7 @@
 
     using NUnit.Framework;
 
-    using Ottomon.Core;
+    using Core;
 
     /// <summary>
     /// The application engine tests.

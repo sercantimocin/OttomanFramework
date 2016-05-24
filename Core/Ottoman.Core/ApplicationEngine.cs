@@ -6,15 +6,14 @@
 // <date>2016-5-12 20:30</date>
 //---------------------------------------------------------------------------------------------------------------------- 
 
-namespace Ottomon.Core
+namespace Ottoman.Core
 {
     using System.Web.Http;
 
-    using Ottoman.Injector;
-    using Ottoman.Mapper;
+    using Injector;
+    using Mapper;
 
     using SimpleInjector;
-
     /// <summary>
     /// The application engine.
     /// </summary>

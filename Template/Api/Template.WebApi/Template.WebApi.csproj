@@ -283,9 +283,9 @@
       <Project>{1EE39338-8E6C-4E93-8D73-E6C1F4D7A4DB}</Project>
       <Name>Ottoman.Mapper</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\Core\Ottomon.Core\Ottomon.Core.csproj">
+    <ProjectReference Include="..\..\..\Core\Ottoman.Core\Ottoman.Core.csproj">
       <Project>{d7c53018-239d-4a84-b19c-b4fe4a5beed8}</Project>
-      <Name>Ottomon.Core</Name>
+      <Name>Ottoman.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\Core\Repository.Pattern.Ef6\Repository.Pattern.Ef6.csproj">
       <Project>{F68A1D19-93FB-47C1-A22B-42BEA3E4FD8C}</Project>
