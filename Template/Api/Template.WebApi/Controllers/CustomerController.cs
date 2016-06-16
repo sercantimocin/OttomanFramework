@@ -26,9 +26,9 @@ namespace Template.WebApi.Controllers
         }
 
         // GET: api/Default/5
-        public CustomerDTO Get(int id)
+        public CustomerDto Get(int id)
         {
-            return this._customerService.Find(id).To<CustomerDTO>();
+            return this._customerService.Find(id).To<CustomerDto>();
         }
 
         // POST: api/Default

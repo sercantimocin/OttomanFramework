@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace Template.WebApi.Models
+﻿namespace Template.WebApi.Models
 {
     using Ottoman.Entities;
     using Ottoman.Mapper;
 
-    public class CustomerDTO : IMapFrom<Customer>
+    public class CustomerDto : IMapFrom<Customer>
     {
         public string CompanyName { get; set; } // CompanyName
         public string ContactName { get; set; } // ContactName
