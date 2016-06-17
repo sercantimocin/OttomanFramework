@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("SimpleCaching")]
+[assembly: AssemblyTitle("Ottoman.MemoryCache")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("SimpleCaching")]
+[assembly: AssemblyProduct("Ottoman.MemoryCache")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("8a8f2363-4efd-412f-a37a-d51163233a7f")]
+[assembly: Guid("14824693-4232-4cd9-80de-d49c3c7e8165")]
 
 // Version information for an assembly consists of the following four values:
 //
