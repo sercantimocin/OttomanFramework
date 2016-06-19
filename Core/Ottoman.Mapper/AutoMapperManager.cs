@@ -10,7 +10,6 @@ namespace Ottoman.Mapper
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Reflection;
 
     using AutoMapper;
 
@@ -29,16 +28,12 @@ namespace Ottoman.Mapper
         {
             if (!string.IsNullOrEmpty(projectName))
             {
-                IEnumerable<Assembly> assembly = AppDomain.CurrentDomain.GetAssemblies().Where(a => a.FullName.Contains(projectName));
+                var types = AppDomain.CurrentDomain.GetAssemblies().Where(a => a.FullName.Contains(projectName))
+                                                                .SelectMany(a => a.ExportedTypes)
+                                                                .Where(a => a.IsClass);
 
-                if (assembly != null)
-                {
-                    IEnumerable<Type> types = assembly.SelectMany(a => a.ExportedTypes).Where(a => a.IsClass);
-
-                    Type[] enumerable = types as Type[] ?? types.ToArray();
-                    LoadStandardMappings(enumerable);
-                    LoadCustomMappings(enumerable);
-                }
+                LoadStandardMappings(types);
+                LoadCustomMappings(types);
 
                 Mapper.Instance.ConfigurationProvider.AssertConfigurationIsValid();
             }
@@ -60,7 +55,9 @@ namespace Ottoman.Mapper
 
             foreach (var map in maps)
             {
+#pragma warning disable 618
                 map.CreateMappings(Mapper.Configuration);
+#pragma warning restore 618
             }
         }
 
@@ -84,8 +81,9 @@ namespace Ottoman.Mapper
 
             foreach (var map in maps)
             {
-                Mapper.CreateMap(map.Source, map.Destination);
-                Mapper.CreateMap(map.Destination, map.Source);
+#pragma warning disable CS0618 // Type or member is obsolete
+                Mapper.CreateMap(map.Source, map.Destination).ReverseMap();
+#pragma warning restore CS0618 // Type or member is obsolete
             }
         }
     }
