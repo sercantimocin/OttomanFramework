@@ -28,7 +28,7 @@
                                  };
         }
 
-        [CacheableAttirubute]
+        [Cacheable]
         private string GetNameFromDic(byte key)
         {
             return this._nameList.FirstOrDefault(x => x.Key == key).Value;

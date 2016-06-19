@@ -7,19 +7,15 @@
     using PostSharp.Aspects;
 
     [Serializable]
-    public class CacheableAttirubute : OnMethodBoundaryAspect
+    public class Cacheable : OnMethodBoundaryAspect
     {
         // This field will be set by CompileTimeInitialize and serialized at build time, 
         // then deserialized at runtime.
         private string methodName;
 
-        // Method executed at build time.
-        public override void CompileTimeInitialize(MethodBase method, AspectInfo aspectInfo)
+        public Cacheable()
         {
-            if (method.DeclaringType != null)
-            {
-                this.methodName = method.DeclaringType.FullName + "." + method.Name;
-            }
+            
         }
 
         private string GetCacheKey(object instance, Arguments arguments)
@@ -47,6 +43,15 @@
             }
 
             return stringBuilder.ToString();
+        }
+
+        // Method executed at build time.
+        public override void CompileTimeInitialize(MethodBase method, AspectInfo aspectInfo)
+        {
+            if (method.DeclaringType != null)
+            {
+                this.methodName = method.DeclaringType.FullName + "." + method.Name;
+            }
         }
 
         // This method is executed before the execution of target methods of this aspect.
