@@ -10,22 +10,24 @@ namespace Template.WebApi.Controllers
 
     using Models;
 
+    using Ottoman.MemoryCache;
     public class CustomerController : ApiController
     {
-        private IService<Customer> _customerService;
+        private readonly IService<Customer> _customerService;
 
         public CustomerController(IService<Customer> customerService)
         {
-            _customerService = customerService;
+            this._customerService = customerService;
         }
 
         // GET: api/Default
         public IEnumerable<Customer> Get()
         {
-            return _customerService.Queryable();
+            return this._customerService.Queryable();
         }
 
         // GET: api/Default/5
+        [CacheableAttirubute]
         public CustomerDto Get(int id)
         {
             return this._customerService.Find(id).To<CustomerDto>();

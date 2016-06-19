@@ -1,15 +1,17 @@
-using System;
-using System.Collections.Generic;
 //using DatabaseGeneratedOption = System.ComponentModel.DataAnnotations.DatabaseGeneratedOption;
 
-namespace Ottoman.Entities
+namespace Template.Entities
 {
+    using System;
+    using System.Collections.Generic;
+
+    using Ottoman.Entities;
+
     using Repository.Pattern.Ef6.Infrastructure;
 
     // Employees
     public class Employee : BaseEntity<int>
     {
-        public int Id { get; set; } // Id (Primary key)
         public string LastName { get; set; } // LastName
         public string FirstName { get; set; } // FirstName
         public string Title { get; set; } // Title
@@ -38,9 +40,9 @@ namespace Ottoman.Entities
 
         public Employee()
         {
-            Employees = new List<Employee>();
-            Orders = new List<Order>();
-            Territories = new List<Territory>();
+            this.Employees = new List<Employee>();
+            this.Orders = new List<Order>();
+            this.Territories = new List<Territory>();
         }
     }
 

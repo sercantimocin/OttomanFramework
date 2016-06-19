@@ -46,7 +46,7 @@
                 {
                     entitiesAssembly = Assembly.Load(entitiesProjectName);
                 }
-                catch (Exception ex) { }
+                catch (Exception ) { }
 
 
                 if (entitiesAssembly != null)

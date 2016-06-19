@@ -1,15 +1,35 @@
-using System;
-using System.Collections.Generic;
-using System.Runtime.Caching;
-using System.Text.RegularExpressions;
-
-namespace Nop.Core.Caching
+namespace Ottoman.MemoryCache
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Runtime.Caching;
+    using System.Text.RegularExpressions;
+
     /// <summary>
     /// Represents a manager for caching between HTTP requests (long term caching)
     /// </summary>
     public partial class MemoryCacheManager : ICacheManager
     {
+        private static MemoryCacheManager _cacheManager;
+
+        private MemoryCacheManager()
+        {
+        }
+
+        public static MemoryCacheManager Instance
+        {
+            get
+            {
+                if (_cacheManager == null)
+                {
+                    _cacheManager = new MemoryCacheManager();
+                }
+
+                return _cacheManager;
+            }
+        }
+
+
         /// <summary>
         /// Cache object
         /// </summary>
@@ -20,7 +40,7 @@ namespace Nop.Core.Caching
                 return MemoryCache.Default;
             }
         }
-        
+
         /// <summary>
         /// Gets or sets the value associated with the specified key.
         /// </summary>
@@ -29,7 +49,12 @@ namespace Nop.Core.Caching
         /// <returns>The value associated with the specified key.</returns>
         public virtual T Get<T>(string key)
         {
-            return (T)Cache[key];
+            return (T)this.Cache[key];
+        }
+
+        public virtual object Get(string key)
+        {
+            return this.Cache[key];
         }
 
         /// <summary>
@@ -38,14 +63,25 @@ namespace Nop.Core.Caching
         /// <param name="key">key</param>
         /// <param name="data">Data</param>
         /// <param name="cacheTime">Cache time</param>
-        public virtual void Set(string key, object data, int cacheTime)
+        public virtual void Set(string key, object data, int? cacheTime = 0)
         {
             if (data == null)
+            {
                 return;
+            }
 
-            var policy = new CacheItemPolicy();
-            policy.AbsoluteExpiration = DateTime.Now + TimeSpan.FromMinutes(cacheTime);
-            Cache.Add(new CacheItem(key, data), policy);
+            CacheItemPolicy cachePolicy = new CacheItemPolicy();
+
+            if (cacheTime.HasValue && cacheTime > 0)
+            {
+                cachePolicy.AbsoluteExpiration = DateTime.Now + TimeSpan.FromMinutes(cacheTime.GetValueOrDefault());
+            }
+            else
+            {
+                cachePolicy.AbsoluteExpiration = ObjectCache.InfiniteAbsoluteExpiration;
+            }
+
+            this.Cache.Add(new CacheItem(key, data), cachePolicy);
         }
 
         /// <summary>
@@ -55,7 +91,7 @@ namespace Nop.Core.Caching
         /// <returns>Result</returns>
         public virtual bool IsSet(string key)
         {
-            return (Cache.Contains(key));
+            return (this.Cache.Contains(key));
         }
 
         /// <summary>
@@ -64,7 +100,7 @@ namespace Nop.Core.Caching
         /// <param name="key">/key</param>
         public virtual void Remove(string key)
         {
-            Cache.Remove(key);
+            this.Cache.Remove(key);
         }
 
         /// <summary>
@@ -76,13 +112,13 @@ namespace Nop.Core.Caching
             var regex = new Regex(pattern, RegexOptions.Singleline | RegexOptions.Compiled | RegexOptions.IgnoreCase);
             var keysToRemove = new List<String>();
 
-            foreach (var item in Cache)
+            foreach (var item in this.Cache)
                 if (regex.IsMatch(item.Key))
                     keysToRemove.Add(item.Key);
 
             foreach (string key in keysToRemove)
             {
-                Remove(key);
+                this.Remove(key);
             }
         }
 
@@ -91,8 +127,8 @@ namespace Nop.Core.Caching
         /// </summary>
         public virtual void Clear()
         {
-            foreach (var item in Cache)
-                Remove(item.Key);
+            foreach (var item in this.Cache)
+                this.Remove(item.Key);
         }
 
         /// <summary>

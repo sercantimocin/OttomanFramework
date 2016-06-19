@@ -1,12 +1,14 @@
-using System;
-
-namespace Nop.Core.Caching
+namespace Ottoman.MemoryCache
 {
+    using System;
+
     /// <summary>
     /// Cache manager interface
     /// </summary>
     public interface ICacheManager : IDisposable
     {
+        object Get(string key);
+
         /// <summary>
         /// Gets or sets the value associated with the specified key.
         /// </summary>
@@ -21,7 +23,7 @@ namespace Nop.Core.Caching
         /// <param name="key">key</param>
         /// <param name="data">Data</param>
         /// <param name="cacheTime">Cache time</param>
-        void Set(string key, object data, int cacheTime);
+        void Set(string key, object data, int? cacheTime = 0);
 
         /// <summary>
         /// Gets a value indicating whether the value associated with the specified key is cached

@@ -18,6 +18,8 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace Ottoman.Entities
 {
+    using Template.Entities;
+
     // Territories
     public class Territory
     {

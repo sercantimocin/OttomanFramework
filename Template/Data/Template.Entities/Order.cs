@@ -3,6 +3,8 @@ using System.Collections.Generic;
 
 namespace Ottoman.Entities
 {
+    using Template.Entities;
+
     // Orders
     public class Order
     {
