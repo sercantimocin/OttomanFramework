@@ -1,0 +1,30 @@
+Run the following command
+
+install-package stylecop.msbuild
+The above command will download the latest stable required dlls and files and integrate style cop with your project. Build your project and any stylecop errors will be shown in the warnings section.
+
+If you don't find the package manager for some reason in the above menu, please refer this link for instructions on how to install http://surajdeshpande.wordpress.com/2013/10/18/how-to-install-a-nuget-package-in-visual-studio/
+
+If you want your build to succeed only if all stylecop errors are fixed, you will need to make some changes to the project file to set a boolean to not treat stylecop errors as warnings.
+
+Open the .csproj file for your project in notepad, and find the first PropertyGroup section within the file. Add a new tag to set the StyleCopTreatErrorsAsWarnings flag to false. For example:
+
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4B4DB6AA-A021-4F95-92B7-B88B5B360228}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TestProject</RootNamespace>
+    <AssemblyName>TestProject</AssemblyName>
+    <StyleCopTreatErrorsAsWarnings>false</StyleCopTreatErrorsAsWarnings>
+  </PropertyGroup>
+A sample proj file content with <StyleCopTreatErrorsAsWarnings>false</StyleCopTreatErrorsAsWarnings> is shown above.
+
+The build will be successful only after all sylecop errors are fixed.
+
+More Info
+http://stackoverflow.com/questions/23639815/how-do-i-integrate-stylecop-4-7-with-visual-studio-2013

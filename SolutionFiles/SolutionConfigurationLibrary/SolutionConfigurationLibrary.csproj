@@ -4,15 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{967D0097-F098-47FA-A636-E9AB4D6FB969}</ProjectGuid>
+    <ProjectGuid>{044D23B9-925F-402A-8266-485C91B31AC6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Template.Business</RootNamespace>
-    <AssemblyName>Template.Business</AssemblyName>
+    <RootNamespace>SolutionConfigurationLibrary</RootNamespace>
+    <AssemblyName>SolutionConfigurationLibrary</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -45,26 +43,22 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Core\Ottoman.Core\Ottoman.Core.csproj">
-      <Project>{d7c53018-239d-4a84-b19c-b4fe4a5beed8}</Project>
-      <Name>Ottoman.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Data\Template.Entities\Template.Entities.csproj">
-      <Project>{dd175bb5-9684-49ff-bc84-db259e8ea62b}</Project>
-      <Name>Template.Entities</Name>
-    </ProjectReference>
+    <None Include="Ottoman.ruleset" />
+    <None Include="Ottomon.licenceheader" />
+    <None Include="Settings.StyleCop">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
-    <None Include="packages.config" />
+    <Content Include="StyleCop_Vs_Integration.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\..\..\packages\StyleCop.MSBuild.4.7.54.0\build\StyleCop.MSBuild.Targets" Condition="Exists('..\..\..\packages\StyleCop.MSBuild.4.7.54.0\build\StyleCop.MSBuild.Targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\..\..\packages\StyleCop.MSBuild.4.7.54.0\build\StyleCop.MSBuild.Targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\packages\StyleCop.MSBuild.4.7.54.0\build\StyleCop.MSBuild.Targets'))" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy "$(ProjectDir)Settings.StyleCop" "C:\Program Files (x86)\StyleCop 4.7\" /Y /E /D</PostBuildEvent>
+  </PropertyGroup>
+  <Target Name="AfterBuild">
+    <Copy SourceFiles="Settings.StyleCop" DestinationFolder="C:\Program Files (x86)\StyleCop 4.7">
+    </Copy>
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

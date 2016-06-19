@@ -1,4 +1,11 @@
-﻿using System.Threading.Tasks;
+﻿//----------------------------------------------------------------------------------------------------------------------
+// <copyright file="IdentityConfig.cs" owner="Sercan Timoçin" namespace="Template.WebApi">
+// Copyright (c) 2016 All Rights Reserved
+// </copyright>
+// <author>devpc</author>
+// <date>2016-5-17 22:34</date>
+//---------------------------------------------------------------------------------------------------------------------- 
+using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;

@@ -1,10 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
+﻿//----------------------------------------------------------------------------------------------------------------------
+// <copyright file="WebApiConfig.cs" owner="Sercan Timoçin" namespace="Template.WebApi">
+// Copyright (c) 2016 All Rights Reserved
+// </copyright>
+// <author>devpc</author>
+// <date>2016-5-17 22:34</date>
+//---------------------------------------------------------------------------------------------------------------------- 
+
 using System.Web.Http;
 using Microsoft.Owin.Security.OAuth;
-using Newtonsoft.Json.Serialization;
 
 namespace Template.WebApi
 {

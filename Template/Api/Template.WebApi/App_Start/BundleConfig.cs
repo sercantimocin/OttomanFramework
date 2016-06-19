@@ -1,4 +1,11 @@
-﻿using System.Web;
+﻿//----------------------------------------------------------------------------------------------------------------------
+// <copyright file="BundleConfig.cs" owner="Sercan Timoçin" namespace="Template.WebApi">
+// Copyright (c) 2016 All Rights Reserved
+// </copyright>
+// <author>devpc</author>
+// <date>2016-5-17 22:34</date>
+//---------------------------------------------------------------------------------------------------------------------- 
+
 using System.Web.Optimization;
 
 namespace Template.WebApi

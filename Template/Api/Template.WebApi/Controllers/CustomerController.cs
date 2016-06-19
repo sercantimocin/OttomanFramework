@@ -11,6 +11,7 @@ namespace Template.WebApi.Controllers
     using Models;
 
     using Ottoman.MemoryCache;
+
     public class CustomerController : ApiController
     {
         private readonly IService<Customer> _customerService;
