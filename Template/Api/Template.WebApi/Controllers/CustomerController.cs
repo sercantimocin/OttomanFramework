@@ -28,7 +28,7 @@ namespace Template.WebApi.Controllers
         }
 
         // GET: api/Default/5
-        [Cacheable]
+        [Cacheable(cacheDuration:60)]
         public CustomerDto Get(int id)
         {
             return this._customerService.Find(id).To<CustomerDto>();

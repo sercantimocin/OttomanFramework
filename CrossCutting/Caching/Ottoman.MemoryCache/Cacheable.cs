@@ -13,9 +13,16 @@
         // then deserialized at runtime.
         private string methodName;
 
+        private int _cacheDuration;
+
         public Cacheable()
         {
-            
+            this._cacheDuration = 30;
+        }
+
+        public Cacheable(int cacheDuration)
+        {
+            this._cacheDuration = cacheDuration;
         }
 
         private string GetCacheKey(object instance, Arguments arguments)
@@ -82,7 +89,7 @@
         {
             string cacheKey = (string)args.MethodExecutionTag;
 
-            MemoryCacheManager.Instance.Set(cacheKey, args.ReturnValue, 0);
+            MemoryCacheManager.Instance.Set(cacheKey, args.ReturnValue, this._cacheDuration);
         }
     }
 }
