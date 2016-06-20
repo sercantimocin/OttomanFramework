@@ -57,6 +57,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ottoman.Redis", "CrossCutti
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolutionConfigurationLibrary", "SolutionFiles\SolutionConfigurationLibrary\SolutionConfigurationLibrary.csproj", "{044D23B9-925F-402A-8266-485C91B31AC6}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Security", "Security", "{85F8C427-8CCD-4F18-AC89-9CBDCE41EA8E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ottoman.ItentityServer", "CrossCutting\Security\Ottoman.ItentityServer\Ottoman.ItentityServer.csproj", "{D2C0E56E-AC5B-48D4-B15B-2318E174C0F0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -185,6 +189,14 @@ Global
 		{044D23B9-925F-402A-8266-485C91B31AC6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{044D23B9-925F-402A-8266-485C91B31AC6}.Release|x86.ActiveCfg = Release|Any CPU
 		{044D23B9-925F-402A-8266-485C91B31AC6}.Release|x86.Build.0 = Release|Any CPU
+		{D2C0E56E-AC5B-48D4-B15B-2318E174C0F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2C0E56E-AC5B-48D4-B15B-2318E174C0F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2C0E56E-AC5B-48D4-B15B-2318E174C0F0}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D2C0E56E-AC5B-48D4-B15B-2318E174C0F0}.Debug|x86.Build.0 = Debug|Any CPU
+		{D2C0E56E-AC5B-48D4-B15B-2318E174C0F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2C0E56E-AC5B-48D4-B15B-2318E174C0F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2C0E56E-AC5B-48D4-B15B-2318E174C0F0}.Release|x86.ActiveCfg = Release|Any CPU
+		{D2C0E56E-AC5B-48D4-B15B-2318E174C0F0}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -212,5 +224,7 @@ Global
 		{91113B48-7AEF-47E7-B806-3082BFDC35C8} = {7F457ED0-DEA8-431F-B4FC-5E36F8F965BD}
 		{913B918D-F7E6-4562-A2CA-6CB5259F405E} = {C4341CBB-8826-4067-97AD-9BAFCFD17DC2}
 		{044D23B9-925F-402A-8266-485C91B31AC6} = {8C04933E-FF10-482E-A72F-716B0C302EEF}
+		{85F8C427-8CCD-4F18-AC89-9CBDCE41EA8E} = {14AD9BE2-D44F-45B6-AF77-901A669F480B}
+		{D2C0E56E-AC5B-48D4-B15B-2318E174C0F0} = {85F8C427-8CCD-4F18-AC89-9CBDCE41EA8E}
 	EndGlobalSection
 EndGlobal
