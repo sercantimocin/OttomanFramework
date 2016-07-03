@@ -12,11 +12,16 @@ namespace Ottoman.Injector
     using System.Linq;
     using System.Reflection;
     using System.Web.Http;
+    using System.Web.Mvc;
+
+    using Ottoman.Injector.Policies.Controller;
 
     using Policies;
 
     using SimpleInjector;
     using SimpleInjector.Advanced;
+    using SimpleInjector.Integration.Web;
+    using SimpleInjector.Integration.Web.Mvc;
     using SimpleInjector.Integration.WebApi;
 
     /// <summary>
@@ -35,18 +40,52 @@ namespace Ottoman.Injector
         /// <param name="container">
         /// The container.
         /// </param>
-        /// <param name="httpConfiguration">
-        /// The http configuration.
-        /// </param>
-        public static void Initialize(Container container, HttpConfiguration httpConfiguration)
+        /// <param name="assemblies">Mvc Assembly</param>
+        /// <param name="dependencyResolver">Mvc project depencency resolver</param>
+        public static void MvcInitialize(Container container, Assembly[] assemblies, IDependencyResolver dependencyResolver)
         {
             if (!isCallInitiliaze)
             {
-                container.Options.DefaultScopedLifestyle = new WebApiRequestLifestyle(true);
+                container.Options.DefaultScopedLifestyle = new WebRequestLifestyle();
 
-                container.Options.LifestyleSelectionBehavior = new WebApiLifestyle();
+                container.Options.LifestyleSelectionBehavior = new MvcInjectionLifestyle();
 
-                RegisterAll(container, httpConfiguration);
+                MvcControllerInstaller controllerInstaller = new MvcControllerInstaller();
+
+                controllerInstaller.Register(container, assemblies);
+
+                RegisterAll(container);
+
+                container.Verify();
+
+                DependencyResolver.SetResolver(new SimpleInjectorDependencyResolver(container));
+
+                isCallInitiliaze = true;
+            }
+        }
+
+        /// <summary>
+        /// The ınitialize.
+        /// </summary>
+        /// <param name="container">
+        /// The container.
+        /// </param>
+        /// <param name="httpConfiguration">
+        /// The http configuration.
+        /// </param>
+        public static void WebApiInitialize(Container container, HttpConfiguration httpConfiguration)
+        {
+            if (!isCallInitiliaze)
+            {
+                container.Options.DefaultScopedLifestyle = new WebApiRequestLifestyle();
+
+                container.Options.LifestyleSelectionBehavior = new WebApiInjectionLifestyle();
+
+                WebApiControllerInstaller controllerInstaller = new WebApiControllerInstaller();
+
+                controllerInstaller.Register(container, httpConfiguration);
+
+                RegisterAll(container);
 
                 container.Verify();
 
@@ -59,7 +98,7 @@ namespace Ottoman.Injector
         /// <summary>
         /// The register all.
         /// </summary>
-        private static void RegisterAll(Container container, HttpConfiguration httpConfiguration)
+        private static void RegisterAll(Container container)
         {
             var autoInstallerClases = Assembly.GetCallingAssembly().GetExportedTypes().Where(x => typeof(IInstaller).IsAssignableFrom(x) && x.IsClass);
 
@@ -67,7 +106,7 @@ namespace Ottoman.Injector
             {
                 IInstaller installer = Activator.CreateInstance(autoInstallerClass) as IInstaller;
 
-                installer.Register(container, httpConfiguration);
+                installer.Register(container);
             }
         }
     }
@@ -75,14 +114,14 @@ namespace Ottoman.Injector
     /// <summary>
     /// The web api lifestyle.
     /// </summary>
-    internal class WebApiLifestyle : ILifestyleSelectionBehavior
+    internal class WebApiInjectionLifestyle : ILifestyleSelectionBehavior
     {
         /// <summary>
         /// The select lifestyle.
         /// </summary>
         /// <param name="serviceType">
         /// The service type.
-        /// </param>
+        /// </param>s
         /// <param name="implementationType">
         /// The implementation type.
         /// </param>
@@ -91,7 +130,34 @@ namespace Ottoman.Injector
         /// </returns>
         public Lifestyle SelectLifestyle(Type serviceType, Type implementationType)
         {
+            //return Lifestyle.Scoped;
             return WebApiRequestLifestyle.Scoped;
+
         }
     }
+
+
+    /// <summary>
+    /// The web api lifestyle.
+    /// </summary>
+    internal class MvcInjectionLifestyle : ILifestyleSelectionBehavior
+    {
+        /// <summary>
+        /// The select lifestyle.
+        /// </summary>
+        /// <param name="serviceType">
+        /// The service type.
+        /// </param>s
+        /// <param name="implementationType">
+        /// The implementation type.
+        /// </param>
+        /// <returns>
+        /// The <see cref="Lifestyle"/>.
+        /// </returns>
+        public Lifestyle SelectLifestyle(Type serviceType, Type implementationType)
+        {
+            return WebRequestLifestyle.Scoped;
+        }
+    }
+
 }

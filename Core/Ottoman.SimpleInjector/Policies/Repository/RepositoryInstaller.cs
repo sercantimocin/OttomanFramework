@@ -34,7 +34,7 @@
         /// <param name="httpConfiguration">
         /// The http configuration.
         /// </param>
-        public void Register(Container container, HttpConfiguration httpConfiguration)
+        public void Register(Container container)
         {
             string entitiesProjectName = ConfigurationManager.AppSettings[EntitiesProjectName];
 
@@ -55,28 +55,13 @@
 
                     if (contextType != null)
                     {
-                        //container.Register(typeof(IDataContext), contextType, WebApiRequestLifestyle.Scoped);
                         container.Register(typeof(IDataContextAsync), contextType);
 
-                        //container.Register(typeof(IUnitOfWork), typeof(UnitOfWork), WebApiRequestLifestyle.Scoped);
                         container.Register(typeof(IUnitOfWorkAsync), typeof(UnitOfWork));
 
-                        //container.Register(typeof(IRepository<>), typeof(Repository<>), WebApiRequestLifestyle.Scoped);
                         container.Register(typeof(IRepositoryAsync<>), typeof(Repository<>));
 
                         container.Register(typeof(IService<>), typeof(Service<>));
-
-                        //var classes = entitiesAssembly.ExportedTypes.Where(x => typeof(BaseEntity).IsAssignableFrom(x)).ToList();
-
-                        //container.RegisterConditional(typeof(IRepository<>), typeof(Repository<>), Lifestyle.Transient,
-                        //    c => classes.Contains(c.Consumer.ServiceType));
-
-                        //container.RegisterConditional(typeof(IRepositoryAsync<>), typeof(Repository<>), Lifestyle.Transient,
-                        //    c => classes.Contains(c.Consumer.ImplementationType.ReflectedType));
-
-                        //container.RegisterConditional(typeof(IService<>), typeof(Service<>), Lifestyle.Scoped,
-                        //    c => classes.Contains(c.Consumer.ServiceType));
-
                     }
                 }
             }

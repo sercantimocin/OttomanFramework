@@ -81,13 +81,13 @@
       <Project>{1EE39338-8E6C-4E93-8D73-E6C1F4D7A4DB}</Project>
       <Name>Ottoman.Mapper</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\Core\Ottoman.SimpleInjector\Ottoman.Injector.csproj">
-      <Project>{95D6C419-0DED-4326-98E6-CBEE8303F38E}</Project>
-      <Name>Ottoman.Injector</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\..\Core\Ottoman.Core\Ottoman.Core.csproj">
       <Project>{D7C53018-239D-4A84-B19C-B4FE4A5BEED8}</Project>
       <Name>Ottoman.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Core\Ottoman.SimpleInjector\Ottoman.Injector.csproj">
+      <Project>{95d6c419-0ded-4326-98e6-cbee8303f38e}</Project>
+      <Name>Ottoman.Injector</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\Core\Repository.Pattern\Repository.Pattern.csproj">
       <Project>{6E682A14-C872-4813-B620-76E108DEA683}</Project>

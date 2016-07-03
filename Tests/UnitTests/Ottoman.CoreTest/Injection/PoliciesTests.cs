@@ -1,6 +1,8 @@
 ﻿namespace Ottoman.CoreTest.Injection
 {
     using System;
+    using System.Linq;
+    using System.Reflection;
     using System.Web.Http;
     using System.Web.Http.Dispatcher;
 
@@ -35,11 +37,25 @@
         }
 
         [Test()]
-        public void ControllerInstallerTest()
+        public void WebApiControllerInstallerTest()
         {
-            IInstaller installer = new ControllerInstaller();
+            WebApiControllerInstaller installer = new WebApiControllerInstaller();
 
             installer.Register(this._container, this._httpConfiguration);
+
+            this._container.Verify();
+
+            //var controllerRegistration = this._container.GetRegistration(typeof(ApiController));
+
+            //Assert.IsNotNull(controllerRegistration);
+        }
+
+        [Test()]
+        public void MvcControllerInstallerTest()
+        {
+            MvcControllerInstaller installer = new MvcControllerInstaller();
+
+            installer.Register(this._container, _httpConfiguration.Services.GetAssembliesResolver().GetAssemblies().ToArray());
 
             this._container.Verify();
 
@@ -53,7 +69,7 @@
         {
             IInstaller installer = new RepositoryInstaller();
 
-            installer.Register(this._container, this._httpConfiguration);
+            installer.Register(this._container);
 
             this.SuppressRepositoryInstallerWarnings(this._container);
 

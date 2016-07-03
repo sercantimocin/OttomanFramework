@@ -28,7 +28,7 @@ namespace Ottoman.Mapper
         {
             if (!string.IsNullOrEmpty(projectName))
             {
-                var types = AppDomain.CurrentDomain.GetAssemblies().Where(a => a.FullName.Contains(projectName))
+                IEnumerable<Type> types = AppDomain.CurrentDomain.GetAssemblies().Where(a => a.FullName.Contains(projectName))
                                                                 .SelectMany(a => a.ExportedTypes)
                                                                 .Where(a => a.IsClass);
 

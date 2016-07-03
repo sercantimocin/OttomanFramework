@@ -23,7 +23,7 @@
             GlobalConfiguration.Configuration.Services.Replace(typeof(IAssembliesResolver), new TestAssembliesResolver());
             var httpConfiguration = GlobalConfiguration.Configuration;
 
-            ApplicationEngine.Initialize(httpConfiguration, projectName);
+            ApplicationEngine.WebApiInitialize(httpConfiguration, projectName);
 
             var container = ApplicationEngine.Container;
 

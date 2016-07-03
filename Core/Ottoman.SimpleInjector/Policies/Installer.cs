@@ -17,6 +17,6 @@ namespace Ottoman.Injector.Policies
     /// </summary>
     public interface IInstaller
     {
-        void Register(Container container, HttpConfiguration httpConfiguration);
+        void Register(Container container);
     }
 }

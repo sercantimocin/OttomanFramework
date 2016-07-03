@@ -8,7 +8,9 @@
 
 namespace Ottoman.Core
 {
+    using System.Reflection;
     using System.Web.Http;
+    using System.Web.Mvc;
 
     using Injector;
     using Mapper;
@@ -29,31 +31,33 @@ namespace Ottoman.Core
         /// </summary>
         private static Container _container;
 
-        /// <summary>
-        /// The ınitialize.
-        /// </summary>
-        /// <param name="configuration"></param>
-        public static void Initialize(HttpConfiguration configuration)
+        public static void MvcInitialize(Assembly[] assemblies, IDependencyResolver dependencyResolver, string projectName)
         {
-            _httpConfiguration = configuration;
-
-            SimpleInjectorManager.Initialize(Container, configuration);
+            SimpleInjectorManager.MvcInitialize(Container, assemblies, dependencyResolver);
+            Initialize(projectName);
         }
 
         /// <summary>
         /// The ınitialize.
         /// </summary>
-        /// <param name="configuration">
-        /// Need global httpConfiguration 
-        /// The configuration.
-        /// </param>
+        /// <param name="configuration"></param>
+        /// <param name="projectName"></param>
+        public static void WebApiInitialize(HttpConfiguration configuration, string projectName)
+        {
+            _httpConfiguration = configuration;
+
+            SimpleInjectorManager.WebApiInitialize(Container, configuration);
+            Initialize(projectName);
+        }
+
+        /// <summary>
+        /// The ınitialize.
+        /// </summary>
         /// <param name="projectName">
         /// The project name has models which will map
         /// </param>
-        public static void Initialize(HttpConfiguration configuration, string projectName)
+        private static void Initialize(string projectName)
         {
-            Initialize(configuration);
-
             AutoMapperManager.RegisterClassesBulk(projectName);
         }
 
