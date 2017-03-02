@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{E1C704E0-9EE1-4DD6-9966-275160CF9BEB}"
 EndProject
@@ -64,6 +64,10 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{D9EC74BB-F9D7-4958-B307-B7067CEA1006}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Template.Client", "Template\Client\Template.Client\Template.Client.csproj", "{B53D389F-E3EE-4039-BA35-950BADA3ED1B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{14FD7219-BEC9-4F14-AD13-C7F908D5A006}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ottoman.Test.Core", "Tests\Core\Ottoman.Test.Core\Ottoman.Test.Core.csproj", "{D0D4B212-1059-40F2-A3F0-4FE9AA9D596E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -209,6 +213,14 @@ Global
 		{B53D389F-E3EE-4039-BA35-950BADA3ED1B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B53D389F-E3EE-4039-BA35-950BADA3ED1B}.Release|x86.ActiveCfg = Release|Any CPU
 		{B53D389F-E3EE-4039-BA35-950BADA3ED1B}.Release|x86.Build.0 = Release|Any CPU
+		{D0D4B212-1059-40F2-A3F0-4FE9AA9D596E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0D4B212-1059-40F2-A3F0-4FE9AA9D596E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0D4B212-1059-40F2-A3F0-4FE9AA9D596E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D0D4B212-1059-40F2-A3F0-4FE9AA9D596E}.Debug|x86.Build.0 = Debug|Any CPU
+		{D0D4B212-1059-40F2-A3F0-4FE9AA9D596E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0D4B212-1059-40F2-A3F0-4FE9AA9D596E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0D4B212-1059-40F2-A3F0-4FE9AA9D596E}.Release|x86.ActiveCfg = Release|Any CPU
+		{D0D4B212-1059-40F2-A3F0-4FE9AA9D596E}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -240,5 +252,7 @@ Global
 		{D2C0E56E-AC5B-48D4-B15B-2318E174C0F0} = {85F8C427-8CCD-4F18-AC89-9CBDCE41EA8E}
 		{D9EC74BB-F9D7-4958-B307-B7067CEA1006} = {20092B17-D666-4E09-A0A0-C2393BF99C60}
 		{B53D389F-E3EE-4039-BA35-950BADA3ED1B} = {D9EC74BB-F9D7-4958-B307-B7067CEA1006}
+		{14FD7219-BEC9-4F14-AD13-C7F908D5A006} = {EA041AE4-4750-4817-945E-7B3F20BEDC4A}
+		{D0D4B212-1059-40F2-A3F0-4FE9AA9D596E} = {14FD7219-BEC9-4F14-AD13-C7F908D5A006}
 	EndGlobalSection
 EndGlobal

@@ -67,7 +67,7 @@
         [Test()]
         public void RepositoryInstallerTest()
         {
-            IInstaller installer = new RepositoryInstaller();
+            IRepositoryInstaller installer = new RepositoryInstaller();
 
             installer.Register(this._container);
 

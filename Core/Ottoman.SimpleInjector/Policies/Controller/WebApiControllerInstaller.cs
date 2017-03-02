@@ -32,7 +32,7 @@ namespace Ottoman.Injector.Policies.Controller
         ///  The container.
         /// </param>
         /// <param name="httpConfiguration">Http Configuration</param>
-        public void Register(Container container, HttpConfiguration httpConfiguration)
+        public void Register(Container container, HttpConfiguration httpConfiguration, Assembly[] assemblies)
         {
             container.RegisterWebApiControllers(httpConfiguration);
         }

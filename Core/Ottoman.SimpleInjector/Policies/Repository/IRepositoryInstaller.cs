@@ -6,17 +6,21 @@
 // <date>2016-5-12 22:11</date>
 //---------------------------------------------------------------------------------------------------------------------- 
 
-namespace Ottoman.Injector.Policies
+namespace Ottoman.Injector.Policies.Repository
 {
-    using System.Web.Http;
-
-    using global::SimpleInjector;
+    using SimpleInjector;
 
     /// <summary>
     /// The Installer interface.
     /// </summary>
-    public interface IInstaller
+    public interface IRepositoryInstaller
     {
+        /// <summary>
+        /// The register.
+        /// </summary>
+        /// <param name="container">
+        /// The container.
+        /// </param>
         void Register(Container container);
     }
 }

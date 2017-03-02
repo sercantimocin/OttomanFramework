@@ -6,9 +6,9 @@
     using SimpleInjector;
 
     /// <summary>
-    /// The mvc controller installer.
+    /// The ControllerInstaller interface.
     /// </summary>
-    public class MvcControllerInstaller : IControllerInstaller
+    interface IControllerInstaller
     {
         /// <summary>
         /// The register.
@@ -22,11 +22,6 @@
         /// <param name="assemblies">
         /// The assemblies.
         /// </param>
-        public void Register(Container container, HttpConfiguration httpConfiguration, Assembly[] assemblies)
-        {
-            container.RegisterMvcControllers(assemblies);
-
-            container.RegisterMvcIntegratedFilterProvider();
-        }
+        void Register(Container container, HttpConfiguration httpConfiguration, Assembly[] assemblies);
     }
 }

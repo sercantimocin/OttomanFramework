@@ -18,7 +18,7 @@
     /// <summary>
     /// The repository ınstaller.
     /// </summary>
-    public class RepositoryInstaller : IInstaller
+    public class RepositoryInstaller : IRepositoryInstaller
     {
         /// <summary>
         /// The entities project name.
