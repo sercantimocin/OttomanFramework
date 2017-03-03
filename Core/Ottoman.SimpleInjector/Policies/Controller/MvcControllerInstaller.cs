@@ -6,7 +6,7 @@
     using SimpleInjector;
 
     /// <summary>
-    /// The mvc controller installer.
+    /// The MVC controller installer.
     /// </summary>
     public class MvcControllerInstaller : IControllerInstaller
     {

@@ -16,6 +16,7 @@ namespace Ottoman.Core
     using Mapper;
 
     using SimpleInjector;
+    
     /// <summary>
     /// The application engine.
     /// </summary>
@@ -30,6 +31,17 @@ namespace Ottoman.Core
         /// The Injector Container.
         /// </summary>
         private static Container _container;
+
+        /// <summary>
+        /// Gets the container.
+        /// </summary>
+        public static Container Container
+        {
+            get
+            {
+                return _container ?? (_container = new Container());
+            }
+        }
 
         /// <summary>
         /// The MVC initialize.
@@ -87,22 +99,6 @@ namespace Ottoman.Core
         private static void Initialize(string projectName)
         {
             AutoMapperManager.RegisterClassesBulk(projectName);
-        }
-
-        /// <summary>
-        /// Gets the container.
-        /// </summary>
-        public static Container Container
-        {
-            get
-            {
-                if (_container == null)
-                {
-                    _container = new Container();
-                }
-
-                return _container;
-            }
         }
     }
 }

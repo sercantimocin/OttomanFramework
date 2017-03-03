@@ -14,8 +14,8 @@ namespace Ottoman.Injector
     using System.Web.Http;
     using System.Web.Mvc;
 
-    using Ottoman.Injector.Policies.Controller;
-    using Ottoman.Injector.Policies.Repository;
+    using Policies.Controller;
+    using Policies.Repository;
 
     using SimpleInjector;
     using SimpleInjector.Advanced;

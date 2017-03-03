@@ -8,7 +8,7 @@
     /// <summary>
     /// The ControllerInstaller interface.
     /// </summary>
-    interface IControllerInstaller
+    internal interface IControllerInstaller
     {
         /// <summary>
         /// The register.
