@@ -1,10 +1,8 @@
 ﻿namespace Ottoman.Injector.Policies.Repository
 {
-    using System;
     using System.Configuration;
     using System.Linq;
     using System.Reflection;
-    using System.Web.Http;
 
     using global::Repository.Pattern.DataContext;
     using global::Repository.Pattern.Ef6;
@@ -18,7 +16,7 @@
     /// <summary>
     /// The repository ınstaller.
     /// </summary>
-    public class RepositoryInstaller : IInstaller
+    public class RepositoryInstaller : IRepositoryInstaller
     {
         /// <summary>
         /// The entities project name.
@@ -30,9 +28,6 @@
         /// </summary>
         /// <param name="container">
         /// The container.
-        /// </param>
-        /// <param name="httpConfiguration">
-        /// The http configuration.
         /// </param>
         public void Register(Container container)
         {
@@ -46,8 +41,10 @@
                 {
                     entitiesAssembly = Assembly.Load(entitiesProjectName);
                 }
-                catch (Exception ) { }
-
+                catch
+                {
+                    // ignored
+                }
 
                 if (entitiesAssembly != null)
                 {

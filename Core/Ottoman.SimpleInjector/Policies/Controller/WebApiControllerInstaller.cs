@@ -8,15 +8,10 @@
 
 namespace Ottoman.Injector.Policies.Controller
 {
-    using System.ComponentModel;
-    using System.Configuration;
-    using System.Net.Http;
     using System.Reflection;
     using System.Web.Http;
 
-    using global::SimpleInjector;
-
-    using Policies;
+    using SimpleInjector;
 
     using Container = SimpleInjector.Container;
 
@@ -29,10 +24,15 @@ namespace Ottoman.Injector.Policies.Controller
         /// The register.
         /// </summary>
         /// <param name="container">
-        ///  The container.
+        /// The container.
         /// </param>
-        /// <param name="httpConfiguration">Http Configuration</param>
-        public void Register(Container container, HttpConfiguration httpConfiguration)
+        /// <param name="httpConfiguration">
+        /// Http Configuration
+        /// </param>
+        /// <param name="assemblies">
+        /// The assemblies.
+        /// </param>
+        public void Register(Container container, HttpConfiguration httpConfiguration, Assembly[] assemblies)
         {
             container.RegisterWebApiControllers(httpConfiguration);
         }

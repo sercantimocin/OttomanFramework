@@ -16,6 +16,7 @@ namespace Ottoman.Core
     using Mapper;
 
     using SimpleInjector;
+    
     /// <summary>
     /// The application engine.
     /// </summary>
@@ -31,6 +32,29 @@ namespace Ottoman.Core
         /// </summary>
         private static Container _container;
 
+        /// <summary>
+        /// Gets the container.
+        /// </summary>
+        public static Container Container
+        {
+            get
+            {
+                return _container ?? (_container = new Container());
+            }
+        }
+
+        /// <summary>
+        /// The MVC initialize.
+        /// </summary>
+        /// <param name="assemblies">
+        /// The assemblies.
+        /// </param>
+        /// <param name="dependencyResolver">
+        /// The dependency resolver.
+        /// </param>
+        /// <param name="projectName">
+        /// The project name.
+        /// </param>
         public static void MvcInitialize(Assembly[] assemblies, IDependencyResolver dependencyResolver, string projectName)
         {
             SimpleInjectorManager.MvcInitialize(Container, assemblies, dependencyResolver);
@@ -38,15 +62,31 @@ namespace Ottoman.Core
         }
 
         /// <summary>
-        /// The ınitialize.
+        /// The web API initialize.
         /// </summary>
-        /// <param name="configuration"></param>
-        /// <param name="projectName"></param>
+        /// <param name="configuration">
+        /// The configuration.
+        /// </param>
+        /// <param name="projectName">
+        /// The project name.
+        /// </param>
         public static void WebApiInitialize(HttpConfiguration configuration, string projectName)
         {
             _httpConfiguration = configuration;
 
             SimpleInjectorManager.WebApiInitialize(Container, configuration);
+            Initialize(projectName);
+        }
+
+        /// <summary>
+        /// The non web initialize.
+        /// </summary>
+        /// <param name="projectName">
+        /// The project Name.
+        /// </param>
+        public static void NonWebInitialize(string projectName)
+        {
+            SimpleInjectorManager.NonWebInitialize(Container);
             Initialize(projectName);
         }
 
@@ -59,22 +99,6 @@ namespace Ottoman.Core
         private static void Initialize(string projectName)
         {
             AutoMapperManager.RegisterClassesBulk(projectName);
-        }
-
-        /// <summary>
-        /// Gets the container.
-        /// </summary>
-        public static Container Container
-        {
-            get
-            {
-                if (_container == null)
-                {
-                    _container = new Container();
-                }
-
-                return _container;
-            }
         }
     }
 }

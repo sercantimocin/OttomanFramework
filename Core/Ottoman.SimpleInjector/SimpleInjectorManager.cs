@@ -14,9 +14,8 @@ namespace Ottoman.Injector
     using System.Web.Http;
     using System.Web.Mvc;
 
-    using Ottoman.Injector.Policies.Controller;
-
-    using Policies;
+    using Policies.Controller;
+    using Policies.Repository;
 
     using SimpleInjector;
     using SimpleInjector.Advanced;
@@ -30,42 +29,41 @@ namespace Ottoman.Injector
     public static class SimpleInjectorManager
     {
         /// <summary>
-        /// The is call ınitiliaze.
+        /// The is call initialize.
         /// </summary>
-        private static bool isCallInitiliaze = false;
+        private static bool isCallInitialize = false;
 
         /// <summary>
-        /// The ınitialize.
+        /// The MVC initialize.
         /// </summary>
         /// <param name="container">
         /// The container.
         /// </param>
-        /// <param name="assemblies">Mvc Assembly</param>
-        /// <param name="dependencyResolver">Mvc project depencency resolver</param>
+        /// <param name="assemblies">
+        /// The assemblies.
+        /// </param>
+        /// <param name="dependencyResolver">
+        /// The dependency resolver.
+        /// </param>
         public static void MvcInitialize(Container container, Assembly[] assemblies, IDependencyResolver dependencyResolver)
         {
-            if (!isCallInitiliaze)
+            if (!isCallInitialize)
             {
                 container.Options.DefaultScopedLifestyle = new WebRequestLifestyle();
-
                 container.Options.LifestyleSelectionBehavior = new MvcInjectionLifestyle();
 
-                MvcControllerInstaller controllerInstaller = new MvcControllerInstaller();
-
-                controllerInstaller.Register(container, assemblies);
-
-                RegisterAll(container);
+                RegisterController(container, null, assemblies);
+                RegisterInstaller(container);
 
                 container.Verify();
-
                 DependencyResolver.SetResolver(new SimpleInjectorDependencyResolver(container));
 
-                isCallInitiliaze = true;
+                isCallInitialize = true;
             }
         }
 
         /// <summary>
-        /// The ınitialize.
+        /// The web API initialize.
         /// </summary>
         /// <param name="container">
         /// The container.
@@ -75,44 +73,84 @@ namespace Ottoman.Injector
         /// </param>
         public static void WebApiInitialize(Container container, HttpConfiguration httpConfiguration)
         {
-            if (!isCallInitiliaze)
+            if (!isCallInitialize)
             {
                 container.Options.DefaultScopedLifestyle = new WebApiRequestLifestyle();
-
                 container.Options.LifestyleSelectionBehavior = new WebApiInjectionLifestyle();
 
-                WebApiControllerInstaller controllerInstaller = new WebApiControllerInstaller();
-
-                controllerInstaller.Register(container, httpConfiguration);
-
-                RegisterAll(container);
+                RegisterController(container, httpConfiguration, null);
+                RegisterInstaller(container);
 
                 container.Verify();
 
                 httpConfiguration.DependencyResolver = new SimpleInjectorWebApiDependencyResolver(container);
+                isCallInitialize = true;
+            }
+        }
 
-                isCallInitiliaze = true;
+        /// <summary>
+        /// The non web initialize.
+        /// </summary>
+        /// <param name="container">
+        /// The container.
+        /// </param>
+        public static void NonWebInitialize(Container container)
+        {
+            if (!isCallInitialize)
+            {
+                RegisterInstaller(container);
+
+                container.Verify();
+
+                isCallInitialize = true;
             }
         }
 
         /// <summary>
         /// The register all.
         /// </summary>
-        private static void RegisterAll(Container container)
+        /// <param name="container">
+        /// The container.
+        /// </param>
+        private static void RegisterInstaller(Container container)
         {
-            var autoInstallerClases = Assembly.GetCallingAssembly().GetExportedTypes().Where(x => typeof(IInstaller).IsAssignableFrom(x) && x.IsClass);
+            var autoInstallerClases = Assembly.GetCallingAssembly().GetExportedTypes().Where(x => typeof(IRepositoryInstaller).IsAssignableFrom(x) && x.IsClass);
 
             foreach (var autoInstallerClass in autoInstallerClases)
             {
-                IInstaller installer = Activator.CreateInstance(autoInstallerClass) as IInstaller;
+                IRepositoryInstaller repositoryInstaller = Activator.CreateInstance(autoInstallerClass) as IRepositoryInstaller;
 
-                installer.Register(container);
+                repositoryInstaller.Register(container);
+            }
+        }
+
+        /// <summary>
+        /// The register controller.
+        /// </summary>
+        /// <param name="container">
+        /// The container.
+        /// </param>
+        /// <param name="configuration">
+        /// The configuration.
+        /// </param>
+        /// <param name="assemblies">
+        /// The assemblies.
+        /// </param>
+        private static void RegisterController(Container container, HttpConfiguration configuration, Assembly[] assemblies)
+        {
+            var controllerInstallerClasesTypes = Assembly.GetCallingAssembly().GetExportedTypes().Where(x => typeof(IControllerInstaller).IsAssignableFrom(x) && x.IsClass);
+
+            foreach (var controllerInstallerClassType in controllerInstallerClasesTypes)
+            {
+                IControllerInstaller controllerInstaller = Activator.CreateInstance(controllerInstallerClassType) as IControllerInstaller;
+
+                controllerInstaller.Register(container, configuration, assemblies);
             }
         }
     }
 
     /// <summary>
-    /// The web api lifestyle.
+    /// The web API lifestyle.
     /// </summary>
     internal class WebApiInjectionLifestyle : ILifestyleSelectionBehavior
     {
@@ -130,15 +168,12 @@ namespace Ottoman.Injector
         /// </returns>
         public Lifestyle SelectLifestyle(Type serviceType, Type implementationType)
         {
-            //return Lifestyle.Scoped;
             return WebApiRequestLifestyle.Scoped;
-
         }
     }
 
-
     /// <summary>
-    /// The web api lifestyle.
+    /// The MVC injection lifestyle.
     /// </summary>
     internal class MvcInjectionLifestyle : ILifestyleSelectionBehavior
     {
@@ -159,5 +194,4 @@ namespace Ottoman.Injector
             return WebRequestLifestyle.Scoped;
         }
     }
-
 }

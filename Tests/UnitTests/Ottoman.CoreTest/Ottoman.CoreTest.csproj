@@ -69,7 +69,6 @@
     <Compile Include="Mapper\AutoMapperManagerTests.cs" />
     <Compile Include="Injection\PoliciesTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestAssembliesResolver.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config">
@@ -102,6 +101,10 @@
     <ProjectReference Include="..\..\..\Template\Data\Template.Entities\Template.Entities.csproj">
       <Project>{dd175bb5-9684-49ff-bc84-db259e8ea62b}</Project>
       <Name>Template.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\Ottoman.Test.Core\Ottoman.Test.Core.csproj">
+      <Project>{D0D4B212-1059-40F2-A3F0-4FE9AA9D596E}</Project>
+      <Name>Ottoman.Test.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
