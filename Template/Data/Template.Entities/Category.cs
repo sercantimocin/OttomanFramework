@@ -1,7 +1,9 @@
-using System.Collections.Generic;
-
-namespace Ottoman.Entities
+namespace Template.Entities
 {
+    using System.Collections.Generic;
+
+    using Ottoman.Entities;
+
     using Repository.Pattern.Ef6.Infrastructure;
 
     // Categories
@@ -16,7 +18,7 @@ namespace Ottoman.Entities
 
         public Category()
         {
-            Products = new List<Product>();
+            this.Products = new List<Product>();
         }
     }
 

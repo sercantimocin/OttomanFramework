@@ -6,18 +6,12 @@
 // ReSharper disable RedundantNameQualifier
 // TargetFrameworkVersion = 4.6.1
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.Entity;
-using System.Data;
-using System.Data.SqlClient;
-using System.Data.Entity.ModelConfiguration;
 //using DatabaseGeneratedOption = System.ComponentModel.DataAnnotations.DatabaseGeneratedOption;
 
-namespace Ottoman.Entities
+namespace Template.Entities
 {
+    using System.Collections.Generic;
+
     // Suppliers
     public class Supplier
     {
@@ -39,7 +33,7 @@ namespace Ottoman.Entities
 
         public Supplier()
         {
-            Products = new List<Product>();
+            this.Products = new List<Product>();
         }
     }
 

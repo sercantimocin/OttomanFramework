@@ -3,6 +3,8 @@ namespace Ottoman.Entities.Mappings
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.ModelConfiguration;
 
+    using Template.Entities;
+
     // Order Details
     internal class OrderDetailMap : EntityTypeConfiguration<OrderDetail>
     {

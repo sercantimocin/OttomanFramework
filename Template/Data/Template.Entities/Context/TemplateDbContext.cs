@@ -7,6 +7,8 @@
 
     using Repository.Pattern.Ef6;
 
+    using Template.Entities.Mappings;
+
     public class TemplateDbContext : DataContext
     {
         static TemplateDbContext()

@@ -1,7 +1,9 @@
-namespace Ottoman.Entities.Mappings
+namespace Template.Entities.Mappings
 {
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.ModelConfiguration;
+
+    using Template.Entities;
 
     // Categories
     internal class CategoryMap : EntityTypeConfiguration<Category>
