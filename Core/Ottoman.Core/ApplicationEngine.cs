@@ -8,25 +8,18 @@
 
 namespace Ottoman.Core
 {
-    using System.Reflection;
     using System.Web.Http;
-    using System.Web.Mvc;
 
     using Injector;
     using Mapper;
 
     using SimpleInjector;
-    
+
     /// <summary>
     /// The application engine.
     /// </summary>
     public static class ApplicationEngine
     {
-        /// <summary>
-        /// The _http configuration.
-        /// </summary>
-        private static HttpConfiguration _httpConfiguration;
-
         /// <summary>
         /// The Injector Container.
         /// </summary>
@@ -43,21 +36,9 @@ namespace Ottoman.Core
             }
         }
 
-        /// <summary>
-        /// The MVC initialize.
-        /// </summary>
-        /// <param name="assemblies">
-        /// The assemblies.
-        /// </param>
-        /// <param name="dependencyResolver">
-        /// The dependency resolver.
-        /// </param>
-        /// <param name="projectName">
-        /// The project name.
-        /// </param>
-        public static void MvcInitialize(Assembly[] assemblies, IDependencyResolver dependencyResolver, string projectName)
+        public static void MvcInitialize(HttpConfiguration httpConfiguration, string projectName)
         {
-            SimpleInjectorManager.MvcInitialize(Container, assemblies, dependencyResolver);
+            SimpleInjectorManager.MvcInitialize(Container, httpConfiguration);
             Initialize(projectName);
         }
 
@@ -72,8 +53,6 @@ namespace Ottoman.Core
         /// </param>
         public static void WebApiInitialize(HttpConfiguration configuration, string projectName)
         {
-            _httpConfiguration = configuration;
-
             SimpleInjectorManager.WebApiInitialize(Container, configuration);
             Initialize(projectName);
         }

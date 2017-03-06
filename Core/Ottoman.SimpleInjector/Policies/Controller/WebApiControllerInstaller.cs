@@ -8,7 +8,6 @@
 
 namespace Ottoman.Injector.Policies.Controller
 {
-    using System.Reflection;
     using System.Web.Http;
 
     using SimpleInjector;
@@ -32,7 +31,7 @@ namespace Ottoman.Injector.Policies.Controller
         /// <param name="assemblies">
         /// The assemblies.
         /// </param>
-        public void Register(Container container, HttpConfiguration httpConfiguration, Assembly[] assemblies)
+        public void Register(Container container, HttpConfiguration httpConfiguration)
         {
             container.RegisterWebApiControllers(httpConfiguration);
         }

@@ -14,7 +14,7 @@
         /// <summary>
         /// The entities project name.
         /// </summary>
-        private const string WebApiProjectName = "WebApiProjectName";
+        private const string ProjectName = "ProjectName";
 
         /// <summary>
         /// The get assemblies.
@@ -26,7 +26,7 @@
         {
             List<Assembly> assemblyList = new List<Assembly>();
 
-            string apiProjectNames = ConfigurationManager.AppSettings[WebApiProjectName];
+            string apiProjectNames = ConfigurationManager.AppSettings[ProjectName];
 
             if (!string.IsNullOrEmpty(apiProjectNames))
             {

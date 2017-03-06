@@ -33,26 +33,14 @@ namespace Ottoman.Injector
         /// </summary>
         private static bool isCallInitialize = false;
 
-        /// <summary>
-        /// The MVC initialize.
-        /// </summary>
-        /// <param name="container">
-        /// The container.
-        /// </param>
-        /// <param name="assemblies">
-        /// The assemblies.
-        /// </param>
-        /// <param name="dependencyResolver">
-        /// The dependency resolver.
-        /// </param>
-        public static void MvcInitialize(Container container, Assembly[] assemblies, IDependencyResolver dependencyResolver)
+        public static void MvcInitialize(Container container, HttpConfiguration httpConfiguration)
         {
             if (!isCallInitialize)
             {
                 container.Options.DefaultScopedLifestyle = new WebRequestLifestyle();
                 container.Options.LifestyleSelectionBehavior = new MvcInjectionLifestyle();
 
-                RegisterController(container, null, assemblies);
+                RegisterController(container, httpConfiguration);
                 RegisterInstaller(container);
 
                 container.Verify();
@@ -61,6 +49,8 @@ namespace Ottoman.Injector
                 isCallInitialize = true;
             }
         }
+
+        
 
         /// <summary>
         /// The web API initialize.
@@ -78,8 +68,8 @@ namespace Ottoman.Injector
                 container.Options.DefaultScopedLifestyle = new WebApiRequestLifestyle();
                 container.Options.LifestyleSelectionBehavior = new WebApiInjectionLifestyle();
 
-                RegisterController(container, httpConfiguration, null);
                 RegisterInstaller(container);
+                RegisterController(container, httpConfiguration);
 
                 container.Verify();
 
@@ -114,13 +104,13 @@ namespace Ottoman.Injector
         /// </param>
         private static void RegisterInstaller(Container container)
         {
-            var autoInstallerClases = Assembly.GetCallingAssembly().GetExportedTypes().Where(x => typeof(IRepositoryInstaller).IsAssignableFrom(x) && x.IsClass);
+            var autoInstallerClases = Assembly.GetCallingAssembly().GetExportedTypes().Where(x => typeof(IInstaller).IsAssignableFrom(x) && x.IsClass);
 
             foreach (var autoInstallerClass in autoInstallerClases)
             {
-                IRepositoryInstaller repositoryInstaller = Activator.CreateInstance(autoInstallerClass) as IRepositoryInstaller;
+                IInstaller installer = Activator.CreateInstance(autoInstallerClass) as IInstaller;
 
-                repositoryInstaller.Register(container);
+                installer.Register(container);
             }
         }
 
@@ -136,7 +126,7 @@ namespace Ottoman.Injector
         /// <param name="assemblies">
         /// The assemblies.
         /// </param>
-        private static void RegisterController(Container container, HttpConfiguration configuration, Assembly[] assemblies)
+        private static void RegisterController(Container container, HttpConfiguration configuration)
         {
             var controllerInstallerClasesTypes = Assembly.GetCallingAssembly().GetExportedTypes().Where(x => typeof(IControllerInstaller).IsAssignableFrom(x) && x.IsClass);
 
@@ -144,7 +134,7 @@ namespace Ottoman.Injector
             {
                 IControllerInstaller controllerInstaller = Activator.CreateInstance(controllerInstallerClassType) as IControllerInstaller;
 
-                controllerInstaller.Register(container, configuration, assemblies);
+                controllerInstaller.Register(container, configuration);
             }
         }
     }

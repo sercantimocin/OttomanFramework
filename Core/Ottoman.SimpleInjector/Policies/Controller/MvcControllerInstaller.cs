@@ -1,6 +1,6 @@
 ﻿namespace Ottoman.Injector.Policies.Controller
 {
-    using System.Reflection;
+    using System.Linq;
     using System.Web.Http;
 
     using SimpleInjector;
@@ -22,10 +22,9 @@
         /// <param name="assemblies">
         /// The assemblies.
         /// </param>
-        public void Register(Container container, HttpConfiguration httpConfiguration, Assembly[] assemblies)
+        public void Register(Container container, HttpConfiguration httpConfiguration)
         {
-            container.RegisterMvcControllers(assemblies);
-
+            container.RegisterMvcControllers(httpConfiguration.Services.GetAssembliesResolver().GetAssemblies().ToArray());
             container.RegisterMvcIntegratedFilterProvider();
         }
     }

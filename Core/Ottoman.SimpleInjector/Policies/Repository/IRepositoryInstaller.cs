@@ -13,7 +13,7 @@ namespace Ottoman.Injector.Policies.Repository
     /// <summary>
     /// The Installer interface.
     /// </summary>
-    public interface IRepositoryInstaller
+    public interface IInstaller
     {
         /// <summary>
         /// The register.

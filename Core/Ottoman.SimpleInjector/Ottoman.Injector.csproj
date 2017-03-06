@@ -129,6 +129,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Policies\Business\" />
+    <Folder Include="Policies\Service\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Repository.Pattern.Ef6\Repository.Pattern.Ef6.csproj">

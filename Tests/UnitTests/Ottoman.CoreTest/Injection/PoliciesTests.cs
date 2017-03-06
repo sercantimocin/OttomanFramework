@@ -39,7 +39,7 @@
         {
             WebApiControllerInstaller installer = new WebApiControllerInstaller();
 
-            installer.Register(this._container, this._httpConfiguration, null);
+            installer.Register(this._container, this._httpConfiguration);
 
             this._container.Verify();
 
@@ -53,7 +53,7 @@
         {
             MvcControllerInstaller installer = new MvcControllerInstaller();
 
-            installer.Register(this._container, null, _httpConfiguration.Services.GetAssembliesResolver().GetAssemblies().ToArray());
+            installer.Register(this._container, _httpConfiguration);
 
             this._container.Verify();
 
@@ -65,7 +65,7 @@
         [Test()]
         public void RepositoryInstallerTest()
         {
-            IRepositoryInstaller installer = new RepositoryInstaller();
+            IInstaller installer = new Installer();
 
             installer.Register(this._container);
 

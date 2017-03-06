@@ -165,6 +165,12 @@
     <Folder Include="Models\" />
     <Folder Include="Views\Default\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Core\Ottoman.Core\Ottoman.Core.csproj">
+      <Project>{D7C53018-239D-4A84-B19C-B4FE4A5BEED8}</Project>
+      <Name>Ottoman.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
