@@ -25,7 +25,7 @@
         [TestCase(null)]
         public void InitializeTest(string projectName)
         {
-            GlobalConfiguration.Configuration.Services.Replace(typeof(IAssembliesResolver), TestCoreManager.Instance.Assemblies);
+            GlobalConfiguration.Configuration.Services.Replace(typeof(IAssembliesResolver), TestCoreManager.Instance.AssembliesResolver);
             var httpConfiguration = GlobalConfiguration.Configuration;
 
             ApplicationEngine.WebApiInitialize(httpConfiguration, projectName);

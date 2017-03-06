@@ -9,12 +9,12 @@
     /// <summary>
     /// The test assemblies resolver.
     /// </summary>
-    public class TestAssembliesResolver : IAssembliesResolver
+    internal class TestAssembliesResolver : IAssembliesResolver
     {
         /// <summary>
         /// The entities project name.
         /// </summary>
-        private const string ApiProjectNames = "ApiProjectNames";
+        private const string WebApiProjectName = "WebApiProjectName";
 
         /// <summary>
         /// The get assemblies.
@@ -26,7 +26,7 @@
         {
             List<Assembly> assemblyList = new List<Assembly>();
 
-            string apiProjectNames = ConfigurationManager.AppSettings[ApiProjectNames];
+            string apiProjectNames = ConfigurationManager.AppSettings[WebApiProjectName];
 
             if (!string.IsNullOrEmpty(apiProjectNames))
             {

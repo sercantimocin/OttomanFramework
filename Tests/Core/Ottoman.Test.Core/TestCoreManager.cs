@@ -1,11 +1,6 @@
 ﻿namespace Ottoman.Test.Core
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Reflection;
-    using System.Text;
-    using System.Threading.Tasks;
+    using System.Web.Http.Dispatcher;
 
     /// <summary>
     /// The test core manager.
@@ -15,7 +10,7 @@
         /// <summary>
         /// The _instance.
         /// </summary>
-        private static TestCoreManager _instance;
+        private static readonly TestCoreManager _instance = new TestCoreManager();
 
         /// <summary>
         /// The _assemblies resolver.
@@ -28,16 +23,15 @@
         public static TestCoreManager Instance => _instance;
 
         /// <summary>
-        /// Gets the assemblies.
+        /// Assemblies resolver.
         /// </summary>
-        public ICollection<Assembly> Assemblies => _assembliesResolver.GetAssemblies();
+        public IAssembliesResolver AssembliesResolver => _assembliesResolver;
 
         /// <summary>
         /// Prevents a default instance of the <see cref="TestCoreManager"/> class from being created.
         /// </summary>
         private TestCoreManager()
         {
-            _instance = new TestCoreManager();
             _assembliesResolver = new TestAssembliesResolver();
         }
     }

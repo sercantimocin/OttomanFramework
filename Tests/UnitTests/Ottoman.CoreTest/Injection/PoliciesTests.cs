@@ -2,18 +2,17 @@
 {
     using System;
     using System.Linq;
-    using System.Reflection;
     using System.Web.Http;
     using System.Web.Http.Dispatcher;
 
     using NUnit.Framework;
 
-    using Injector.Policies;
     using Injector.Policies.Controller;
     using Injector.Policies.Repository;
 
+    using Ottoman.Test.Core;
+
     using Repository.Pattern.DataContext;
-    using Repository.Pattern.Repositories;
     using Repository.Pattern.UnitOfWork;
 
     using SimpleInjector;
@@ -29,8 +28,7 @@
         [SetUp]
         public void Init()
         {
-
-            GlobalConfiguration.Configuration.Services.Replace(typeof(IAssembliesResolver), new TestAssembliesResolver());
+            GlobalConfiguration.Configuration.Services.Replace(typeof(IAssembliesResolver), TestCoreManager.Instance.AssembliesResolver);
             this._httpConfiguration = GlobalConfiguration.Configuration;
 
             this._container = new Container();
@@ -41,7 +39,7 @@
         {
             WebApiControllerInstaller installer = new WebApiControllerInstaller();
 
-            installer.Register(this._container, this._httpConfiguration);
+            installer.Register(this._container, this._httpConfiguration, null);
 
             this._container.Verify();
 
@@ -55,7 +53,7 @@
         {
             MvcControllerInstaller installer = new MvcControllerInstaller();
 
-            installer.Register(this._container, _httpConfiguration.Services.GetAssembliesResolver().GetAssemblies().ToArray());
+            installer.Register(this._container, null, _httpConfiguration.Services.GetAssembliesResolver().GetAssemblies().ToArray());
 
             this._container.Verify();
 
