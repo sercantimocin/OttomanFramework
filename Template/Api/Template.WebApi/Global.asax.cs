@@ -1,4 +1,4 @@
-﻿namespace Template.WebApi
+﻿namespace Sample.WebApi
 {
     using System.Web;
     using System.Web.Http;
@@ -18,7 +18,7 @@
         /// </summary>
         protected void Application_Start()
         {
-            ApplicationEngine.WebApiInitialize(GlobalConfiguration.Configuration, "Template.WebApi");
+            ApplicationEngine.WebApiInitialize(GlobalConfiguration.Configuration, "Sample.WebApi");
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

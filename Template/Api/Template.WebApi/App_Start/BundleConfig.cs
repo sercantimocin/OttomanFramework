@@ -6,10 +6,10 @@
 // <date>2016-5-17 22:34</date>
 //---------------------------------------------------------------------------------------------------------------------- 
 
-using System.Web.Optimization;
-
-namespace Template.WebApi
+namespace Sample.WebApi
 {
+    using System.Web.Optimization;
+
     public class BundleConfig
     {
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862

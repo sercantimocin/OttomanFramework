@@ -1,13 +1,12 @@
-﻿namespace Template.Entities.Context
+﻿namespace Sample.Entities.Context
 {
     using System.Data.Entity;
 
     using Ottoman.Entities;
-    using Ottoman.Entities.Mappings;
 
     using Repository.Pattern.Ef6;
 
-    using Template.Entities.Mappings;
+    using Sample.Entities.Mappings;
 
     public class TemplateDbContext : DataContext
     {

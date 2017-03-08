@@ -6,11 +6,11 @@
 // <date>2016-5-17 22:34</date>
 //---------------------------------------------------------------------------------------------------------------------- 
 
-using System.Web.Mvc;
-using System.Web.Routing;
-
-namespace Template.WebApi
+namespace Sample.WebApi
 {
+    using System.Web.Mvc;
+    using System.Web.Routing;
+
     public class RouteConfig
     {
         public static void RegisterRoutes(RouteCollection routes)

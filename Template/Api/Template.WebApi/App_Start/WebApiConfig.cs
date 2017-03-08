@@ -6,11 +6,12 @@
 // <date>2016-5-17 22:34</date>
 //---------------------------------------------------------------------------------------------------------------------- 
 
-using System.Web.Http;
-using Microsoft.Owin.Security.OAuth;
-
-namespace Template.WebApi
+namespace Sample.WebApi
 {
+    using System.Web.Http;
+
+    using Microsoft.Owin.Security.OAuth;
+
     public static class WebApiConfig
     {
         public static void Register(HttpConfiguration config)

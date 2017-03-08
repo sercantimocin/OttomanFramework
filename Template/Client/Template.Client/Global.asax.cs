@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using System.Web.Routing;
-
-namespace Template.Client
+﻿namespace Sample.Mvc.Client
 {
-    using System.Reflection;
     using System.Web.Http;
+    using System.Web.Mvc;
+    using System.Web.Routing;
 
     using Ottoman.Core;
 
@@ -16,7 +10,7 @@ namespace Template.Client
     {
         protected void Application_Start()
         {
-            ApplicationEngine.MvcInitialize(GlobalConfiguration.Configuration, "Template.Client");
+            ApplicationEngine.MvcInitialize(GlobalConfiguration.Configuration, "Sample.Mvc.Client");
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
         }

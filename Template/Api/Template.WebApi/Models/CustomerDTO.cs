@@ -3,6 +3,8 @@
     using Ottoman.Entities;
     using Ottoman.Mapper;
 
+    using Sample.Entities;
+
     public class CustomerDto : IMapFrom<Customer>
     {
         public string CompanyName { get; set; } // CompanyName

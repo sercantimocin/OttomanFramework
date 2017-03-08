@@ -1,9 +1,7 @@
-namespace Ottoman.Entities.Mappings
+namespace Sample.Entities.Mappings
 {
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.ModelConfiguration;
-
-    using Template.Entities;
 
     // Products
     internal class ProductMap : EntityTypeConfiguration<Product>

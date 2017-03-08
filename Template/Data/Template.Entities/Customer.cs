@@ -1,7 +1,9 @@
-using System.Collections.Generic;
-
-namespace Ottoman.Entities
+namespace Sample.Entities
 {
+    using System.Collections.Generic;
+
+    using Ottoman.Entities;
+
     using Repository.Pattern.Ef6.Infrastructure;
 
     // Customers
@@ -23,7 +25,7 @@ namespace Ottoman.Entities
 
         public Customer()
         {
-            Orders = new List<Order>();
+            this.Orders = new List<Order>();
         }
     }
 

@@ -1,16 +1,17 @@
-﻿using System.Collections.Generic;
-using System.Web.Http;
-
-namespace Template.WebApi.Controllers
+﻿namespace Sample.WebApi.Controllers
 {
+    using System.Collections.Generic;
+    using System.Web.Http;
+
     using Ottoman.Entities;
     using Ottoman.Mapper.Extensions;
+    using Ottoman.MemoryCache;
+
+    using Sample.Entities;
 
     using Service.Pattern;
 
-    using Models;
-
-    using Ottoman.MemoryCache;
+    using Template.WebApi.Models;
 
     public class CustomerController : ApiController
     {

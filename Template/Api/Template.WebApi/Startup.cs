@@ -1,17 +1,16 @@
 ﻿using Microsoft.Owin;
-using Owin;
 
+using Sample.WebApi;
 
-[assembly: OwinStartup(typeof(Template.WebApi.Startup))]
+[assembly: OwinStartup(typeof(Startup))]
 
-namespace Template.WebApi
+namespace Sample.WebApi
 {
-    using System;
-    using System.Security.Cryptography.X509Certificates;
-
     using IdentityServer3.AccessTokenValidation;
 
     using Ottoman.IdentityServer;
+
+    using Owin;
 
     public partial class Startup
     {

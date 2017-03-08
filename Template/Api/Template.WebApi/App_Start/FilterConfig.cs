@@ -5,10 +5,11 @@
 // <author>devpc</author>
 // <date>2016-5-17 22:34</date>
 //---------------------------------------------------------------------------------------------------------------------- 
-using System.Web.Mvc;
 
-namespace Template.WebApi
+namespace Sample.WebApi
 {
+    using System.Web.Mvc;
+
     public class FilterConfig
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)

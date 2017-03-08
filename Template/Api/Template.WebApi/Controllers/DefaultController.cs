@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
-
-namespace Template.WebApi.Controllers
+﻿namespace Sample.WebApi.Controllers
 {
+    using System.Collections.Generic;
+    using System.Web.Http;
+
     public class DefaultController : ApiController
     {
         // GET: api/Default

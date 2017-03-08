@@ -5,18 +5,23 @@
 // <author>devpc</author>
 // <date>2016-5-17 22:34</date>
 //---------------------------------------------------------------------------------------------------------------------- 
-using System;
 
-using Microsoft.AspNet.Identity;
-using Microsoft.Owin;
-using Microsoft.Owin.Security.Cookies;
-using Microsoft.Owin.Security.OAuth;
-using Owin;
-using Template.WebApi.Providers;
-using Template.WebApi.Models;
-
-namespace Template.WebApi
+namespace Sample.WebApi
 {
+    using System;
+
+    using Microsoft.AspNet.Identity;
+    using Microsoft.Owin;
+    using Microsoft.Owin.Security.Cookies;
+    using Microsoft.Owin.Security.OAuth;
+
+    using Owin;
+
+    using Sample.WebApi.Providers;
+
+    using Template.WebApi;
+    using Template.WebApi.Models;
+
     public partial class Startup
     {
         public static OAuthAuthorizationServerOptions OAuthOptions { get; private set; }

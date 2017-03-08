@@ -8,11 +8,9 @@
 
 //using DatabaseGeneratedOption = System.ComponentModel.DataAnnotations.DatabaseGeneratedOption;
 
-namespace Template.Entities
+namespace Sample.Entities
 {
     using System.Collections.Generic;
-
-    using Ottoman.Entities;
 
     // Products
     public class Product
