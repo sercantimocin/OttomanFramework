@@ -1,15 +1,20 @@
-﻿namespace Ottoman.CoreTest.Injection
+﻿//----------------------------------------------------------------------------------------------------------------------
+// <copyright file="policiestests.cs" owner="Sercan Timoçin" namespace="Ottoman.CoreTest">
+// Copyright (c) 2017 All Rights Reserved
+// </copyright>
+// <author>devpc</author>
+// <date>2016-5-22 08:23</date>
+//---------------------------------------------------------------------------------------------------------------------- 
+namespace Ottoman.CoreTest.Injection
 {
     using System;
-    using System.Linq;
     using System.Web.Http;
     using System.Web.Http.Dispatcher;
 
     using NUnit.Framework;
 
-    using Injector.Policies.Controller;
-    using Injector.Policies.Repository;
-
+    using Ottoman.Injector.Policies.ClassInterface;
+    using Ottoman.Injector.Policies.Controller;
     using Ottoman.Test.Core;
 
     using Repository.Pattern.DataContext;

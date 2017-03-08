@@ -1,4 +1,4 @@
-﻿namespace Ottoman.Injector.Policies.Repository
+﻿namespace Ottoman.Injector.Policies.ClassInterface
 {
     using System.Configuration;
     using System.Linq;
@@ -14,7 +14,7 @@
     using SimpleInjector;
 
     /// <summary>
-    /// The repository ınstaller.
+    /// The class interface matcher installer.
     /// </summary>
     public class Installer : IInstaller
     {

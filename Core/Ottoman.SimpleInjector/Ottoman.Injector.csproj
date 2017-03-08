@@ -114,8 +114,8 @@
     <Compile Include="Policies\Controller\MvcControllerInstaller.cs" />
     <Compile Include="Policies\Controller\WebApiControllerInstaller.cs" />
     <Compile Include="Policies\Controller\IControllerInstaller.cs" />
-    <Compile Include="Policies\Repository\IRepositoryInstaller.cs" />
-    <Compile Include="Policies\Repository\RepositoryInstaller.cs" />
+    <Compile Include="Policies\ClassInterface\IInstaller.cs" />
+    <Compile Include="Policies\ClassInterface\Installer.cs" />
     <Compile Include="SimpleInjectorManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -127,10 +127,7 @@
     <None Include="Ottoman.SimpleInjector.licenseheader" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Policies\Business\" />
-    <Folder Include="Policies\Service\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Repository.Pattern.Ef6\Repository.Pattern.Ef6.csproj">
       <Project>{f68a1d19-93fb-47c1-a22b-42bea3e4fd8c}</Project>

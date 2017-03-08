@@ -36,6 +36,15 @@ namespace Ottoman.Core
             }
         }
 
+        /// <summary>
+        /// The MVC Initialize.
+        /// </summary>
+        /// <param name="httpConfiguration">
+        /// The http configuration.
+        /// </param>
+        /// <param name="projectName">
+        /// The project name.
+        /// </param>
         public static void MvcInitialize(HttpConfiguration httpConfiguration, string projectName)
         {
             SimpleInjectorManager.MvcInitialize(Container, httpConfiguration);
