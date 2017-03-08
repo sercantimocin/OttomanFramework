@@ -130,17 +130,17 @@
       <Project>{6E682A14-C872-4813-B620-76E108DEA683}</Project>
       <Name>Repository.Pattern</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\Template\Api\Template.WebApi\Template.WebApi.csproj">
+    <ProjectReference Include="..\..\..\Template\Api\Template.WebApi\Sample.WebApi.csproj">
       <Project>{ab1e1c75-73dc-4900-8a26-27ca5bcdd400}</Project>
-      <Name>Template.WebApi</Name>
+      <Name>Sample.WebApi</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\Template\Client\Template.Client\Template.Client.csproj">
+    <ProjectReference Include="..\..\..\Template\Client\Template.Client\Sample.Mvc.Client.csproj">
       <Project>{b53d389f-e3ee-4039-ba35-950bada3ed1b}</Project>
-      <Name>Template.Client</Name>
+      <Name>Sample.Mvc.Client</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\Template\Data\Template.Entities\Template.Entities.csproj">
+    <ProjectReference Include="..\..\..\Template\Data\Template.Entities\Sample.Entities.csproj">
       <Project>{dd175bb5-9684-49ff-bc84-db259e8ea62b}</Project>
-      <Name>Template.Entities</Name>
+      <Name>Sample.Entities</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Core\Ottoman.Test.Core\Ottoman.Test.Core.csproj">
       <Project>{D0D4B212-1059-40F2-A3F0-4FE9AA9D596E}</Project>

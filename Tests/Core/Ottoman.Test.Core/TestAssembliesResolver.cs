@@ -1,8 +1,6 @@
 ﻿namespace Ottoman.Test.Core
 {
-    using System;
     using System.Collections.Generic;
-    using System.Configuration;
     using System.Reflection;
     using System.Web.Http.Dispatcher;
 
@@ -12,9 +10,9 @@
     internal class TestAssembliesResolver : IAssembliesResolver
     {
         /// <summary>
-        /// The entities project name.
+        /// Gets or sets the project names.
         /// </summary>
-        private const string ProjectName = "ProjectName";
+        public string ProjectNames { get; set; }
 
         /// <summary>
         /// The get assemblies.
@@ -26,19 +24,17 @@
         {
             List<Assembly> assemblyList = new List<Assembly>();
 
-            string apiProjectNames = ConfigurationManager.AppSettings[ProjectName];
-
-            if (!string.IsNullOrEmpty(apiProjectNames))
+            if (!string.IsNullOrEmpty(this.ProjectNames))
             {
-                string[] projectNames = apiProjectNames.Split('|');
+                string[] projectNamesArray = this.ProjectNames.Split('|');
 
-                foreach (var projectName in projectNames)
+                foreach (var projectName in projectNamesArray)
                 {
                     try
                     {
                         assemblyList.Add(Assembly.Load(projectName));
                     }
-                    catch (Exception)
+                    catch
                     {
                         // ignored
                     }

@@ -8,8 +8,10 @@
 namespace Ottoman.CoreTest.Injection
 {
     using System;
+    using System.Linq;
     using System.Web.Http;
     using System.Web.Http.Dispatcher;
+    using System.Web.Mvc;
 
     using NUnit.Framework;
 
@@ -33,42 +35,45 @@ namespace Ottoman.CoreTest.Injection
         [SetUp]
         public void Init()
         {
-            GlobalConfiguration.Configuration.Services.Replace(typeof(IAssembliesResolver), TestCoreManager.Instance.AssembliesResolver);
-            this._httpConfiguration = GlobalConfiguration.Configuration;
-
             this._container = new Container();
         }
 
-        [Test()]
-        public void WebApiControllerInstallerTest()
+        [TestCase("Sample.WebApi")]
+        public void WebApiControllerInstallerTest(string projectName)
         {
+            _httpConfiguration = TestCoreManager.Instance.ConfigureHttpConfiguration(projectName);
+
             WebApiControllerInstaller installer = new WebApiControllerInstaller();
 
             installer.Register(this._container, this._httpConfiguration);
 
             this._container.Verify();
 
-            //var controllerRegistration = this._container.GetRegistration(typeof(ApiController));
+            var controllerRegistration = this._container.GetRegistration(typeof(ApiController));
 
-            //Assert.IsNotNull(controllerRegistration);
+            Assert.IsNotNull(controllerRegistration);
         }
 
-        [Test()]
-        public void MvcControllerInstallerTest()
+        [TestCase("Sample.Mvc.Client")]
+        public void MvcControllerInstallerTest(string projectName)
         {
+            _container = new Container();
+            _httpConfiguration = TestCoreManager.Instance.ConfigureHttpConfiguration(projectName);
+
             MvcControllerInstaller installer = new MvcControllerInstaller();
 
             installer.Register(this._container, _httpConfiguration);
 
             this._container.Verify();
 
-            //var controllerRegistration = this._container.GetRegistration(typeof(ApiController));
+            var registrations = this._container.GetCurrentRegistrations();
 
-            //Assert.IsNotNull(controllerRegistration);
+            Assert.IsNotNull(registrations);
+            //Assert.That(registrations.Any(x => typeof(Controller).IsAssignableFrom(x.ServiceType)));
         }
 
         [Test()]
-        public void RepositoryInstallerTest()
+        public void InstallerTest()
         {
             IInstaller installer = new Installer();
 
@@ -78,9 +83,16 @@ namespace Ottoman.CoreTest.Injection
 
             this._container.Verify();
 
-            var dataContextRegistration = this._container.GetRegistration(typeof(IDataContextAsync));
+            var registrations = this._container.GetCurrentRegistrations();
 
-            Assert.IsNotNull(dataContextRegistration);
+            Assert.IsNotNull(registrations);
+            Assert.That(registrations.Any(x => typeof(IDataContextAsync).IsAssignableFrom(x.ServiceType)));
+        }
+
+        [TearDown]
+        public void TearDown()
+        {
+            this._container.Dispose();
         }
 
         /// <summary>

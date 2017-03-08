@@ -27,9 +27,6 @@
         [SetUp]
         public void Init()
         {
-            GlobalConfiguration.Configuration.Services.Replace(typeof(IAssembliesResolver), TestCoreManager.Instance.AssembliesResolver);
-            this._httpConfiguration = GlobalConfiguration.Configuration;
-
             this._container = new Container();
         }
 
@@ -39,10 +36,12 @@
         /// <param name="projectName">
         /// The project Name.
         /// </param>
-        [TestCase("Template.WebApi")]
+        [TestCase("Sample.WebApi")]
         [TestCase(null)]
         public void WebApiInitializeTest(string projectName)
         {
+            _httpConfiguration = TestCoreManager.Instance.ConfigureHttpConfiguration(projectName);
+
             ApplicationEngine.WebApiInitialize(_httpConfiguration, projectName);
 
             var container = ApplicationEngine.Container;
@@ -57,11 +56,11 @@
         /// The project Name.
         /// </param>
         ///     
-        [TestCase("Template.Client")]
+        [TestCase("Sample.Mvc.Client")]
         [TestCase(null)]
         public void MvcInitializeTest(string projectName)
         {
-            DependencyResolver.SetResolver(new SimpleInjectorDependencyResolver(_container));
+            _httpConfiguration = TestCoreManager.Instance.ConfigureHttpConfiguration(projectName);
 
             ApplicationEngine.MvcInitialize(_httpConfiguration, projectName);
 

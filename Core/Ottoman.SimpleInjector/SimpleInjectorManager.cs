@@ -34,6 +34,15 @@ namespace Ottoman.Injector
         /// </summary>
         private static bool isCallInitialize = false;
 
+        /// <summary>
+        /// The MVC initialize.
+        /// </summary>
+        /// <param name="container">
+        /// The container.
+        /// </param>
+        /// <param name="httpConfiguration">
+        /// The http configuration.
+        /// </param>
         public static void MvcInitialize(Container container, HttpConfiguration httpConfiguration)
         {
             if (!isCallInitialize)
@@ -41,8 +50,8 @@ namespace Ottoman.Injector
                 container.Options.DefaultScopedLifestyle = new WebRequestLifestyle();
                 container.Options.LifestyleSelectionBehavior = new MvcInjectionLifestyle();
 
-                RegisterController(container, httpConfiguration);
                 RegisterInstaller(container);
+                RegisterController(container, httpConfiguration);
 
                 container.Verify();
                 DependencyResolver.SetResolver(new SimpleInjectorDependencyResolver(container));
@@ -50,8 +59,6 @@ namespace Ottoman.Injector
                 isCallInitialize = true;
             }
         }
-
-        
 
         /// <summary>
         /// The web API initialize.
