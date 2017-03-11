@@ -156,3 +156,4 @@ $RECYCLE.BIN/
 .DS_Store
 /Demo/Api/Demo.WebApi/Web.config
 /.vs/config/applicationhost.config
+/packages/*/
