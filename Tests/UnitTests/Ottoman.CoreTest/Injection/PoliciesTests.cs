@@ -38,7 +38,7 @@ namespace Ottoman.CoreTest.Injection
             this._container = new Container();
         }
 
-        [TestCase("Sample.WebApi")]
+        [TestCase("Demo.WebApi")]
         public void WebApiControllerInstallerTest(string projectName)
         {
             _httpConfiguration = TestCoreManager.Instance.ConfigureHttpConfiguration(projectName);
@@ -54,7 +54,7 @@ namespace Ottoman.CoreTest.Injection
             Assert.IsNotNull(controllerRegistration);
         }
 
-        [TestCase("Sample.Mvc.Client")]
+        [TestCase("Demo.Mvc.Client")]
         public void MvcControllerInstallerTest(string projectName)
         {
             _container = new Container();

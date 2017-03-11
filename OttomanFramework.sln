@@ -33,15 +33,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HelperTools", "HelperTools"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PocoGenarator", "SolutionFiles\HelperTools\PocoGenarator\PocoGenarator.csproj", "{19C31343-88FA-401C-BDCA-0654DDC306A9}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sample", "Sample", "{20092B17-D666-4E09-A0A0-C2393BF99C60}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Demo", "Demo", "{20092B17-D666-4E09-A0A0-C2393BF99C60}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Entities", "Template\Data\Template.Entities\Sample.Entities.csproj", "{DD175BB5-9684-49FF-BC84-DB259E8EA62B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.Entities", "Sample\Data\Sample.Entities\Demo.Entities.csproj", "{DD175BB5-9684-49FF-BC84-DB259E8EA62B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.WebApi", "Template\Api\Template.WebApi\Sample.WebApi.csproj", "{AB1E1C75-73DC-4900-8A26-27CA5BCDD400}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.WebApi", "Sample\Api\Sample.WebApi\Demo.WebApi.csproj", "{AB1E1C75-73DC-4900-8A26-27CA5BCDD400}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Business", "Business", "{A93A8396-837C-4ED5-B600-11CD651FDDF8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Business", "Template\Business\Template.Business\Sample.Business.csproj", "{967D0097-F098-47FA-A636-E9AB4D6FB969}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.Business", "Sample\Business\Sample.Business\Demo.Business.csproj", "{967D0097-F098-47FA-A636-E9AB4D6FB969}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ottoman.Mapper", "Core\Ottoman.Mapper\Ottoman.Mapper.csproj", "{1EE39338-8E6C-4E93-8D73-E6C1F4D7A4DB}"
 EndProject
@@ -61,7 +61,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Security", "Security", "{85
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{D9EC74BB-F9D7-4958-B307-B7067CEA1006}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample.Mvc.Client", "Template\Client\Template.Client\Sample.Mvc.Client.csproj", "{B53D389F-E3EE-4039-BA35-950BADA3ED1B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.Mvc.Client", "Sample\Client\Sample.Mvc.Client\Demo.Mvc.Client.csproj", "{B53D389F-E3EE-4039-BA35-950BADA3ED1B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{14FD7219-BEC9-4F14-AD13-C7F908D5A006}"
 EndProject

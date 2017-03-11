@@ -26,7 +26,7 @@ namespace Ottoman.CoreTest.Mapper
         /// </param>
         [TestCase(null)]
         [TestCase("WrongProjectName")]
-        [TestCase("Template.WebApi.Models")]
+        [TestCase("Demo.WebApi.Models")]
         public void RegisterClassesBulkTest(string projectName)
         {
             AutoMapperManager.RegisterClassesBulk(projectName);
