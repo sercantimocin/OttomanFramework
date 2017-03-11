@@ -130,15 +130,15 @@
       <Project>{6E682A14-C872-4813-B620-76E108DEA683}</Project>
       <Name>Repository.Pattern</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\Sample\Api\Sample.WebApi\Demo.WebApi.csproj">
+    <ProjectReference Include="..\..\..\Demo\Api\Demo.WebApi\Demo.WebApi.csproj">
       <Project>{ab1e1c75-73dc-4900-8a26-27ca5bcdd400}</Project>
       <Name>Demo.WebApi</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\Sample\Client\Sample.Mvc.Client\Demo.Mvc.Client.csproj">
+    <ProjectReference Include="..\..\..\Demo\Client\Demo.Mvc.Client\Demo.Mvc.Client.csproj">
       <Project>{b53d389f-e3ee-4039-ba35-950bada3ed1b}</Project>
       <Name>Demo.Mvc.Client</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\Sample\Data\Sample.Entities\Demo.Entities.csproj">
+    <ProjectReference Include="..\..\..\Demo\Data\Demo.Entities\Demo.Entities.csproj">
       <Project>{dd175bb5-9684-49ff-bc84-db259e8ea62b}</Project>
       <Name>Demo.Entities</Name>
     </ProjectReference>

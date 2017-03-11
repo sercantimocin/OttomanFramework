@@ -49,7 +49,7 @@
       <Project>{d7c53018-239d-4a84-b19c-b4fe4a5beed8}</Project>
       <Name>Ottoman.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Data\Sample.Entities\Demo.Entities.csproj">
+    <ProjectReference Include="..\..\Data\Demo.Entities\Demo.Entities.csproj">
       <Project>{dd175bb5-9684-49ff-bc84-db259e8ea62b}</Project>
       <Name>Demo.Entities</Name>
     </ProjectReference>

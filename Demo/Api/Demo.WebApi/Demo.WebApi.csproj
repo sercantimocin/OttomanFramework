@@ -327,11 +327,11 @@
       <Project>{e4444c58-4964-4024-8ca2-5b0bc0c757a2}</Project>
       <Name>Ottoman.IdentityServer</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Business\Sample.Business\Demo.Business.csproj">
+    <ProjectReference Include="..\..\Business\Demo.Business\Demo.Business.csproj">
       <Project>{967d0097-f098-47fa-a636-e9ab4d6fb969}</Project>
       <Name>Demo.Business</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Data\Sample.Entities\Demo.Entities.csproj">
+    <ProjectReference Include="..\..\Data\Demo.Entities\Demo.Entities.csproj">
       <Project>{DD175BB5-9684-49FF-BC84-DB259E8EA62B}</Project>
       <Name>Demo.Entities</Name>
     </ProjectReference>
