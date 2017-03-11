@@ -36,7 +36,7 @@
         /// <param name="projectName">
         /// The project Name.
         /// </param>
-        [TestCase("Sample.WebApi")]
+        [TestCase("Demo.WebApi")]
         [TestCase(null)]
         public void WebApiInitializeTest(string projectName)
         {
@@ -56,7 +56,7 @@
         /// The project Name.
         /// </param>
         ///     
-        [TestCase("Sample.Mvc.Client")]
+        [TestCase("Demo.Mvc.Client")]
         [TestCase(null)]
         public void MvcInitializeTest(string projectName)
         {
