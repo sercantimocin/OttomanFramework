@@ -154,5 +154,5 @@ $RECYCLE.BIN/
 
 # Mac desktop service store files
 .DS_Store
-/Sample/Api/Sample.WebApi/Web.config
+/Demo/Api/Demo.WebApi/Web.config
 /.vs/config/applicationhost.config
