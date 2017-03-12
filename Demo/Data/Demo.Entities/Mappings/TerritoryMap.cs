@@ -1,9 +1,7 @@
-namespace Sample.Entities.Mappings
+namespace Demo.Entities.Mappings
 {
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.ModelConfiguration;
-
-    using Ottoman.Entities;
 
     // Territories
     internal class TerritoryMap : EntityTypeConfiguration<Territory>

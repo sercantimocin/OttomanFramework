@@ -1,8 +1,8 @@
 ﻿namespace Demo.WebApi.Models
 {
-    using Ottoman.Mapper;
+    using Demo.Entities;
 
-    using Sample.Entities;
+    using Ottoman.Mapper;
 
     public class CustomerDto : IMapFrom<Customer>
     {

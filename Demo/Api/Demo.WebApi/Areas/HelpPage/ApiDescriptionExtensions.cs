@@ -1,10 +1,10 @@
-using System;
-using System.Text;
-using System.Web;
-using System.Web.Http.Description;
-
-namespace Template.WebApi.Areas.HelpPage
+namespace Demo.WebApi.Areas.HelpPage
 {
+    using System;
+    using System.Text;
+    using System.Web;
+    using System.Web.Http.Description;
+
     public static class ApiDescriptionExtensions
     {
         /// <summary>

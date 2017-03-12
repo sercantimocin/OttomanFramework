@@ -8,10 +8,8 @@
 
 //using DatabaseGeneratedOption = System.ComponentModel.DataAnnotations.DatabaseGeneratedOption;
 
-namespace Sample.Entities
+namespace Demo.Entities
 {
-    using Ottoman.Entities;
-
     // Order Details
     public class OrderDetail
     {

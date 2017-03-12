@@ -8,11 +8,9 @@
 
 //using DatabaseGeneratedOption = System.ComponentModel.DataAnnotations.DatabaseGeneratedOption;
 
-namespace Sample.Entities
+namespace Demo.Entities
 {
     using System.Collections.Generic;
-
-    using Ottoman.Entities;
 
     // Shippers
     public class Shipper

@@ -17,14 +17,14 @@ namespace Demo.WebApi
         public void Configuration(IAppBuilder app)
         {
 
-            app.UseIdentityServerBearerTokenAuthentication(
-             new IdentityServerBearerTokenAuthenticationOptions
-             {
-                 Authority = Constants.EndPoint,
-                 //RequiredScopes = new[] { "gallerymanagement" }
-                 RequiredScopes = new[] { "Test" },
+            //app.UseIdentityServerBearerTokenAuthentication(
+            // new IdentityServerBearerTokenAuthenticationOptions
+            // {
+            //     Authority = Constants.EndPoint,
+            //     //RequiredScopes = new[] { "gallerymanagement" }
+            //     RequiredScopes = new[] { "Test" },
 
-             });
+            // });
         }
     }
 }

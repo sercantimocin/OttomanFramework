@@ -1,7 +1,7 @@
-using System;
-
-namespace Template.WebApi.Areas.HelpPage.ModelDescriptions
+namespace Demo.WebApi.Areas.HelpPage.ModelDescriptions
 {
+    using System;
+
     /// <summary>
     /// Describes a type model.
     /// </summary>

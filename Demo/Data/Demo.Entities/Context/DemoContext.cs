@@ -1,21 +1,19 @@
-﻿namespace Sample.Entities.Context
+﻿namespace Demo.Entities.Context
 {
     using System.Data.Entity;
 
-    using Ottoman.Entities;
+    using Mappings;
 
     using Repository.Pattern.Ef6;
 
-    using Sample.Entities.Mappings;
-
-    public class TemplateDbContext : DataContext
+    public class DemoContext : DataContext
     {
-        static TemplateDbContext()
+        static DemoContext()
         {
-            Database.SetInitializer<TemplateDbContext>(null);
+            Database.SetInitializer<DemoContext>(null);
         }
 
-        public TemplateDbContext() : base("Name=conStr")
+        public DemoContext() : base("Name=conStr")
         {
         }
 

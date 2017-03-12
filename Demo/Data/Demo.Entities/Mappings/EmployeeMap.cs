@@ -1,7 +1,9 @@
-namespace Sample.Entities.Mappings
+namespace Demo.Entities.Mappings
 {
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.ModelConfiguration;
+
+    using Demo.Entities;
 
     // Employees
     internal class EmployeeMap : EntityTypeConfiguration<Employee>

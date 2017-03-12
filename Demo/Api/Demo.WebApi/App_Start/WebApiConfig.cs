@@ -1,5 +1,5 @@
 ﻿//----------------------------------------------------------------------------------------------------------------------
-// <copyright file="WebApiConfig.cs" owner="Sercan Timoçin" namespace="Template.WebApi">
+// <copyright file="WebApiConfig.cs" owner="Sercan Timoçin" namespace="Demo.WebApi">
 // Copyright (c) 2016 All Rights Reserved
 // </copyright>
 // <author>devpc</author>
@@ -20,8 +20,8 @@ namespace Demo.WebApi
         {
             // Web API configuration and services
             // Configure Web API to use only bearer token authentication.
-            config.SuppressDefaultHostAuthentication();
-            config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
+            //config.SuppressDefaultHostAuthentication();
+            //config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
 
             // Web API routes
             config.MapHttpAttributeRoutes();

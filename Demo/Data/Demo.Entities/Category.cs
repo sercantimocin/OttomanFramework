@@ -1,4 +1,4 @@
-namespace Sample.Entities
+namespace Demo.Entities
 {
     using System.Collections.Generic;
 

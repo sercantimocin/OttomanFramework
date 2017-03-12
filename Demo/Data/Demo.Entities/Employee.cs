@@ -1,11 +1,9 @@
 //using DatabaseGeneratedOption = System.ComponentModel.DataAnnotations.DatabaseGeneratedOption;
 
-namespace Sample.Entities
+namespace Demo.Entities
 {
     using System;
     using System.Collections.Generic;
-
-    using Ottoman.Entities;
 
     using Repository.Pattern.Ef6.Infrastructure;
 

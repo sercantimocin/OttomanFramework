@@ -1,9 +1,7 @@
-using System;
-using System.Collections.Generic;
-
-namespace Ottoman.Entities
+namespace Demo.Entities
 {
-    using Sample.Entities;
+    using System;
+    using System.Collections.Generic;
 
     // Orders
     public class Order
@@ -33,8 +31,8 @@ namespace Ottoman.Entities
 
         public Order()
         {
-            Freight = 0m;
-            OrderDetails = new List<OrderDetail>();
+            this.Freight = 0m;
+            this.OrderDetails = new List<OrderDetail>();
         }
     }
 

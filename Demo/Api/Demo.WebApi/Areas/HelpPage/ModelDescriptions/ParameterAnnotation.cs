@@ -1,7 +1,7 @@
-using System;
-
-namespace Template.WebApi.Areas.HelpPage.ModelDescriptions
+namespace Demo.WebApi.Areas.HelpPage.ModelDescriptions
 {
+    using System;
+
     public class ParameterAnnotation
     {
         public Attribute AnnotationAttribute { get; set; }

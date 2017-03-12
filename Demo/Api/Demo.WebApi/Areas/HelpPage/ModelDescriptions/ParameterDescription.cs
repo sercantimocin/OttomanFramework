@@ -1,13 +1,12 @@
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-
-namespace Template.WebApi.Areas.HelpPage.ModelDescriptions
+namespace Demo.WebApi.Areas.HelpPage.ModelDescriptions
 {
+    using System.Collections.ObjectModel;
+
     public class ParameterDescription
     {
         public ParameterDescription()
         {
-            Annotations = new Collection<ParameterAnnotation>();
+            this.Annotations = new Collection<ParameterAnnotation>();
         }
 
         public Collection<ParameterAnnotation> Annotations { get; private set; }

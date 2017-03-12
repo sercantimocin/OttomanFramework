@@ -1,8 +1,6 @@
-namespace Sample.Entities
+namespace Demo.Entities
 {
     using System.Collections.Generic;
-
-    using Ottoman.Entities;
 
     using Repository.Pattern.Ef6.Infrastructure;
 

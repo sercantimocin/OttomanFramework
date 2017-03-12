@@ -1,8 +1,10 @@
-using System.Web.Http;
-using System.Web.Mvc;
-
-namespace Template.WebApi.Areas.HelpPage
+namespace Demo.WebApi.Areas.HelpPage
 {
+    using System.Web.Http;
+    using System.Web.Mvc;
+
+    using App_Start;
+
     public class HelpPageAreaRegistration : AreaRegistration
     {
         public override string AreaName

@@ -46,7 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Category.cs" />
-    <Compile Include="Context\TemplateDbContext.cs" />
+    <Compile Include="Context\DemoContext.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="Employee.cs" />
     <Compile Include="Mappings\CategoryMap.cs" />

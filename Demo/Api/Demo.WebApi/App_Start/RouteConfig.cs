@@ -1,5 +1,5 @@
 ﻿//----------------------------------------------------------------------------------------------------------------------
-// <copyright file="RouteConfig.cs" owner="Sercan Timoçin" namespace="Template.WebApi">
+// <copyright file="RouteConfig.cs" owner="Sercan Timoçin" namespace="Demo.WebApi">
 // Copyright (c) 2016 All Rights Reserved
 // </copyright>
 // <author>devpc</author>

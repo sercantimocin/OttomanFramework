@@ -1,4 +1,4 @@
-namespace Template.WebApi.Areas.HelpPage
+namespace Demo.WebApi.Areas.HelpPage.SampleGeneration
 {
     /// <summary>
     /// Indicates whether the sample is used for request or response
