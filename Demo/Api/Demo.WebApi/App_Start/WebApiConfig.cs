@@ -12,6 +12,8 @@ namespace Demo.WebApi
 
     using Microsoft.Owin.Security.OAuth;
 
+    using Ottoman.CrossCutting.Additional;
+
     public static class WebApiConfig
     {
         public static void Register(HttpConfiguration config)
@@ -29,6 +31,8 @@ namespace Demo.WebApi
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            config.MessageHandlers.Add(new OttomanHandler());
         }
     }
 }
