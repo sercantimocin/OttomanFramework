@@ -35,15 +35,29 @@
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="OttomanResponse{T}"/> class.
+        /// </summary>
+        /// <param name="version">
+        /// The version.
+        /// </param>
+        /// <param name="statusCode">
+        /// The status code.
+        /// </param>
+        /// <param name="result">
+        /// The result.
+        /// </param>
+        /// <param name="message">
+        /// The message.
+        /// </param>
+        public OttomanResponse(string version, HttpStatusCode statusCode, T result, params string[] message) : this(statusCode, result, message)
+        {
+            this.Version = version;
+        }
+
+        /// <summary>
         /// Gets the version.
         /// </summary>
-        public string Version
-        {
-            get
-            {
-                return "1.2.3";
-            }
-        }
+        public string Version { get; private set; }
 
         /// <summary>
         /// Gets or sets the status code.

@@ -35,7 +35,7 @@ namespace Demo.WebApi
                 defaults: new { id = RouteParameter.Optional }
             );
 
-            config.MessageHandlers.Add(new OttomanHandler());
+            config.MessageHandlers.Add(new OttomanHandler("1.0.0"));
             config.Formatters.Add(new BrowserJsonFormatter());
         }
     }

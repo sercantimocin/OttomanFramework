@@ -1,8 +1,6 @@
 ﻿namespace Ottoman.CrossCutting.Additional
 {
     using System;
-    using System.Collections.Generic;
-    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -13,6 +11,22 @@
     /// </summary>
     public class OttomanHandler : DelegatingHandler
     {
+        /// <summary>
+        /// The version.
+        /// </summary>
+        private static string version;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="OttomanHandler"/> class.
+        /// </summary>
+        /// <param name="versionNumber">
+        /// The version number.
+        /// </param>
+        public OttomanHandler(string versionNumber)
+        {
+            version = versionNumber;
+        }
+
         /// <summary>
         /// The send async.
         /// </summary>
@@ -63,7 +77,7 @@
 
             var genericType = typeof(OttomanResponse<>);
             var specificType = genericType.MakeGenericType(content.GetType());
-            var ottomanResponse = Activator.CreateInstance(specificType, response.StatusCode, content, message);
+            var ottomanResponse = Activator.CreateInstance(specificType, version, response.StatusCode, content, message);
 
             var newResponse = request.CreateResponse(response.StatusCode, ottomanResponse);
 
