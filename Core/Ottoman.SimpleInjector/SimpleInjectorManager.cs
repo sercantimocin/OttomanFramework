@@ -14,7 +14,7 @@ namespace Ottoman.Injector
     using System.Web.Http;
     using System.Web.Mvc;
 
-    using Ottoman.Injector.Policies.ClassInterface;
+    using Policies.ClassInterface;
 
     using Policies.Controller;
 

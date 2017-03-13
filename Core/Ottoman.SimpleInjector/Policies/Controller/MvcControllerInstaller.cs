@@ -24,7 +24,7 @@
         /// </param>
         public void Register(Container container, HttpConfiguration httpConfiguration)
         {
-            //container.RegisterMvcControllers(httpConfiguration.Services.GetAssembliesResolver().GetAssemblies().ToArray());
+            container.RegisterMvcControllers(httpConfiguration.Services.GetAssembliesResolver().GetAssemblies().ToArray());
             container.RegisterMvcIntegratedFilterProvider();
         }
     }
