@@ -8,9 +8,12 @@
 
 namespace Demo.WebApi
 {
+    using System;
+    using System.Net.Http.Formatting;
+    using System.Net.Http.Headers;
     using System.Web.Http;
 
-    using Microsoft.Owin.Security.OAuth;
+    using Newtonsoft.Json;
 
     using Ottoman.CrossCutting.Additional;
 
@@ -33,6 +36,40 @@ namespace Demo.WebApi
             );
 
             config.MessageHandlers.Add(new OttomanHandler());
+            config.Formatters.Add(new BrowserJsonFormatter());
+        }
+    }
+
+    /// <summary>
+    /// The browser json formatter.
+    /// </summary>
+    public class BrowserJsonFormatter : JsonMediaTypeFormatter
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BrowserJsonFormatter"/> class.
+        /// </summary>
+        public BrowserJsonFormatter()
+        {
+            this.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
+            this.SerializerSettings.Formatting = Formatting.Indented;
+        }
+
+        /// <summary>
+        /// The set default content headers.
+        /// </summary>
+        /// <param name="type">
+        /// The type.
+        /// </param>
+        /// <param name="headers">
+        /// The headers.
+        /// </param>
+        /// <param name="mediaType">
+        /// The media type.
+        /// </param>
+        public override void SetDefaultContentHeaders(Type type, HttpContentHeaders headers, MediaTypeHeaderValue mediaType)
+        {
+            base.SetDefaultContentHeaders(type, headers, mediaType);
+            headers.ContentType = new MediaTypeHeaderValue("application/json");
         }
     }
 }

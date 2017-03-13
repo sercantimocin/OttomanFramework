@@ -21,8 +21,16 @@
         /// </param>
         public OttomanResponse(HttpStatusCode statusCode, T result, params string[] message)
         {
+            if (result == null)
+            {
+                this.Result = default(T);
+            }
+            else
+            {
+                this.Result = result;
+            }
+
             this.StatusCode = (int)statusCode;
-            this.Result = result;
             this.Message = message;
         }
 

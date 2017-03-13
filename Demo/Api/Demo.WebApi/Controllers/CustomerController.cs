@@ -45,7 +45,7 @@
         }
 
         // GET: api/Default/5
-        [Cacheable(cacheDuration: 60)]
+        [Cacheable(60)]
         public CustomerDto Get(int id)
         {
             return this._customerService.Find(id).To<CustomerDto>();

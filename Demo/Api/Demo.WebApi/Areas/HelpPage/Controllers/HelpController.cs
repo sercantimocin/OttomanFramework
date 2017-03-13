@@ -15,13 +15,8 @@ namespace Demo.WebApi.Areas.HelpPage.Controllers
         private const string ErrorViewName = "Error";
 
         public HelpController()
-            : this(GlobalConfiguration.Configuration)
         {
-        }
-
-        public HelpController(HttpConfiguration config)
-        {
-            this.Configuration = config;
+            this.Configuration = GlobalConfiguration.Configuration;
         }
 
         public HttpConfiguration Configuration { get; private set; }
