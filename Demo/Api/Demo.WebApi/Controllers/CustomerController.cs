@@ -52,18 +52,24 @@
         }
 
         // POST: api/Default
-        public void Post([FromBody]string value)
+        [HttpPost]
+        public void Post([FromBody] CustomerDto customer)
         {
+            this._customerService.Update(customer.To<Customer>());
         }
 
         // PUT: api/Default/5
-        public void Put(int id, [FromBody]string value)
+        [HttpPut]
+        public void Put([FromBody] CustomerDto customer)
         {
+            this._customerService.Insert(customer.To<Customer>());
         }
 
         // DELETE: api/Default/5
+        [HttpDelete]
         public void Delete(int id)
         {
+            this._customerService.Delete(id);
         }
     }
 }
