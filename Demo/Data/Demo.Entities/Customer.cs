@@ -2,7 +2,7 @@ namespace Demo.Entities
 {
     using System.Collections.Generic;
 
-    using Repository.Pattern.Ef6.Infrastructure;
+    using Ottoman.Base.Data;
 
     // Customers
     public class Customer : BaseEntity<int>

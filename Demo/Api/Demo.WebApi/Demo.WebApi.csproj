@@ -65,6 +65,10 @@
       <HintPath>..\..\..\packages\IdentityServer3.AccessTokenValidation.2.11.0\lib\net45\IdentityServer3.AccessTokenValidation.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="LinqKit, Version=1.1.1.0, Culture=neutral, PublicKeyToken=bc217f8844052a91, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\LINQKit.1.1.1\lib\net45\LinqKit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -76,6 +80,10 @@
     </Reference>
     <Reference Include="Microsoft.Owin.Security.Jwt, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Owin.Security.Jwt.3.0.1\lib\net45\Microsoft.Owin.Security.Jwt.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -168,6 +176,18 @@
     <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Urf.Repository.Pattern, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <HintPath>..\..\..\packages\Urf.Repository.Pattern.4.2.0\lib\net451\Urf.Repository.Pattern.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Urf.Repository.Pattern.Ef6, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Urf.Repository.Pattern.EF6.4.2.0\lib\net451\Urf.Repository.Pattern.Ef6.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Urf.Service.Pattern, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Urf.Service.Pattern.4.2.0\lib\net451\Urf.Service.Pattern.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
@@ -352,6 +372,10 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Core\Ottoman.Base\Ottoman.Base.csproj">
+      <Project>{1DF27C9E-9901-4274-80E7-1052C52AACDF}</Project>
+      <Name>Ottoman.Base</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Core\Ottoman.Mapper\Ottoman.Mapper.csproj">
       <Project>{1EE39338-8E6C-4E93-8D73-E6C1F4D7A4DB}</Project>
       <Name>Ottoman.Mapper</Name>
@@ -359,18 +383,6 @@
     <ProjectReference Include="..\..\..\Core\Ottoman.Core\Ottoman.Core.csproj">
       <Project>{d7c53018-239d-4a84-b19c-b4fe4a5beed8}</Project>
       <Name>Ottoman.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\Core\Repository.Pattern.Ef6\Repository.Pattern.Ef6.csproj">
-      <Project>{F68A1D19-93FB-47C1-A22B-42BEA3E4FD8C}</Project>
-      <Name>Repository.Pattern.Ef6</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\Core\Repository.Pattern\Repository.Pattern.csproj">
-      <Project>{6E682A14-C872-4813-B620-76E108DEA683}</Project>
-      <Name>Repository.Pattern</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\Core\Service.Pattern\Service.Pattern.csproj">
-      <Project>{773B60EE-8D35-4800-ACD5-2F673F94170C}</Project>
-      <Name>Service.Pattern</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\CrossCutting\Caching\Ottoman.MemoryCache\Ottoman.MemoryCache.csproj">
       <Project>{14824693-4232-4CD9-80DE-D49C3C7E8165}</Project>

@@ -1,6 +1,7 @@
 ﻿namespace Demo.Entities.Context
 {
     using System.Data.Entity;
+    using System.Data.Entity.ModelConfiguration.Conventions;
 
     using Mappings;
 
@@ -42,6 +43,8 @@
             modelBuilder.Configurations.Add(new ShipperMap());
             modelBuilder.Configurations.Add(new SupplierMap());
             modelBuilder.Configurations.Add(new TerritoryMap());
+
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
 
         public static DbModelBuilder CreateModel(DbModelBuilder modelBuilder, string schema)
