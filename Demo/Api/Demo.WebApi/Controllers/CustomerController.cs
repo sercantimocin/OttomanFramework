@@ -45,10 +45,11 @@
         }
 
         // GET: api/Default/5
-        [Cacheable(60)]
+        //[Cacheable(60)]
         public CustomerDto Get(int id)
         {
-            return this._customerService.Find(id).To<CustomerDto>();
+            var c = this._customerService.Find(id);
+            return c.To<CustomerDto>();
         }
 
         // POST: api/Default
