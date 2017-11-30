@@ -44,7 +44,7 @@
                         container.Register(typeof(IDataContextAsync), contextType);
                         container.Register(typeof(IUnitOfWorkAsync), typeof(UnitOfWork));
                         container.Register(typeof(IRepositoryAsync<>), typeof(Repository<>));
-                        container.Register(typeof(IService<>), typeof(OttomanService<>));
+                        container.Register(typeof(IService<>), typeof(Service<>));
                     }
                 }
             }

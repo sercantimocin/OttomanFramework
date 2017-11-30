@@ -46,20 +46,5 @@
 
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
-
-        public static DbModelBuilder CreateModel(DbModelBuilder modelBuilder, string schema)
-        {
-            modelBuilder.Configurations.Add(new CategoryMap(schema));
-            modelBuilder.Configurations.Add(new CustomerMap(schema));
-            modelBuilder.Configurations.Add(new EmployeeMap(schema));
-            modelBuilder.Configurations.Add(new OrderMap(schema));
-            modelBuilder.Configurations.Add(new OrderDetailMap(schema));
-            modelBuilder.Configurations.Add(new ProductMap(schema));
-            modelBuilder.Configurations.Add(new RegionMap(schema));
-            modelBuilder.Configurations.Add(new ShipperMap(schema));
-            modelBuilder.Configurations.Add(new SupplierMap(schema));
-            modelBuilder.Configurations.Add(new TerritoryMap(schema));
-            return modelBuilder;
-        }
     }
 }
