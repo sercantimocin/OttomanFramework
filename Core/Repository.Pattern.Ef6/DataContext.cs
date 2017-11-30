@@ -1,15 +1,12 @@
-using System;
-using System.Data.Entity;
-using System.Threading;
-using System.Threading.Tasks;
-using Repository.Pattern.DataContext;
-using Repository.Pattern.Infrastructure;
-
 namespace Repository.Pattern.Ef6
 {
-    using System.Data.Entity.ModelConfiguration;
-    using System.Linq;
-    using System.Reflection;
+    using System;
+    using System.Data.Entity;
+    using System.Threading;
+    using System.Threading.Tasks;
+
+    using Repository.Pattern.DataContext;
+    using Repository.Pattern.Infrastructure;
 
     public class DataContext : DbContext, IDataContextAsync
     {
@@ -84,6 +81,7 @@ namespace Repository.Pattern.Ef6
         {
             return await this.SaveChangesAsync(CancellationToken.None);
         }
+
         /// <summary>
         ///     Asynchronously saves all changes made in this context to the underlying database.
         /// </summary>

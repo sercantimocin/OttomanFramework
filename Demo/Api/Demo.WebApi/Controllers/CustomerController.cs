@@ -9,6 +9,8 @@
     using Ottoman.Mapper.Extensions;
     using Ottoman.MemoryCache;
 
+    using Repository.Pattern.UnitOfWork;
+
     using Service.Pattern;
 
     /// <summary>
@@ -29,7 +31,7 @@
         /// </param>
         public CustomerController(IService<Customer> customerService)
         {
-            this._customerService = customerService;
+            _customerService = customerService;
         }
 
         /// GET: api/Default
@@ -44,33 +46,33 @@
             return this._customerService.Queryable();
         }
 
-        // GET: api/Default/5
         //[Cacheable(60)]
+        [HttpGet]
         public CustomerDto Get(int id)
         {
             var c = this._customerService.Find(id);
             return c.To<CustomerDto>();
         }
 
-        // POST: api/Default
         [HttpPost]
         public void Post([FromBody] CustomerDto customer)
         {
-            this._customerService.Update(customer.To<Customer>());
+            _customerService.Insert(customer.To<Customer>());
+            //_unitOfWork.SaveChangesAsync();
         }
 
-        // PUT: api/Default/5
         [HttpPut]
         public void Put([FromBody] CustomerDto customer)
         {
-            this._customerService.Insert(customer.To<Customer>());
+            _customerService.Update(customer.To<Customer>());
+            //_unitOfWork.SaveChangesAsync();
         }
 
-        // DELETE: api/Default/5
         [HttpDelete]
         public void Delete(int id)
         {
-            this._customerService.Delete(id);
+            _customerService.Delete(id);
+            //_unitOfWork.SaveChangesAsync();
         }
     }
 }
