@@ -374,10 +374,6 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Core\Ottoman.Base\Ottoman.Base.csproj">
-      <Project>{1DF27C9E-9901-4274-80E7-1052C52AACDF}</Project>
-      <Name>Ottoman.Base</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\..\Core\Ottoman.Mapper\Ottoman.Mapper.csproj">
       <Project>{1EE39338-8E6C-4E93-8D73-E6C1F4D7A4DB}</Project>
       <Name>Ottoman.Mapper</Name>
