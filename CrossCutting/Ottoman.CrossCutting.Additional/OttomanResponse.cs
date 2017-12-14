@@ -5,7 +5,39 @@
     /// <summary>
     /// The ottoman response.
     /// </summary>
-    public class OttomanResponse<T>
+    public class OttomanResponse
+    {
+        public OttomanResponse(HttpStatusCode statusCode, params string[] message)
+        {
+            this.StatusCode = (int)statusCode;
+            this.Message = message;
+        }
+
+        public OttomanResponse(string version, HttpStatusCode statusCode, params string[] message) : this(statusCode, message)
+        {
+            this.Version = version;
+        }
+
+        /// <summary>
+        /// Gets or sets the version.
+        /// </summary>
+        public string Version { get; protected set; }
+
+        /// <summary>
+        /// Gets or sets the status code.
+        /// </summary>
+        public int StatusCode { get; set; }
+
+        /// <summary>
+        /// Gets or sets the message.
+        /// </summary>
+        public string[] Message { get; set; }
+    }
+
+    /// <summary>
+    /// The ottoman response.
+    /// </summary>
+    public class OttomanResponse<T> : OttomanResponse
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="OttomanResponse{T}"/> class.
@@ -19,19 +51,9 @@
         /// <param name="message">
         /// The message.
         /// </param>
-        public OttomanResponse(HttpStatusCode statusCode, T result, params string[] message)
+        public OttomanResponse(HttpStatusCode statusCode, T result, params string[] message) : base(statusCode, message)
         {
-            if (result == null)
-            {
-                this.Result = default(T);
-            }
-            else
-            {
-                this.Result = result;
-            }
-
-            this.StatusCode = (int)statusCode;
-            this.Message = message;
+            this.Result = result;
         }
 
         /// <summary>
@@ -49,25 +71,10 @@
         /// <param name="message">
         /// The message.
         /// </param>
-        public OttomanResponse(string version, HttpStatusCode statusCode, T result, params string[] message) : this(statusCode, result, message)
+        public OttomanResponse(string version, HttpStatusCode statusCode, T result, params string[] message) : base(version, statusCode, message)
         {
-            this.Version = version;
+            this.Result = result;
         }
-
-        /// <summary>
-        /// Gets the version.
-        /// </summary>
-        public string Version { get; private set; }
-
-        /// <summary>
-        /// Gets or sets the status code.
-        /// </summary>
-        public int StatusCode { get; set; }
-
-        /// <summary>
-        /// Gets or sets the error message.
-        /// </summary>
-        public string[] Message { get; set; }
 
         /// <summary>
         /// Gets or sets the result.

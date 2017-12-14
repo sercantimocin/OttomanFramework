@@ -43,7 +43,7 @@
         {
             var response = await base.SendAsync(request, cancellationToken);
 
-            return BuildApiResponse(request, response);
+            return this.BuildApiResponse(request, response);
         }
 
         /// <summary>
@@ -58,10 +58,24 @@
         /// <returns>
         /// The <see cref="HttpResponseMessage"/>.
         /// </returns>
-        private static HttpResponseMessage BuildApiResponse(HttpRequestMessage request, HttpResponseMessage response)
+        private HttpResponseMessage BuildApiResponse(HttpRequestMessage request, HttpResponseMessage response)
+        {
+            string message = null;
+
+            object content = this.ParseContentErrors(response, ref message);
+            var newResponse = this.CreateNewResponseObject(request, response, content, message);
+
+            foreach (var header in response.Headers)
+            {
+                newResponse.Headers.Add(header.Key, header.Value);
+            }
+
+            return newResponse;
+        }
+
+        private object ParseContentErrors(HttpResponseMessage response, ref string message)
         {
             object content;
-            string message = null;
 
             if (response.TryGetContentValue(out content) && !response.IsSuccessStatusCode)
             {
@@ -72,21 +86,30 @@
                     content = null;
                     message = error.Message;
                     message = string.Concat(message, error.ExceptionMessage, error.StackTrace);
+
+                    //TODO Logging
                 }
             }
 
-            var genericType = typeof(OttomanResponse<>);
-            var specificType = genericType.MakeGenericType(content.GetType());
-            var ottomanResponse = Activator.CreateInstance(specificType, version, response.StatusCode, content, message);
+            return content;
+        }
 
-            var newResponse = request.CreateResponse(response.StatusCode, ottomanResponse);
+        private HttpResponseMessage CreateNewResponseObject(HttpRequestMessage request, HttpResponseMessage response, object content, string message)
+        {
+            Type responseType;
 
-            foreach (var header in response.Headers)
+            if (content == null)
             {
-                newResponse.Headers.Add(header.Key, header.Value);
+                responseType = typeof(OttomanResponse);
+            }
+            else
+            {
+                responseType = typeof(OttomanResponse<>);
+                responseType = responseType.MakeGenericType(content.GetType());
             }
 
-            return newResponse;
+            var ottomanResponse = Activator.CreateInstance(responseType, version, response.StatusCode, content, message);
+            return request.CreateResponse(response.StatusCode, ottomanResponse);
         }
     }
 }

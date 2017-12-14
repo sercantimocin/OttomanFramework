@@ -1,34 +1,26 @@
-﻿#region
-
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data.Entity;
-using System.Diagnostics;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Threading;
-using System.Threading.Tasks;
-using LinqKit;
-using Repository.Pattern.DataContext;
-using Repository.Pattern.Infrastructure;
-using Repository.Pattern.Repositories;
-using Repository.Pattern.UnitOfWork;
-
-#endregion
-
-namespace Repository.Pattern.Ef6
+﻿namespace Repository.Pattern.Ef6
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Data.Entity;
+    using System.Diagnostics;
+    using System.Linq;
+    using System.Linq.Expressions;
+    using System.Threading;
+    using System.Threading.Tasks;
+
+    using LinqKit;
+
+    using Repository.Pattern.DataContext;
+    using Repository.Pattern.Infrastructure;
+    using Repository.Pattern.Repositories;
+    using Repository.Pattern.UnitOfWork;
+
     public class Repository<TEntity> : IRepositoryAsync<TEntity> where TEntity : class, IObjectState
     {
-        #region Private Fields
-
         private readonly IDataContextAsync _context;
         private readonly DbSet<TEntity> _dbSet;
         private readonly IUnitOfWorkAsync _unitOfWork;
-
-        #endregion Private Fields
 
         public Repository(IDataContextAsync context, IUnitOfWorkAsync unitOfWork)
         {

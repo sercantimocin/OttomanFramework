@@ -1,5 +1,7 @@
 ﻿namespace Demo.WebApi.Models
 {
+    using System.Collections.Generic;
+
     using Demo.Entities;
 
     using Ottoman.Mapper;
@@ -16,5 +18,7 @@
         public string Country { get; set; } // Country
         public string Phone { get; set; } // Phone
         public string Fax { get; set; } // Fax
+
+        public List<Order> Orders { get; set; }
     }
 }
