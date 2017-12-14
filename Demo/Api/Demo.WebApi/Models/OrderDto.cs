@@ -1,13 +1,17 @@
-namespace Demo.Entities
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace Demo.WebApi.Models
 {
-    using System;
-    using System.Collections.Generic;
+    using Demo.Entities;
 
-    using Ottoman.Core.Data;
+    using Ottoman.Mapper;
 
-    // Orders
-    public class Order : BaseEntity<int>
+    public class OrderDto : IMapFrom<Order>
     {
+        public int Id { get; set; } // Id (Primary key)
         public int? CustomerId { get; set; } // CustomerId
         public int? EmployeeId { get; set; } // EmployeeId
         public DateTime? OrderDate { get; set; } // OrderDate
@@ -23,18 +27,12 @@ namespace Demo.Entities
         public string ShipCountry { get; set; } // ShipCountry
 
         // Reverse navigation
-        public virtual ICollection<OrderDetail> OrderDetails { get; set; } // Order Details.FK_Order_Details_Orders
+        //public virtual ICollection<OrderDetail> OrderDetails { get; set; } // Order Details.FK_Order_Details_Orders
 
-        // Foreign keys
-        public virtual Customer Customer { get; set; } // FK_Orders_Customers
-        public virtual Employee Employee { get; set; } // FK_Orders_Employees
-        public virtual Shipper Shipper { get; set; } // FK_Orders_Shippers
+        //// Foreign keys
+        public Customer Customer { get; set; } // FK_Orders_Customers
+        //public virtual Employee Employee { get; set; } // FK_Orders_Employees
+        //public virtual Shipper Shipper { get; set; } // FK_Orders_Shippers
 
-        public Order()
-        {
-            this.Freight = 0m;
-            this.OrderDetails = new List<OrderDetail>();
-        }
     }
-
 }

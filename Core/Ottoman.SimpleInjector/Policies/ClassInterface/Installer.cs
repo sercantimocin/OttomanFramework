@@ -4,31 +4,18 @@
     using System.Linq;
     using System.Reflection;
 
-    using global::Repository.Pattern.DataContext;
-    using global::Repository.Pattern.Ef6;
-    using global::Repository.Pattern.Repositories;
-    using global::Repository.Pattern.UnitOfWork;
+    using Repository.Pattern.DataContext;
+    using Repository.Pattern.Ef6;
+    using Repository.Pattern.Repositories;
+    using Repository.Pattern.UnitOfWork;
 
     using Service.Pattern;
-
     using SimpleInjector;
 
-    /// <summary>
-    /// The class interface matcher installer.
-    /// </summary>
     public class Installer : IInstaller
     {
-        /// <summary>
-        /// The entities project name.
-        /// </summary>
         private const string EntitiesProjectName = "EntitiesProjectName";
 
-        /// <summary>
-        /// The register.
-        /// </summary>
-        /// <param name="container">
-        /// The container.
-        /// </param>
         public void Register(Container container)
         {
             string entitiesProjectName = ConfigurationManager.AppSettings[EntitiesProjectName];
@@ -55,7 +42,7 @@
                         container.Register(typeof(IDataContextAsync), contextType);
                         container.Register(typeof(IUnitOfWorkAsync), typeof(UnitOfWork));
                         container.Register(typeof(IRepositoryAsync<>), typeof(Repository<>));
-                        container.Register(typeof(IService<>), typeof(Service<>));
+                        //container.Register(typeof(IService<>), typeof(Service<>));
                     }
                 }
             }

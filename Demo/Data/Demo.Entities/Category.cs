@@ -2,7 +2,7 @@ namespace Demo.Entities
 {
     using System.Collections.Generic;
 
-    using Repository.Pattern.Ef6.Infrastructure;
+    using Ottoman.Core.Data;
 
     // Categories
     public class Category : BaseEntity<int>
