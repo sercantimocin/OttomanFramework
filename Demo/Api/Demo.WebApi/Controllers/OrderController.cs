@@ -1,7 +1,7 @@
 ﻿namespace Demo.WebApi.Controllers
 {
-    using Entities;
-    using Models;
+    using Demo.Entities;
+    using Demo.WebApi.Models;
 
     using Ottoman.Core;
 
@@ -9,12 +9,12 @@
     using Repository.Pattern.UnitOfWork;
 
     /// <summary>
-    /// The customer controller.
+    /// The order controller.
     /// </summary>
-    public class CustomerController : OttomanController<Customer, CustomerDto>
+    public class OrderController : OttomanController<Order, OrderDto>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="CustomerController"/> class.
+        /// Initializes a new instance of the <see cref="OrderController"/> class.
         /// </summary>
         /// <param name="genericRepository">
         /// The generic repository.
@@ -22,7 +22,7 @@
         /// <param name="unitOfWork">
         /// The unit of work.
         /// </param>
-        public CustomerController(IRepositoryAsync<Customer> genericRepository, IUnitOfWorkAsync unitOfWork)
+        public OrderController(IRepositoryAsync<Order> genericRepository, IUnitOfWorkAsync unitOfWork)
             : base(genericRepository, unitOfWork)
         {
         }
