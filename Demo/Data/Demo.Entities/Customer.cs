@@ -2,7 +2,7 @@ namespace Demo.Entities
 {
     using System.Collections.Generic;
 
-    using Ottoman.Base.Data;
+    using Ottoman.Core.Data;
 
     // Customers
     public class Customer : BaseEntity<int>

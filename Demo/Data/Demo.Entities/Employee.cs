@@ -5,7 +5,7 @@ namespace Demo.Entities
     using System;
     using System.Collections.Generic;
 
-    using Ottoman.Base.Data;
+    using Ottoman.Core.Data;
 
     // Employees
     public class Employee : BaseEntity<int>

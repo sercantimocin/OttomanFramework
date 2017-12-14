@@ -74,7 +74,6 @@
     <Compile Include="Data\EditableEntity.cs" />
     <Compile Include="Data\GeneralStatus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="OttomanService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

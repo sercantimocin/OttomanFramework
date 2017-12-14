@@ -89,17 +89,19 @@
     <Compile Include="Territory.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Core\Ottoman.Base\Ottoman.Base.csproj">
-      <Project>{1DF27C9E-9901-4274-80E7-1052C52AACDF}</Project>
-      <Name>Ottoman.Base</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\..\Core\Ottoman.Core\Ottoman.Core.csproj">
       <Project>{d7c53018-239d-4a84-b19c-b4fe4a5beed8}</Project>
       <Name>Ottoman.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\Core\Ottoman.Mapper\Ottoman.Mapper.csproj">
+      <Project>{1EE39338-8E6C-4E93-8D73-E6C1F4D7A4DB}</Project>
+      <Name>Ottoman.Mapper</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

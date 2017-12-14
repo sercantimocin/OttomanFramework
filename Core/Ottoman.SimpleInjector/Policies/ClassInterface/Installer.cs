@@ -4,8 +4,6 @@
     using System.Linq;
     using System.Reflection;
 
-    using Ottoman.Core;
-
     using Repository.Pattern.DataContext;
     using Repository.Pattern.Ef6;
     using Repository.Pattern.Repositories;
@@ -44,7 +42,7 @@
                         container.Register(typeof(IDataContextAsync), contextType);
                         container.Register(typeof(IUnitOfWorkAsync), typeof(UnitOfWork));
                         container.Register(typeof(IRepositoryAsync<>), typeof(Repository<>));
-                        container.Register(typeof(IService<>), typeof(Service<>));
+                        //container.Register(typeof(IService<>), typeof(Service<>));
                     }
                 }
             }
