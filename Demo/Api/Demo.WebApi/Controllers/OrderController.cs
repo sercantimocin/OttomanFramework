@@ -11,7 +11,7 @@
     /// <summary>
     /// The order controller.
     /// </summary>
-    public class OrderController : OttomanController<Order, OrderDto>
+    public class OrderController : OttomanController<Order, OrderDto, int>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="OrderController"/> class.

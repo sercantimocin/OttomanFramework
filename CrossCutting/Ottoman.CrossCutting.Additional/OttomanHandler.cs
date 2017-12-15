@@ -60,10 +60,7 @@
         /// </returns>
         private HttpResponseMessage BuildApiResponse(HttpRequestMessage request, HttpResponseMessage response)
         {
-            string message = null;
-
-            object content = this.ParseContentErrors(response, ref message);
-            var newResponse = this.CreateNewResponseObject(request, response, content, message);
+            HttpResponseMessage newResponse = this.GetResponse(request, response);
 
             foreach (var header in response.Headers)
             {
@@ -73,42 +70,46 @@
             return newResponse;
         }
 
-        private object ParseContentErrors(HttpResponseMessage response, ref string message)
+        private HttpResponseMessage GetResponse(HttpRequestMessage request, HttpResponseMessage response)
         {
+            HttpResponseMessage responseMessage;
             object content;
 
             if (response.TryGetContentValue(out content) && !response.IsSuccessStatusCode)
             {
                 HttpError error = content as HttpError;
+                string message = null;
 
                 if (error != null)
                 {
-                    content = null;
-                    message = error.Message;
-                    message = string.Concat(message, error.ExceptionMessage, error.StackTrace);
-
+                    //message = error.Message;
+                    message = string.Concat(error.Message, " ", error.ExceptionType, " ", error.ExceptionMessage, " ", error.StackTrace);
                     //TODO Logging
                 }
+
+                responseMessage = this.CreateNewResponseObject(request, response, message);
+            }
+            else
+            {
+                responseMessage = this.CreateNewResponseObject(request, response, content, null);
             }
 
-            return content;
+            return responseMessage;
+        }
+
+        private HttpResponseMessage CreateNewResponseObject(HttpRequestMessage request, HttpResponseMessage response, string message)
+        {
+            Type responseType = typeof(OttomanResponse);
+            OttomanResponse ottomanResponse = Activator.CreateInstance(responseType, version, response.StatusCode, message) as OttomanResponse;
+            return request.CreateResponse(response.StatusCode, ottomanResponse);
         }
 
         private HttpResponseMessage CreateNewResponseObject(HttpRequestMessage request, HttpResponseMessage response, object content, string message)
         {
-            Type responseType;
-
-            if (content == null)
-            {
-                responseType = typeof(OttomanResponse);
-            }
-            else
-            {
-                responseType = typeof(OttomanResponse<>);
-                responseType = responseType.MakeGenericType(content.GetType());
-            }
-
+            Type responseType = typeof(OttomanResponse<>);
+            responseType = responseType.MakeGenericType(content.GetType());
             var ottomanResponse = Activator.CreateInstance(responseType, version, response.StatusCode, content, message);
+
             return request.CreateResponse(response.StatusCode, ottomanResponse);
         }
     }
