@@ -30,7 +30,7 @@
         private readonly IUnitOfWorkAsync _unitOfWork;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="OttomanController{TEntity,TResult}"/> class.
+        /// Initializes a new instance of the <see cref="OttomanController{TEntity,TResult,TKey}"/> class.
         /// </summary>
         /// <param name="genericRepository">
         /// The generic repository.
@@ -80,15 +80,20 @@
         /// The <see cref="Task"/>.
         /// </returns>
         [HttpPost]
-        public Task<int> Post([FromBody] TResult genericObject)
+        public async Task<TKey> Post([FromBody] TResult genericObject)
         {
-            _genericRepository.Insert(genericObject.To<TEntity>());
-            return _unitOfWork.SaveChangesAsync();
+            var entity = genericObject.To<TEntity>();
+            _genericRepository.Insert(entity);
+            await _unitOfWork.SaveChangesAsync();
+            return entity.Id;
         }
 
         /// <summary>
         /// The put.
         /// </summary>
+        /// <param name="id">
+        /// The id.
+        /// </param>
         /// <param name="genericObject">
         /// The generic object.
         /// </param>
