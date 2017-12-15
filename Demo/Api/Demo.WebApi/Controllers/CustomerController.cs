@@ -3,7 +3,7 @@
     using Entities;
     using Models;
 
-    using Ottoman.Core;
+    using Ottoman.Core.Infrastructure;
 
     using Repository.Pattern.Repositories;
     using Repository.Pattern.UnitOfWork;

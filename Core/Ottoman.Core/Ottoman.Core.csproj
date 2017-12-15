@@ -115,7 +115,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationEngine.cs" />
-    <Compile Include="OttomanController.cs" />
+    <Compile Include="Infrastructure\EfErrorConverter.cs" />
+    <Compile Include="Infrastructure\OttomanController.cs" />
     <Compile Include="Data\BaseEntity.cs" />
     <Compile Include="Data\ConcurrencyCheckEntity.cs" />
     <Compile Include="Data\EditableEntity.cs" />

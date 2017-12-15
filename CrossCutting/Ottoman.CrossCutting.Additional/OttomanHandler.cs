@@ -83,7 +83,7 @@
                 if (error != null)
                 {
                     //message = error.Message;
-                    message = string.Concat(error.Message, " ", error.ExceptionType, " ", error.ExceptionMessage, " ", error.StackTrace);
+                        message = string.Concat(error.Message, " ", error.ExceptionType, " ", error.ExceptionMessage, " ", error.StackTrace);
                     //TODO Logging
                 }
 

@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="OttomanExceptionHandler.cs" />
     <Compile Include="OttomanHandler.cs" />
     <Compile Include="OttomanResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

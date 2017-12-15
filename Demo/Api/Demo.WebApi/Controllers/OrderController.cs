@@ -3,7 +3,7 @@
     using Demo.Entities;
     using Demo.WebApi.Models;
 
-    using Ottoman.Core;
+    using Ottoman.Core.Infrastructure;
 
     using Repository.Pattern.Repositories;
     using Repository.Pattern.UnitOfWork;

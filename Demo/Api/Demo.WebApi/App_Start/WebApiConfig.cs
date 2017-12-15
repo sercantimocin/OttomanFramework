@@ -12,6 +12,7 @@ namespace Demo.WebApi
     using System.Net.Http.Formatting;
     using System.Net.Http.Headers;
     using System.Web.Http;
+    using System.Web.Http.ExceptionHandling;
 
     using Newtonsoft.Json;
 
@@ -36,6 +37,7 @@ namespace Demo.WebApi
             );
 
             config.MessageHandlers.Add(new OttomanHandler("1.0.0"));
+            config.Services.Replace(typeof(IExceptionHandler), new OttomanExceptionHandler(config.Services.GetExceptionHandler()));
             config.Formatters.Add(new BrowserJsonFormatter());
         }
     }

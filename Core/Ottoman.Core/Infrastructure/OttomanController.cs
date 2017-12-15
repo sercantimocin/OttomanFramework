@@ -1,4 +1,4 @@
-﻿namespace Ottoman.Core
+﻿namespace Ottoman.Core.Infrastructure
 {
     using System.Linq;
     using System.Threading.Tasks;

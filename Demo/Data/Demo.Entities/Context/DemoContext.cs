@@ -1,9 +1,15 @@
 ﻿namespace Demo.Entities.Context
 {
+    using System.Collections.Generic;
     using System.Data.Entity;
+    using System.Data.Entity.Infrastructure;
     using System.Data.Entity.ModelConfiguration.Conventions;
+    using System.Data.Entity.Validation;
+    using System.Linq;
 
     using Mappings;
+
+    using Ottoman.Core.Infrastructure;
 
     using Repository.Pattern.Ef6;
 
@@ -45,6 +51,19 @@
             modelBuilder.Configurations.Add(new TerritoryMap());
 
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+        }
+
+        protected override DbEntityValidationResult ValidateEntity(DbEntityEntry entityEntry, IDictionary<object, object> items)
+        {
+            var errorConverter = new EfErrorConverter();
+            var validationResult = base.ValidateEntity(entityEntry, items);
+
+            if (validationResult.ValidationErrors.Count > 0)
+            {
+                validationResult = errorConverter.MapValidationResult(entityEntry, validationResult.ValidationErrors);
+            }
+
+            return validationResult;
         }
     }
 }
