@@ -9,8 +9,6 @@
     using System.Threading.Tasks;
     using System.Web.Http;
     using System.Web.Http.ExceptionHandling;
-    using System.Web.Http.ModelBinding;
-    using System.Web.Http.Results;
 
     public class OttomanExceptionHandler : IExceptionHandler
     {
