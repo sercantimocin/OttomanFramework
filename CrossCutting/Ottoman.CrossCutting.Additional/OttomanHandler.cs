@@ -75,23 +75,24 @@
             HttpResponseMessage responseMessage;
             object content;
 
-            if (response.TryGetContentValue(out content) && !response.IsSuccessStatusCode)
+            if (response.TryGetContentValue<object>(out content))
             {
                 HttpError error = content as HttpError;
-                string message = null;
-
-                if (error != null)
+                if (error == null)
                 {
-                    //message = error.Message;
-                        message = string.Concat(error.Message, " ", error.ExceptionType, " ", error.ExceptionMessage, " ", error.StackTrace);
+                    responseMessage = this.CreateNewResponseObject(request, response, content, null);
+                }
+                else
+                {
+                    string message = error.Message;
+                    //string message = string.Concat(error.Message, " ", error.ExceptionType, " ", error.ExceptionMessage, " ", error.StackTrace);
+                    responseMessage = this.CreateNewResponseObject(request, response, message);
                     //TODO Logging
                 }
-
-                responseMessage = this.CreateNewResponseObject(request, response, message);
             }
             else
             {
-                responseMessage = this.CreateNewResponseObject(request, response, content, null);
+                responseMessage = this.CreateNewResponseObject(request, response, null);
             }
 
             return responseMessage;

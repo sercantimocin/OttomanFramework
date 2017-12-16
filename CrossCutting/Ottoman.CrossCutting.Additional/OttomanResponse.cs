@@ -5,7 +5,7 @@
     /// <summary>
     /// The ottoman response.
     /// </summary>
-    public class OttomanResponse
+    public class OttomanResponse 
     {
         public OttomanResponse(HttpStatusCode statusCode, params string[] message)
         {

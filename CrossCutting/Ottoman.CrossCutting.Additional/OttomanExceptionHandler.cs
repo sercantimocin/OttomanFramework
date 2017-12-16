@@ -1,9 +1,15 @@
 ﻿namespace Ottoman.CrossCutting.Additional
 {
     using System;
+    using System.Data.Entity.Validation;
+    using System.Linq;
+    using System.Net;
+    using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
+    using System.Web.Http;
     using System.Web.Http.ExceptionHandling;
+    using System.Web.Http.ModelBinding;
     using System.Web.Http.Results;
 
     public class OttomanExceptionHandler : IExceptionHandler
@@ -27,7 +33,7 @@
             {
                 throw new ArgumentNullException(nameof(innerHandler));
             }
-                
+
             _innerHandler = innerHandler;
         }
 
@@ -63,11 +69,53 @@
         /// </param>
         public void Handle(ExceptionHandlerContext context)
         {
-            // Create your own custom result here...
-            // In dev, you might want to null out the result
-            // to display the YSOD.
-            // context.Result = null;
-            context.Result = new InternalServerErrorResult(context.Request);
+            if (context.Exception is DbEntityValidationException)
+            {
+                DbEntityValidationException validationException = context.Exception as DbEntityValidationException;
+
+                string message = string.Join("-", validationException.EntityValidationErrors.SelectMany(x => x.ValidationErrors.Select(a => a.ErrorMessage)));
+                HttpError httpError = new HttpError(message);
+                HttpResponseMessage response = context.Request.CreateResponse(HttpStatusCode.OK, httpError);
+                context.Result = new OttomanExceptionResult(response);
+            }
+            else
+            {
+                context.Result = new OttomanExceptionResult(context.ExceptionContext.Request, HttpStatusCode.InternalServerError, "Oops! Sorry! Something went wrong.");
+            }
+        }
+
+
+        private class OttomanExceptionResult : IHttpActionResult
+        {
+            private HttpResponseMessage _response;
+
+            private HttpRequestMessage _request;
+            private HttpStatusCode _statusCode;
+            private string _content;
+
+            public OttomanExceptionResult(HttpRequestMessage request, HttpStatusCode statusCode, string content)
+            {
+                _request = request;
+                _statusCode = statusCode;
+                _content = content;
+            }
+
+            public OttomanExceptionResult(HttpResponseMessage response)
+            {
+                _response = response;
+            }
+
+            public Task<HttpResponseMessage> ExecuteAsync(CancellationToken cancellationToken)
+            {
+                if (_response == null)
+                {
+                    _response = new HttpResponseMessage(_statusCode);
+                    _response.Content = new StringContent(_content);
+                    _response.RequestMessage = _request;
+                }
+
+                return Task.FromResult(_response);
+            }
         }
     }
 }
