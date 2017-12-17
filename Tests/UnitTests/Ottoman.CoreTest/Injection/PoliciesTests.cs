@@ -57,8 +57,6 @@ namespace Ottoman.CoreTest.Injection
             _container.Register(typeof(IDataContextAsync), contextType);
             _container.Register(typeof(IUnitOfWorkAsync), typeof(UnitOfWork));
             _container.Register(typeof(IRepositoryAsync<>), typeof(Repository<>));
-            _container.Register(typeof(IService<>), typeof(Service<>));
-
 
             installer.Register(this._container, this._httpConfiguration);
 
