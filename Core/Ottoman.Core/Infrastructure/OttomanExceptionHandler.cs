@@ -1,4 +1,4 @@
-﻿namespace Ottoman.CrossCutting.Additional
+﻿namespace Ottoman.Core.Infrastructure
 {
     using System;
     using System.Data.Entity.Validation;
@@ -107,9 +107,9 @@
             {
                 if (_response == null)
                 {
-                    _response = new HttpResponseMessage(_statusCode);
-                    _response.Content = new StringContent(_content);
-                    _response.RequestMessage = _request;
+                    _response = new HttpResponseMessage(this._statusCode);
+                    _response.Content = new StringContent(this._content);
+                    _response.RequestMessage = this._request;
                 }
 
                 return Task.FromResult(_response);

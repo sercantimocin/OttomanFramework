@@ -1,4 +1,4 @@
-﻿namespace Ottoman.CrossCutting.Additional
+﻿namespace Ottoman.Core.Infrastructure
 {
     using System.Net;
 

@@ -115,11 +115,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationEngine.cs" />
+    <Compile Include="Infrastructure\EfErrorConverter.cs" />
+    <Compile Include="Infrastructure\OttomanBrowserJsonFormatter.cs" />
     <Compile Include="Infrastructure\OttomanController.cs" />
     <Compile Include="Data\BaseEntity.cs" />
     <Compile Include="Data\ConcurrencyCheckEntity.cs" />
     <Compile Include="Data\EditableEntity.cs" />
     <Compile Include="Data\GeneralStatus.cs" />
+    <Compile Include="Infrastructure\OttomanExceptionHandler.cs" />
+    <Compile Include="Infrastructure\OttomanHandler.cs" />
+    <Compile Include="Infrastructure\OttomanResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

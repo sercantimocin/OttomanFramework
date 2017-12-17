@@ -53,6 +53,14 @@
       <HintPath>..\..\..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="FluentValidation, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7de548da2fbae0f0, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\FluentValidation.7.2.1\lib\net45\FluentValidation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FluentValidation.WebApi, Version=6.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Bin\FluentValidation.WebApi.dll</HintPath>
+    </Reference>
     <Reference Include="IdentityModel, Version=2.5.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\IdentityModel.2.5.1\lib\net45\IdentityModel.dll</HintPath>
       <Private>True</Private>
@@ -352,7 +360,9 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Sample.WebApi.licenseheader" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
     <None Include="Web.Debug.config">
@@ -391,6 +401,10 @@
     <ProjectReference Include="..\..\..\CrossCutting\Security\Ottoman.IdentityServer\Ottoman.IdentityServer.csproj">
       <Project>{e4444c58-4964-4024-8ca2-5b0bc0c757a2}</Project>
       <Name>Ottoman.IdentityServer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\CrossCutting\Validation\Ottoman.FluentValidation\Ottoman.FluentValidation.csproj">
+      <Project>{CCB180D4-D392-47DC-A896-B12BE81FE13E}</Project>
+      <Name>Ottoman.FluentValidation</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Business\Demo.Business\Demo.Business.csproj">
       <Project>{967d0097-f098-47fa-a636-e9ab4d6fb969}</Project>

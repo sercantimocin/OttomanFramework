@@ -1,6 +1,7 @@
-﻿namespace Ottoman.CrossCutting.Additional
+﻿namespace Ottoman.Core.Infrastructure
 {
     using System;
+    using System.Linq;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -16,15 +17,18 @@
         /// </summary>
         private static string version;
 
+        private readonly bool _useModelStateError;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="OttomanHandler"/> class.
         /// </summary>
         /// <param name="versionNumber">
         /// The version number.
         /// </param>
-        public OttomanHandler(string versionNumber)
+        public OttomanHandler(string versionNumber, bool useModelStateError = false)
         {
             version = versionNumber;
+            _useModelStateError = useModelStateError;
         }
 
         /// <summary>
@@ -75,6 +79,7 @@
             HttpResponseMessage responseMessage;
             object content;
 
+            // TODO Refactor this logic
             if (response.TryGetContentValue<object>(out content))
             {
                 HttpError error = content as HttpError;
@@ -84,10 +89,17 @@
                 }
                 else
                 {
-                    string message = error.Message;
-                    //string message = string.Concat(error.Message, " ", error.ExceptionType, " ", error.ExceptionMessage, " ", error.StackTrace);
-                    responseMessage = this.CreateNewResponseObject(request, response, message);
-                    //TODO Logging
+                    if (_useModelStateError && error.ModelState != null)
+                    {
+                        responseMessage = this.CreateNewResponseObject(request, response, error.ModelState.Select(x => (x.Value as string[])[0]).ToArray());
+                    }
+                    else
+                    {
+                        string message = error.Message;
+                        //string message = string.Concat(error.Message, " ", error.ExceptionType, " ", error.ExceptionMessage, " ", error.StackTrace);
+                        responseMessage = this.CreateNewResponseObject(request, response, message);
+                        //TODO Logging
+                    }
                 }
             }
             else
@@ -98,14 +110,14 @@
             return responseMessage;
         }
 
-        private HttpResponseMessage CreateNewResponseObject(HttpRequestMessage request, HttpResponseMessage response, string message)
+        private HttpResponseMessage CreateNewResponseObject(HttpRequestMessage request, HttpResponseMessage response, params string[] message)
         {
             Type responseType = typeof(OttomanResponse);
             OttomanResponse ottomanResponse = Activator.CreateInstance(responseType, version, response.StatusCode, message) as OttomanResponse;
             return request.CreateResponse(response.StatusCode, ottomanResponse);
         }
 
-        private HttpResponseMessage CreateNewResponseObject(HttpRequestMessage request, HttpResponseMessage response, object content, string message)
+        private HttpResponseMessage CreateNewResponseObject(HttpRequestMessage request, HttpResponseMessage response, object content, params string[] message)
         {
             Type responseType = typeof(OttomanResponse<>);
             responseType = responseType.MakeGenericType(content.GetType());
