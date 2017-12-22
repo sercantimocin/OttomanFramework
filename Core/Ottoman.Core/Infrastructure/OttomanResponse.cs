@@ -1,11 +1,11 @@
-﻿namespace Ottoman.CrossCutting.Additional
+﻿namespace Ottoman.Core.Infrastructure
 {
     using System.Net;
 
     /// <summary>
     /// The ottoman response.
     /// </summary>
-    public class OttomanResponse
+    public class OttomanResponse 
     {
         public OttomanResponse(HttpStatusCode statusCode, params string[] message)
         {

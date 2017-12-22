@@ -3,7 +3,7 @@
     using Entities;
     using Models;
 
-    using Ottoman.Core;
+    using Ottoman.Core.Infrastructure;
 
     using Repository.Pattern.Repositories;
     using Repository.Pattern.UnitOfWork;
@@ -11,7 +11,7 @@
     /// <summary>
     /// The customer controller.
     /// </summary>
-    public class CustomerController : OttomanController<Customer, CustomerDto>
+    public class CustomerController : OttomanController<Customer, CustomerDto, int>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="CustomerController"/> class.

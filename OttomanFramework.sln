@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{E1C704E0-9EE1-4DD6-9966-275160CF9BEB}"
 EndProject
@@ -64,7 +64,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ottoman.Test.Core", "Tests\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ottoman.IdentityServer", "CrossCutting\Security\Ottoman.IdentityServer\Ottoman.IdentityServer.csproj", "{E4444C58-4964-4024-8CA2-5B0BC0C757A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ottoman.CrossCutting.Additional", "CrossCutting\Ottoman.CrossCutting.Additional\Ottoman.CrossCutting.Additional.csproj", "{CF6B4435-E551-4C1D-A0B5-A14274ECBF58}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Validation", "Validation", "{F55ED260-C056-44A2-94FB-6F9E23F1A13C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ottoman.FluentValidation", "CrossCutting\Validation\Ottoman.FluentValidation\Ottoman.FluentValidation.csproj", "{CCB180D4-D392-47DC-A896-B12BE81FE13E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -194,14 +196,14 @@ Global
 		{E4444C58-4964-4024-8CA2-5B0BC0C757A2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E4444C58-4964-4024-8CA2-5B0BC0C757A2}.Release|x86.ActiveCfg = Release|Any CPU
 		{E4444C58-4964-4024-8CA2-5B0BC0C757A2}.Release|x86.Build.0 = Release|Any CPU
-		{CF6B4435-E551-4C1D-A0B5-A14274ECBF58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CF6B4435-E551-4C1D-A0B5-A14274ECBF58}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CF6B4435-E551-4C1D-A0B5-A14274ECBF58}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{CF6B4435-E551-4C1D-A0B5-A14274ECBF58}.Debug|x86.Build.0 = Debug|Any CPU
-		{CF6B4435-E551-4C1D-A0B5-A14274ECBF58}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CF6B4435-E551-4C1D-A0B5-A14274ECBF58}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CF6B4435-E551-4C1D-A0B5-A14274ECBF58}.Release|x86.ActiveCfg = Release|Any CPU
-		{CF6B4435-E551-4C1D-A0B5-A14274ECBF58}.Release|x86.Build.0 = Release|Any CPU
+		{CCB180D4-D392-47DC-A896-B12BE81FE13E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCB180D4-D392-47DC-A896-B12BE81FE13E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCB180D4-D392-47DC-A896-B12BE81FE13E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CCB180D4-D392-47DC-A896-B12BE81FE13E}.Debug|x86.Build.0 = Debug|Any CPU
+		{CCB180D4-D392-47DC-A896-B12BE81FE13E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCB180D4-D392-47DC-A896-B12BE81FE13E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCB180D4-D392-47DC-A896-B12BE81FE13E}.Release|x86.ActiveCfg = Release|Any CPU
+		{CCB180D4-D392-47DC-A896-B12BE81FE13E}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -231,6 +233,7 @@ Global
 		{14FD7219-BEC9-4F14-AD13-C7F908D5A006} = {EA041AE4-4750-4817-945E-7B3F20BEDC4A}
 		{D0D4B212-1059-40F2-A3F0-4FE9AA9D596E} = {14FD7219-BEC9-4F14-AD13-C7F908D5A006}
 		{E4444C58-4964-4024-8CA2-5B0BC0C757A2} = {85F8C427-8CCD-4F18-AC89-9CBDCE41EA8E}
-		{CF6B4435-E551-4C1D-A0B5-A14274ECBF58} = {14AD9BE2-D44F-45B6-AF77-901A669F480B}
+		{F55ED260-C056-44A2-94FB-6F9E23F1A13C} = {14AD9BE2-D44F-45B6-AF77-901A669F480B}
+		{CCB180D4-D392-47DC-A896-B12BE81FE13E} = {F55ED260-C056-44A2-94FB-6F9E23F1A13C}
 	EndGlobalSection
 EndGlobal

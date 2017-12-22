@@ -1,11 +1,12 @@
-﻿namespace Ottoman.Core
+﻿namespace Ottoman.Core.Infrastructure
 {
     using System.Linq;
+    using System.Threading.Tasks;
     using System.Web.Http;
 
+    using Ottoman.Core.Data;
     using Ottoman.Mapper.Extensions;
 
-    using Repository.Pattern.Ef6;
     using Repository.Pattern.Repositories;
     using Repository.Pattern.UnitOfWork;
 
@@ -16,7 +17,7 @@
     /// </typeparam>
     /// <typeparam name="TResult">
     /// </typeparam>
-    public class OttomanController<TEntity, TResult> : ApiController where TEntity : Entity
+    public class OttomanController<TEntity, TResult, TKey> : ApiController where TEntity : BaseEntity<TKey> where TKey : struct
     {
         /// <summary>
         /// The _generic repository.
@@ -29,7 +30,7 @@
         private readonly IUnitOfWorkAsync _unitOfWork;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="OttomanController{TEntity,TResult}"/> class.
+        /// Initializes a new instance of the <see cref="OttomanController{TEntity,TResult,TKey}"/> class.
         /// </summary>
         /// <param name="genericRepository">
         /// The generic repository.
@@ -69,24 +70,43 @@
             return _genericRepository.Find(id).To<TResult>();
         }
 
+        /// <summary>
+        /// The post.
+        /// </summary>
+        /// <param name="genericObject">
+        /// The generic object.
+        /// </param>
+        /// <returns>
+        /// The <see cref="Task"/>.
+        /// </returns>
         [HttpPost]
-        public void Post([FromBody] TResult genericObject)
+        public async Task<TKey> Post([FromBody] TResult genericObject)
         {
-            _genericRepository.Insert(genericObject.To<TEntity>());
-            _unitOfWork.SaveChangesAsync();
+            var entity = genericObject.To<TEntity>();
+            _genericRepository.Insert(entity);
+            await _unitOfWork.SaveChangesAsync();
+            return entity.Id;
         }
 
         /// <summary>
         /// The put.
         /// </summary>
+        /// <param name="id">
+        /// The id.
+        /// </param>
         /// <param name="genericObject">
         /// The generic object.
         /// </param>
+        /// <returns>
+        /// The <see cref="Task"/>.
+        /// </returns>
         [HttpPut]
-        public void Put([FromBody] TResult genericObject)
+        public Task<int> Put(TKey id, [FromBody] TResult genericObject)
         {
-            _genericRepository.Update(genericObject.To<TEntity>());
-            _unitOfWork.SaveChangesAsync();
+            TEntity entity = genericObject.To<TEntity>();
+            entity.Id = id;
+            _genericRepository.Update(entity);
+            return _unitOfWork.SaveChangesAsync();
         }
 
         /// <summary>
@@ -95,11 +115,14 @@
         /// <param name="id">
         /// The id.
         /// </param>
+        /// <returns>
+        /// The <see cref="Task"/>.
+        /// </returns>
         [HttpDelete]
-        public void Delete(int id)
+        public Task<int> Delete(int id)
         {
             _genericRepository.Delete(id);
-            _unitOfWork.SaveChangesAsync();
+            return _unitOfWork.SaveChangesAsync();
         }
     }
 }

@@ -3,7 +3,7 @@
     using Demo.Entities;
     using Demo.WebApi.Models;
 
-    using Ottoman.Core;
+    using Ottoman.Core.Infrastructure;
 
     using Repository.Pattern.Repositories;
     using Repository.Pattern.UnitOfWork;
@@ -11,7 +11,7 @@
     /// <summary>
     /// The order controller.
     /// </summary>
-    public class OrderController : OttomanController<Order, OrderDto>
+    public class OrderController : OttomanController<Order, OrderDto, int>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="OrderController"/> class.

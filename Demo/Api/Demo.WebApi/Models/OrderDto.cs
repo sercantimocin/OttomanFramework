@@ -1,14 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace Demo.WebApi.Models
+﻿namespace Demo.WebApi.Models
 {
+    using System;
+
     using Demo.Entities;
+
+    using FluentValidation;
+    using FluentValidation.Attributes;
 
     using Ottoman.Mapper;
 
+    [Validator(typeof(OrderDtoValidator))]
     public class OrderDto : IMapFrom<Order>
     {
         public int Id { get; set; } // Id (Primary key)
@@ -34,5 +35,14 @@ namespace Demo.WebApi.Models
         //public virtual Employee Employee { get; set; } // FK_Orders_Employees
         //public virtual Shipper Shipper { get; set; } // FK_Orders_Shippers
 
+    }
+
+    public class OrderDtoValidator : AbstractValidator<OrderDto>
+    {
+        public OrderDtoValidator()
+        {
+            this.RuleFor(x => x.ShipAddress).NotEmpty().WithMessage("Teslimat adresi boş bırakılamaz");
+            this.RuleFor(x => x.ShipCity).NotEmpty().WithMessage("Gemi adı boş bırakılamaz");
+        }
     }
 }

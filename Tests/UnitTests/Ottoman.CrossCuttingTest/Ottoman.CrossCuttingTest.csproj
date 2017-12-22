@@ -50,7 +50,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CacheableAttirubuteTests.cs" />
-    <Compile Include="OttomanHandlerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -62,10 +61,6 @@
     <ProjectReference Include="..\..\..\CrossCutting\Caching\Ottoman.MemoryCache\Ottoman.MemoryCache.csproj">
       <Project>{14824693-4232-4CD9-80DE-D49C3C7E8165}</Project>
       <Name>Ottoman.MemoryCache</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\CrossCutting\Ottoman.CrossCutting.Additional\Ottoman.CrossCutting.Additional.csproj">
-      <Project>{CF6B4435-E551-4C1D-A0B5-A14274ECBF58}</Project>
-      <Name>Ottoman.CrossCutting.Additional</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
